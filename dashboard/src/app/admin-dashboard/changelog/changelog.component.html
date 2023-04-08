@@ -1,0 +1,140 @@
+<div id="changelog-container" class="admin-container container" *ngIf="CLInterface">
+
+    <h1>{{title}}</h1>
+
+
+    <div class="col-lg-7 col-md-7 col-sm-12">
+
+
+        <!--<div>
+            <button mat-raised-button
+                    class="float-start"
+                    style="margin-right: 5px;"
+                    type="submit">
+                <mat-icon class=" sesame-blue">save</mat-icon>
+                Save
+            </button>
+            &lt;!&ndash; add item &ndash;&gt;
+            <button type="button" mat-raised-button (click)="addUpdate()">
+                <mat-icon class="mat-18 sesame-blue">add</mat-icon>
+                Add
+            </button>
+
+            <br/> <br/>
+
+            <div class="clear"></div>
+        </div>-->
+        <mat-accordion multi="false">
+
+<!--            <div id="changelog-list" cdkDropList (cdkDropListDropped)="drop($event)">-->
+
+                    <div *ngFor="let update of CLInterface.updates; let i = index; let even=even; let odd=odd;"
+                         class="item5-10" [ngClass]="{ odd: odd, even: even }"
+                         cdkDrag>
+
+                        {{update.name}}
+
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <!-- add delete buttons-->
+                                    <div class="add-button">
+                                      <span class=" text-info"
+                                            (click)="addUpdate(); $event.stopPropagation()">
+                                            <mat-icon>add</mat-icon>
+                                     </span>
+                                    </div>
+
+                                    <div class="delete-button">
+                                     <span class=" text-danger"
+                                           (click)="removeUpdate(i); $event.stopPropagation()">
+                                        <mat-icon>delete</mat-icon>
+                                        </span>
+                                    </div>
+
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+
+                            <mat-form-field appearance="fill"
+                                            class="float-start"
+                                            style="width: 18%; margin-left: 2%;">
+                                <input matInput
+                                       type="text"
+                                       [(ngModel)]="update.name"
+                                       name="name"
+                                       class="float-end"
+                                       placeholder="Add a name">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill"
+                                            class="float-start"
+                                            style="width: 18%; margin-left: 2%;">
+                                <input matInput
+                                       [(ngModel)]="update.version"
+                                       name="version"
+                                       placeholder="Version"
+                                       #version>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="fill"
+                                            class="float-start"
+                                            style="width: 32%; margin-left: 2%;">
+                                <input matInput
+                                       type="text"
+                                       [(ngModel)]="update.date"
+                                       name="release"
+                                       placeholder="Release" #release>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill"
+                                            class="float-start"
+                                            style="width: 22%; margin-left: 2%;">
+
+                                <input matInput type="text"
+                                       [(ngModel)]="update.comments"
+                                       name="date"
+                                       placeholder="Release Date"
+                                       #date>
+                            </mat-form-field>
+
+                        </mat-expansion-panel>
+                    </div>
+<!--                </div>-->
+
+        </mat-accordion>
+    </div>
+
+</div>
+
+
+<div class="col-lg-4 col-md-4 col-sm-12">
+    <!--<h3>Instructions</h3>
+    <p><span class="sesame-blue">Blue placeholder text</span> indicates a required field.</p>
+
+    <h3>Changelog (last 3)</h3>
+
+    <div class="content-data"
+         *ngFor="let formDataValue of adminForm.controls['items'].value  | keys; let i = index; let first = first;">
+        <div *ngIf="i<3">
+            <div *ngIf="formDataValue.value.version"><span><span
+                    *ngIf="first">CURRENT</span> Version: </span>{{formDataValue.value.version}}</div>
+            <div *ngIf="formDataValue.value.name"><span>Name: </span> {{formDataValue.value.name}}</div>
+            <div *ngIf="formDataValue.value.name"><span>Name: </span> {{formDataValue.value.release}}</div>
+            <div *ngIf="formDataValue.value.date"><span>Git Release Date: </span> {{formDataValue.value.date}}
+            </div>
+            <div *ngIf="formDataValue.value.angular_version">
+                <span>Angular -V:  </span>{{formDataValue.value.angular_version}}</div>
+            <div *ngIf="formDataValue.value.comments"><span>Comments:  </span>{{formDataValue.value.comments}}
+            </div>
+
+            <hr/>
+
+        </div>
+
+    </div>-->
+
+</div><!-- end col -->
+
+

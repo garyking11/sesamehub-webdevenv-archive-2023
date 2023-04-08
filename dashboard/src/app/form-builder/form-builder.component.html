@@ -1,0 +1,190 @@
+<div id="form-builder-container" class="form-builder-container" *ngIf="FBInterface">
+
+    <h1>{{title}}</h1>
+<!--    wow fadeIn data-wow-duration=".5s"-->
+    <div class="row">
+
+        <div class="col-lg-5 col-md-5 col-sm-12">
+
+            <!--<button mat-raised-button
+                    class="float-start"
+                    style="margin-right: 5px;"
+                    type="button"
+                    (click)="setFormBuilderProperties()">Save
+            </button>-->
+            <button mat-raised-button type="button" (click)="addFormBlock()">
+                <mat-icon class="mat-18 sesame-blue">add</mat-icon> Add Form Field
+            </button>
+
+            <br/>
+
+            <div class="clear"></div>
+
+            <mat-form-field style="margin-top: 20px;">
+                <mat-label>Page Name </mat-label>
+                <input [(ngModel)]="FBInterface.pageName"
+                       (keydown)="fieldNameChanged($event)"
+                       type="text"
+                       matInput
+                       name="pageName"
+                       #pageName>
+            </mat-form-field>
+
+            <div cdkDropList (cdkDropListDropped)="drop($event)">
+
+                <mat-accordion multi="false">
+                    <mat-card *ngFor="let formField of this.FBInterface.formFieldArray; let i = index"
+                              cdkDrag>
+                        <mat-expansion-panel class="border-sesame-blue" hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-icon class="text-danger float-start" (click)="removeFormBlock(i)">delete</mat-icon>
+                                <mat-panel-title>
+                                    <div *ngIf="formField.label; else nolabel">
+
+                                        <span class="sesame-blue"> {{formField.label}}</span>
+                                    </div>
+                                    <ng-template #nolabel>
+                                   <span class="sesame-blue">
+                                    Enter form details</span><span class="sesame-green"> &nbsp;(same as field label)</span>
+                                    </ng-template>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <br/>
+
+                            <mat-card-content>
+                                <mat-form-field>
+                                    <mat-label>Field Type</mat-label>
+                                    <mat-select [(ngModel)]="formField.type">
+                                        <mat-option *ngFor="let fieldType of formTypeArray" [value]="fieldType.value">
+                                            {{ fieldType.display}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field [color]="fieldName.errors?.pattern ? 'warn' : 'primary'">
+                                    <mat-label>Field Name </mat-label>
+                                    <input matInput name="" [(ngModel)]="formField.name" #fieldName="ngModel" pattern="^[a-zA-Z0-9\s]*$" (keydown)="fieldNameChanged($event)">
+                                     <mat-error *ngIf="fieldName.errors">You may not use special characters in the field name</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <mat-label>Field Label</mat-label>
+                                    <input matInput required  [(ngModel)]="formField.label" >
+                                </mat-form-field>
+
+                                <mat-checkbox (change)="formFieldNamesConcatenation" [(ngModel)]="formField.required">Required?</mat-checkbox>
+
+                                <div *ngIf="formField.type == 'select'" >
+                                    <h3>SELECT OPTIONS</h3>
+
+                                    <div><button mat-raised-button type="button" (click)="this.addFormFieldOption(i)">Add Option</button></div>
+
+
+                                    <mat-card class="border-sesame-green" style="margin-bottom: 5px;" *ngFor="let formFieldOption of formField.options; let optionIndex = index">
+                                        <mat-form-field>
+                                            <mat-label>Option Label</mat-label>
+                                            <input matInput name="" [(ngModel)]="formFieldOption.display">
+
+                                        </mat-form-field>
+                                    <button mat-button
+                                           class=""
+                                           type="button"
+                                           color="warn"
+                                           (click)="this.removeFormFieldOption(i, optionIndex)">Delete Option</button>
+
+                                    </mat-card>
+                                </div>
+                                <mat-card-footer>
+                                    <button mat-button color="warn" (click)="removeFormBlock(i)">Delete Form Field</button>
+                                </mat-card-footer>
+                            </mat-card-content>
+
+                        </mat-expansion-panel>
+                    </mat-card><!-- end for -->
+
+
+                    <div>
+                        <button mat-raised-button
+                                class="save-button"
+                                (click)="setFormBuilderProperties()"
+                                type="button">
+                            <mat-icon>save</mat-icon>
+                            Save
+                        </button>
+
+                    </div>
+
+
+
+
+                </mat-accordion>
+            </div>
+
+        </div><!-- end col -->
+        <div class="col-lg-7 col-md-7 col-sm-12>">
+
+            <p class="copy sesame-blue" (click)="copyHTMLToClipboard();" data-target="#copy">
+                <mat-icon style="cursor: pointer;">file_copy</mat-icon>
+                Grab your HTML
+            </p>
+
+            <code id="copy">
+
+                &lt;form action="/{{FBInterface.pageName | toLowercase | replaceSpaceDash | trimContent}}"
+                class="full validate" method="post"
+                name="{{FBInterface.pageName | toLowercase | replaceSpaceDash | trimContent}}"&gt;<br />
+
+                <!-- hidden field for required names -->
+                <br/> &lt;input id="required_values" name="required_values" type="hidden"
+                value="{{ formFieldNamesConcatenation | sanitzeHiddenRequiredField | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | trimContent}}" /&gt;<br/><br/>
+
+                <p class="notice width1 box-round">&lt;p&gt;&lt;span class="bold"&gt;Bold&lt;/span&gt; fields are required&lt;/p&gt;</p>
+
+                <div *ngFor="let form of FBInterface.formFieldArray; let i = index;">
+
+                    <!-- text -->
+                    <div *ngIf="form.type == 'text'">
+                        <span *ngIf="form.required;  else notRequiredblock;">&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;&lt;strong&gt;{{form.label}}&lt;/strong&gt;&lt;/label&gt;</span>
+                        <ng-template #notRequiredblock>&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;{{form.label}}&lt;/label&gt;</ng-template><br />
+                        &lt;input
+                        type="text"
+                        name="sc_form[{{form.name | sanitzeHiddenRequiredField | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | trimContent}}]"
+                        id="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}" {{form.required ? "required" : ""}} /&gt;<br/><br/>
+                    </div>
+
+                    <!-- textarea -->
+                    <div *ngIf="form.type == 'textarea'">
+                        <span *ngIf="form.required;  else notRequiredblock;">&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;&lt;strong&gt;{{form.label}}&lt;/strong&gt;&lt;/label&gt;</span>
+                        <ng-template #notRequiredblock>&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;{{form.label}}&lt;/label&gt;</ng-template><br />
+                        &lt;textarea
+                        name="sc_form[{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}]"
+                        id="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"
+                        {{form.required ? "required" : ""}}&gt;&lt;/textarea&gt;<br/><br/>
+                    </div>
+
+                    <!-- select -->
+                    <div *ngIf="form.type == 'select'">
+                        <span *ngIf="form.required;  else notRequiredblock;">&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;&lt;strong&gt;{{form.label}}&lt;/strong&gt;&lt;/label&gt;</span>
+                        <ng-template #notRequiredblock>&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;{{form.label}}&lt;/label&gt;</ng-template><br />
+
+                        &lt;select name="sc_form[{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore| sanitzeHiddenRequiredField | trimContent}}]" {{form.required ? "required" : ""}}
+                        id="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;<br />
+                        <span *ngFor="let option of form.options">&lt;option&gt;{{option.display|sanitzeHiddenRequiredField}}&lt;/option&gt;<br />
+                </span>&lt;/select&gt;<br/><br/>
+                    </div>
+
+                    <!-- checkbox -->
+                    <div *ngIf="form.type == 'checkbox'">
+                        <span *ngIf="form.required;  else notRequiredblock;">&lt;label for="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}"&gt;&lt;strong&gt;{{form.label}}&lt;/strong&gt;</span>
+                        <ng-template #notRequiredblock>&lt;label for="{{form.name| toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent }}"&gt;{{form.label}}</ng-template><br />
+                        &lt;input type="checkbox"
+                        id="{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}" name="sc_form[{{form.name | toLowercase | capitalizeEachWord | replaceSpaceWithUnderscore | sanitzeHiddenRequiredField | trimContent}}]" {{form.required ? "required" : ""}} /&gt;&lt;/label&gt;<br/><br/>
+                    </div>
+                </div>
+                &lt;/form&gt;
+            </code>
+
+        </div>
+    </div>
+</div>

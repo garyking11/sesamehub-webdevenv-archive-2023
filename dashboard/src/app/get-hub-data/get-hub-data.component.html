@@ -1,0 +1,95 @@
+<div class="get-hub-data-container">
+
+    <div id="get-welcome-text" [ngClass]="{'show': sitename == 'sections'}">
+
+        <div class="get-hub-data-wrap {{getWelTextShowHide}} " style="position:relative;">
+
+            <form>
+
+                <h2>Get Welcome Text</h2>
+
+                <button id="getHubWelcomeText"
+                        mat-raised-button
+                        (click)="getWelcomeTextData(sitename)">
+                    HUB Welcome Text
+                </button>
+                <button id="getStockWelcomeText"
+                        mat-raised-button
+                        style="width: 48%;"
+                        (click)="getStockWelcomeData()">
+                    STOCK Welcome text
+                </button>
+
+                <button mat-raised-button
+                        [disabled]="!hub_welcome_text.value"
+                        (click)="welcomeTextPost(response, sitename)">
+                    Apply
+                </button>
+
+                <div class="get-welcome-text">
+                    <textarea id="hub_welcome_text"
+                              name="hub_welcome_text"
+                              required
+                              [(ngModel)]="response"
+                              #hub_welcome_text></textarea>
+
+                    <div class="invalid-selection"
+                         *ngIf="response === undefined || response === ''">
+                        <span class="text-warning">*required ... Select Welcome Text Option/HUB #main-nav</span>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<!----------------- end get-welcome-text ------------>
+<!----------------- start get-hub-navigation ------------>
+<div id="dev-get-hub-nav" class="get-hub-data-container">
+
+    <div id="dev-set-navigation" [ngClass]="{'show': sitename == 'sections'}">
+
+        <form class="{{getHubNavShowHide}}" name="getHubNavigation">
+
+            <h2>Get Navigation</h2>
+
+            <div>
+                <button id="getHubNavigation" mat-raised-button
+                        (click)="getHubNavData(sitename)">HUB #main-nav
+                </button>
+            </div>
+            <div>
+                <button id="getStockNavigation" mat-raised-button
+                        (click)="getStockNavData()">STOCK #main-nav
+                </button>
+            </div>
+            <div>
+                <button mat-raised-button
+                        [disabled]="!navigation.value"
+                        (click)="onHubPost(nResponse, sitename)">Apply
+                </button>
+            </div>
+
+            <div class="get-welcome-text">
+                    <textarea cdkTextareaAutosize
+                              id="hub_navigation"
+                              required
+                              name="navigation"
+                              #navigation
+                              [(ngModel)]="nResponse"></textarea>
+
+                <div style="color: #fff; font-size: 0.9em;" *ngIf="nResponse === undefined || nResponse === ''">
+                    <span class="text-warning">required ... Select Hub Navigation Option</span>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+

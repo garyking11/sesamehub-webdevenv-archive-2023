@@ -1,0 +1,1 @@
+<body class="<?php echo $site['layout_classes'] . ' ' . $site_template;?>">

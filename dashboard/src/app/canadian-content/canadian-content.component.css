@@ -1,0 +1,9 @@
+div a {
+    color: #0099cc;
+    cursor: pointer;
+}
+
+
+div a:hover{
+    color: #9ac628;
+}

@@ -1,0 +1,557 @@
+{
+  "account": "king-gary6",
+  "adminData": [
+    {
+      "name": "gking",
+      "version": "11.2.0",
+      "date": "8-22-2022",
+      "release": "site-manager-v11.2.0",
+      "angular_version": "13.0.0",
+      "comments": ""
+    },
+    {
+      "name": "gking",
+      "version": "buildversion",
+      "date": "5-16-2022",
+      "release": "site-manager-v11.0.0",
+      "angular_version": "13.0.0",
+      "comments": "Angular 13. All functional components. Start on Admin Components. Updated to Material."
+    },
+    {
+      "name": "gking",
+      "version": "11.0.0",
+      "date": "4-24-2022",
+      "release": "Site Manager v11.0.0",
+      "angular_version": "4.2.4",
+      "comments": "Added support and gulp webp converter"
+    },
+    {
+      "name": "gking",
+      "version": "10.0.0",
+      "date": "1-18-2022",
+      "release": "psds-buildkit-v3.0.1",
+      "angular_version": "4.2.4",
+      "comments": "Final version using create buildkit before release"
+    },
+    {
+      "name": "gking",
+      "version": "9.0.0",
+      "date": "11-19-2021",
+      "release": "psds-buildkit-v2.8.1",
+      "angular_version": "4.2.4",
+      "comments": "psds-buildkit-v2.8.1 refactored css to less. Refactored 'Create Buildkit' to allow component selection."
+    },
+    {
+      "name": "gking",
+      "version": "8.0.2",
+      "date": "10-16-2021",
+      "release": "psds-buildkit-v2.6.0",
+      "angular_version": "4.2.4",
+      "comments": ""
+    },
+    {
+      "name": "gking",
+      "version": "8.0.1",
+      "date": "10-14-2021",
+      "release": "psds-buildkit-v2.6.0",
+      "angular_version": "4.2.4",
+      "comments": "Updates to CSS, HTML in site-context-provider. (header). \nUpdated less/scss/layout.php. Start gulp watch prior to FINISH only."
+    },
+    {
+      "name": "gking",
+      "version": "8.0.0",
+      "date": "09-13-2021",
+      "release": "psds-buildkit-v2.6.0",
+      "angular_version": "4.2.4",
+      "comments": "Buildkit and Site Manager first release."
+    },
+    {
+      "name": "gking",
+      "version": "8.0.0",
+      "date": "7-27-2021",
+      "release": "psds-buildkit-v2.0.0",
+      "angular_version": "4.2.4",
+      "comments": "Added: create buildkit functionality, refined user interface, updated Layout Generator, fixed general bug fixes, turned \"Image Manager' on."
+    },
+    {
+      "name": "gking",
+      "version": "7.2.0",
+      "date": "6-24-2021",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Streamlined welcome-text and main-nav integration.\nUpdated home page header and text.\nDeleted backup buildkit backup functionality.\nAdded launch buildkit button in header."
+    },
+    {
+      "name": "gking",
+      "version": "7.1.0",
+      "date": "6-22-2021",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added ability to select .less or .scss preprocessor. Moved gulp to root level."
+    },
+    {
+      "name": "gking",
+      "version": "7.0.0",
+      "date": "5-29-2021",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Redesigned for root gulpfile.js. \nConfigured  dashboard by adding options for scss, less, template, product. \nUpdated site-context-data configuration \nAdded concat js files \nRefactored layout.php and converted to .scss. \nMoved global files into buildkit  \n"
+    },
+    {
+      "name": "gking",
+      "version": "6.0.0",
+      "date": "11-5-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Cleaned up syntax within the site-manager, removed unused components,  removed less compile functions  from  dev/helpers.php.  Updated layout.php to current helpers-v2.0.0.php and added new file to hub.\n\n"
+    },
+    {
+      "name": "gking",
+      "version": "5.04.1",
+      "date": "10-20-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updates to content/removed unused components."
+    },
+    {
+      "name": "gking",
+      "version": "5.04",
+      "date": "10-16-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated location, meet-the-team component correcting the forEach function\n"
+    },
+    {
+      "name": "gking",
+      "version": "5.02",
+      "date": "10-06-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated README for MAMP only install.\nTweaks to fix syntax erors."
+    },
+    {
+      "name": "gking",
+      "version": "5.0.1",
+      "date": "9-22-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Fixed missing quotation mark in location component.html."
+    },
+    {
+      "name": "gking",
+      "version": "5.0.0",
+      "date": "9-21-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Layout.php\n\nChanged .ft-design-credit to an ID rather than a class for consistency against the other sections\nRearranged the footer elements, namely, moved Back to Top before the other elements so it can be floated right, and wrapping the Sesame and sitemap links in a wrapper for easier floating in desktop\nIncorporated my PHP-based homepage H1 swapper (see https://confluence2.internetbrands.com/display/DT/Styling+a+phrase+or+certain+words+differently+in+H1s), enabling us to target a specified phrase (like \"Welcome to\") and wrap it in a <span>, all without the flash of unstyled content that came with doing it via JS\nRemoved the .ft-left, .ft-right, and text navigation PHP from the footer area, as we rarely (if ever) use those anymore\nRemoved modernizr.js and the code in local.js that depended on it. It's no longer needed or used, and slows down load time\nMoved jQuery and Cycle2 to the bottom of layout.php to minimize render blocking\nLocal.less\n\nGeneral cleanup: simplified expanded styles with vendor prefixes to use the prefixer.less version instead for consistency and cleanliness, nested hover states under main element styles for better readability, removed .ft-left and .ft-right styles\nRemoved -webkit-font-smoothing: antialiased; from the <body> element, as that's frequently cited for issues with font-weight in QA\nIntegrated Peter's navigation system & generic.less file for a mobile/tablet experience with less header clutter--using Peter's hamburger menu reduces scrolling, eliminates a big \"Tap for Menu\" link, and adds some visual interest with load animations.\nSeparated out colors.less from local.less, so now local.less includes colors.less, prefixer.less, and generic.less at the top\nColors.less\n\nNow isolated from local.less\nGeneric.less\n\nThis is a file I grabbed from Peter. It contains base styles for the navigation and other areas, pulling them out of the local.less for cleaner code\nLocal.js\n\nTidied up some formatting issues\nAdded \"add class on scroll\" code to local.js; functionality that is often requested\nRemoved the old H1 swapper JS (see the layout.php section above)\nRemoved old JS we no longer use, like the \"shift\" and \"genie\" animations (we do these via CSS now)"
+    },
+    {
+      "name": "gking",
+      "version": "4.0.1",
+      "date": "3-27-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added  .addClass('external').attr({_blank, rel: 'noopener no referrer'}) to block a vulnerability by using only _blank\n"
+    },
+    {
+      "name": "gking",
+      "version": "4.0.0",
+      "date": "2-21-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Max and I have refactored the \"page-width\" CSS in the 00-SDS-RWD-TEMPLATES/ ... [psds-buildkit, elliott, fremont, larrabee, madison, olive, union] buildkits as well as the psds-buildkit used within the site manager dashboard. \n\nNOTE: Avalon, columbia, pacific and ravenna are not compliant with the new CSS.\n\nAs you already are aware you will be able to select your page layout from within the Sesamehub.  While testing I noticed that after creating a page, you will need to return to the add page form to set the width as it does not show up when you create the page.  This is a \"feature\" that will be corrected in the next hub release."
+    },
+    {
+      "name": "gking",
+      "version": "3.98.0",
+      "date": "2-6-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Cleaned out unused modules."
+    },
+    {
+      "name": "gking",
+      "version": "3.97.0",
+      "date": "2-06-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated link reference to global-5.3.0.min.css which removes the grid from local buildkits.\n"
+    },
+    {
+      "name": "gking",
+      "version": "3.96.0",
+      "date": "1-22-2020",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated buildkit pointing to global.5.2.0.min.css to facilitate the new financial manager page added to Sesame stock pages."
+    },
+    {
+      "name": "gking",
+      "version": "3.95.0",
+      "date": "10-14-2019",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added the modal-popup-form-plugin to code-snippets."
+    },
+    {
+      "name": "gking",
+      "version": "3.94.3",
+      "date": "9-30-2019",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Moved video slideshow component to slideshow component.  Added links. Misc. tweaks. Updates to admin section."
+    },
+    {
+      "name": "gking",
+      "version": "3.94.2",
+      "date": "9-23-2019",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated ss-multi-player script to latest version."
+    },
+    {
+      "name": "gking",
+      "version": "3.94.1",
+      "date": "9-23-2019",
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated admin with Git release date replacing Git release tagname."
+    },
+    {
+      "name": "gking",
+      "version": "3.94.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added ss-multi-player."
+    },
+    {
+      "name": "gking",
+      "version": "3.93.5",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added Appointment Request w/checkboxes validation example to code snippets."
+    },
+    {
+      "name": "gking",
+      "version": "3.92.5",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated CSS Tips and Tricks to clean markup in the Fly out Navigation."
+    },
+    {
+      "name": "gking",
+      "version": "3.90.4",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Started new module \"CSS Tips and Tricks\" with the markup for James's \"Flyout Navigation.\"  Thank you James!"
+    },
+    {
+      "name": "gking",
+      "version": "3.9.4",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added margin to table in location page."
+    },
+    {
+      "name": "gking",
+      "version": "3.9.3",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updates to layout.php. Moved Header into main-content. \nRemoved unused social image icons html.\n"
+    },
+    {
+      "name": "gking",
+      "version": "3.9.2",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added CSS/HTML transitions and Misc Callout configurations."
+    },
+    {
+      "name": "gking",
+      "version": "3.8.2",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated testimonial html/css"
+    },
+    {
+      "name": "gking",
+      "version": "3.8.1",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added  multi device code to CalloutsComponent. Updated VideoComponent."
+    },
+    {
+      "name": "gking",
+      "version": "3.8.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added Ft Design Component"
+    },
+    {
+      "name": "gking",
+      "version": "3.7.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added folding callouts CSS/HTML to Dashboard"
+    },
+    {
+      "name": "gking",
+      "version": "3.6.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added video slideshow component."
+    },
+    {
+      "name": "gking",
+      "version": "3.5.2",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated Slideshow Module"
+    },
+    {
+      "name": "gking",
+      "version": "3.5.1",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated 301.php"
+    },
+    {
+      "name": "gking",
+      "version": "3.5.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added a span tag to the sitemap/sesame link with a css rule to control margin.\n.sitemap-pipe {\n  margin: 0 10px;\n}\n\nUpdated the html body tag:\nfont: normal normal 20px/32px 'Open Sans', Helvetica, Arial, sans-serif;\n\nRemoved the PHP if statement regarding 301.php.  Now it just imports without checking to verify that it is there.\n\nAlso added \"grid.less\" and \"page-width.less\" as imports to local.less to eliminate tedious scrolling past all the column rules."
+    },
+    {
+      "name": "gking",
+      "version": "3.4.3",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Update Buildkit (local.less, layout.php)"
+    },
+    {
+      "name": "gking",
+      "version": "3.4.2",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated testimonial rotator to accommodate cycle2.\nUpdated image manager to connect to https.\nUpdated misc components with tweaks.\n"
+    },
+    {
+      "name": "gking",
+      "version": "3.4.1",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated to current font-awesome pro. Updated social icons."
+    },
+    {
+      "name": "gking",
+      "version": "3.4.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": ""
+    },
+    {
+      "name": "gking",
+      "version": "3.3.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Repaired @import functionality in Helpers.php. Updated buildkit."
+    },
+    {
+      "name": "gking",
+      "version": "3.2.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updates to CSS\n"
+    },
+    {
+      "name": "gking",
+      "version": "3.1.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Master updates"
+    },
+    {
+      "name": "gking",
+      "version": "3.0.1",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Added confirm modal giving choice to overwrite of local account buildkit"
+    },
+    {
+      "name": "gking",
+      "version": "3.0.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Pre 3.0.0 Release.\nAdded Image Manager. Modularized entire application. Updated CSS.\n"
+    },
+    {
+      "name": "gking",
+      "version": "2.8.1",
+      "date": null,
+      "release": "",
+      "angular_version": "4.24",
+      "comments": "Removed bootstrap.css from angular-cli.json as it was breaking buildkit."
+    },
+    {
+      "name": "gking",
+      "version": "2.8.0",
+      "date": null,
+      "release": "",
+      "angular_version": "4.2.4",
+      "comments": "Updated to Angular4"
+    },
+    {
+      "name": "gking",
+      "version": "2.7.1",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Added header builder component. "
+    },
+    {
+      "name": "gking",
+      "version": "2.6.5",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Work in Progress on header-builder-component."
+    },
+    {
+      "name": "gking",
+      "version": "2.6.4",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Misc updates to slideshow, office tour image definitions within their respective components. "
+    },
+    {
+      "name": "gking",
+      "version": "2.6.3",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Updates to Section Component and bug fixes."
+    },
+    {
+      "name": "gking",
+      "version": "2.6.2",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Added more code snippets to Code Snippets Component."
+    },
+    {
+      "name": "gking",
+      "version": "2.6.1",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Bug fixes on Section Component"
+    },
+    {
+      "name": "gking",
+      "version": "2.6.0",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Added Section Component"
+    },
+    {
+      "name": "gking",
+      "version": "2.5.0",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Added Association Logos component"
+    },
+    {
+      "name": "gking",
+      "version": "2.4.1",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Added Social Icon Component Styles functionality."
+    },
+    {
+      "name": "gking",
+      "version": "2.3.1",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "UI/UX Updates"
+    },
+    {
+      "name": "gking",
+      "version": "2.3.0",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Added Services HTML Generator component."
+    },
+    {
+      "name": "gking",
+      "version": "2.1.10",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Updates and bug fixes to BeforeAndAfterComponent. Savable data  now functional."
+    },
+    {
+      "name": "gking",
+      "version": "2.1.9",
+      "date": null,
+      "release": "",
+      "angular_version": "2.4.1",
+      "comments": "Updated to @angular2.4.1 and angular-cli v1.0.0-beta.31"
+    },
+    {
+      "name": "gking",
+      "version": "2.1.8",
+      "date": null,
+      "release": "",
+      "angular_version": "2.0.0",
+      "comments": "Removed angular-material from build."
+    },
+    {
+      "name": "gking",
+      "version": "2.1.7",
+      "date": null,
+      "release": "",
+      "angular_version": "2.0.0",
+      "comments": "Updated AdminComponent. \nAll forms can read from local json."
+    },
+    {
+      "name": "gking",
+      "version": "2.1.5",
+      "date": null,
+      "release": "",
+      "angular_version": "2.0.0",
+      "comments": "Update to the BeforeAndAfterComponent"
+    }
+  ]
+}

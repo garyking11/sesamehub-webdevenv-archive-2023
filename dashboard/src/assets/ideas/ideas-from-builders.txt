@@ -1,0 +1,5 @@
+haha ok, this was the message I sent him: "Sooo, I was thinking how we have the testimonial rotator section type...and comparing it to the spotlight section type... The spotlight section type has a whole list of options to choose from. Would be pretty awesome if the testimonial rotator section type was actually just something like "rotators". Then have different rotator/slideshow options, like the testimonials, then the image carousel I see all the time, and then lastly the big one being the slideshow with the spotpager. like here http://poole-terrence2.sesamehub.com/proofs/index.html... which I have been getting a lot lately. I have snippets for both last things I use. But if we're already building out this component library to choose from, might as well go all out. "
+
+
+
+Basically would love to slowly start adding more and more templates/components to the site manager for various sections

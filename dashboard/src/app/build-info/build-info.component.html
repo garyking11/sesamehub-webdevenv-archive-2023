@@ -1,0 +1,209 @@
+<div class="container">
+
+    <h1>Support</h1>
+
+    <dev-subnav *ngIf="router.url == '/build-info'"></dev-subnav>
+
+    <div class="row">
+
+        <div class="col-lg-10 col-md10 col-sm-12">
+
+            <div>
+
+
+
+                <div heading="Welcome Text Component">
+
+                    <h3>Welcome Text</h3>
+                    <p>This button will load the <strong>welcome text (h1)</strong> as defined within the
+                        Sesame Hub Dashboard into your buildkit. It is editable within the textarea containing the
+                        markup.
+                    </p>
+                    <p class="text-primary">Alternatively if you do not have a internet connection you can
+                        use Get STOCK welcome text. (h1)
+                    </p>
+
+
+                </div>
+                <div heading="Navigation Component">
+
+
+                    <h3>Navigation</h3>
+                    <p>This button will load the <strong>current hub sitemap into your main-nav</strong> as
+                        defined within the Sesame Hub Dashboard into your build navigation component.
+                    </p>
+
+                    <p class="text-primary">Alternatively if you do not have a internet connection you can
+                        use Get
+                        STOCK #main-nav
+                    </p>
+
+                </div>
+
+                <div heading="GULP">
+                    <h4>How to Run GULP</h4>
+
+                    <p><strong>From the terminal</strong></p>
+
+                    <code>
+                        OSX: cd /Applications/MAMP/www/<br/>
+                        PC: cd (your install location)/MAMP/www/<br/>
+                        TYPE: gulp watch
+                    </code>
+
+                </div>
+
+                <div heading="AFTER Build">
+                    <h3>AFTER Local Build</h3>
+                    <p><strong>Remove the following files/directory:</strong></p>
+
+                    <ul>
+                        <li>remove account-name/.hub-welcome-text</li>
+                        <li>remove account-name/.metadata</li>
+                    </ul>
+
+                    <h3>Upload to the HUB via SFTP</h3>
+                    <ul>
+                        <li>Upload the 'www' directory and pertinent 'account-name' directory.</li>
+                        <li class="text-danger">
+                            NOTE: Do not change the current directory structure. ie: images/callouts etc, includes,
+                            uploads/images
+                            <br/>NOTE: Do NOT remove the '/assets/includes/data/' directory
+                        </li>
+                        <li>Finish the build online.</li>
+                    </ul>
+
+                </div>
+
+                <div heading="How to update Site Manager">
+
+                    <strong>From the terminal:</strong>
+
+                    <code>
+                        <ul class="list-unstyled">
+                            <li><strong>FIRST TIME OR IF THERE HAS BEEN A MAJOR UPDATE</strong></li>
+                            <li><strong>(OSX/PC)</strong></li>
+                            <li>cd MAMP/www</li>
+                            <li>git status</li>
+                            <li>git fetch</li>
+                            <li>git checkout psds-buildkit- &lt;current version&gt;</li>
+                            <li>git pull</li>
+                            <li>git branch (should display current version)</li>
+                            <li><strong>MINOR UPDATES</strong></li>
+                            <LI>cd into MAMP/www</LI>
+                            <li>git pull</li>
+                        </ul>
+                    </code>
+                </div>
+
+                <div heading="Known errors and how to fix">
+                    <h4>KNOWN ERROR MESSAGES</h4>
+                    <p>And what to do about them.</p>
+
+                   <p> When a local account-name directory is deleted, Gulp will throw an error and quit.
+                       <br />Restart gulp and continue.</p>
+                    <p>When you re-visit an existing account-name local buildkit. This error will be visible in the
+                    terminal running Gulp.<br />
+                    "... Uhoh. Got error write EPIPE ...
+                    Error: write EPIPE
+                    at WriteWrap.onWriteComplete [as oncomplete] (internal/stream_base_commons.js:83:16)"
+                        <br />Gulp automatically continues. If not, simply restart Gulp.</p>
+                    <p>Update the SELECT ACCOUNT NAME to start work on the revisited site.</p>
+                </div>
+
+            </div> <!-- end accordion -->
+
+        </div><!-- end col -->
+
+    </div><!-- end row -->
+
+    <div class="container">
+        <div class="row wow">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <button class="btn btn-default" style=" color: #fff; width: 200px;">
+                    <a class="bold" style="color: #fff; text-decoration: none; max-width: 130px;"
+                       href="https://confluence.internetbrands.com/display/PD/Web+Team+Home" target="_blank">
+                        Web Team Home WIKI</a>
+                </button>
+
+                <button class="btn btn-default" style=" color: #fff; width: 200px;">
+                    <a class="bold" style="color: #fff; text-decoration: none; max-width: 130px;"
+                       href="https://confluence.internetbrands.com/display/PD/Site+Manager" target="_blank">
+                        Site Manager WIKI</a>
+                </button>
+
+                <h3>Install Links</h3>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://developpaper.com/install-nvm-on-mac/" target="_blank">
+                            Install NVM on Mac</a>
+                    </li>
+                    <li>
+                        <a href="https://dev.to/skaytech/how-to-install-node-version-manager-nvm-for-windows-10-4nbi"
+                           target="_blank">
+                            Install NVM on PC</a>
+                    </li>
+                    <!--<li>
+                        <a href="https://confluence.internetbrands.com/display/PD/Site+Manager" target="_blank">
+                            Site Manager Instructions Sesame WIKI</a>
+                    </li>-->
+                    <!--<li>
+                        <a class="bold" href="https://confluence.internetbrands.com/display/PD/Web+Team+Home" target="_blank">
+                            Find general build info on the WIKI. "Web Team Home"</a>
+                    </li>-->
+                </ul>
+
+                <h3>Release</h3>
+                <div *ngFor="let item of admindata; let i = index; let last = last; let first = first; let even=even; let odd=odd;">
+
+
+                    <div *ngIf="i<4">
+
+                        <div *ngIf="item.version">
+
+                            <div *ngIf="first">
+                                <div style="border: 1px solid #0099cc; padding: 10px;">
+                                    <h5>Current</h5>
+                                    <h5 [ngClass]="['bold', 'sesame-blue']">Buildkit Version: {{item.version}}</h5>
+                                    <h5 [ngClass]="['bold', 'sesame-blue']">
+                                        <span class="bold">Release: {{item.release}}</span>
+                                    </h5>
+                                    <div *ngIf="item.tagname"><span>Github Tagname: </span>{{item.tagname}}</div>
+                                    <!--                        <div *ngIf="item.angular_version"><span>Angular Version:  </span>{{item.angular_version}}</div>-->
+                                    <div *ngIf="item.comments">{{item.comments}}</div>
+                                    <span>{{item.date}}</span><br/>
+                                </div>
+                            </div>
+                            <span *ngIf="!first">Version: {{item.version}}</span><br/>
+                            <span>{{item.date}}</span><br/>
+
+                        </div>
+
+                        <div *ngIf="item.tagname"><span>Github Tagname: </span>{{item.tagname}}</div>
+                        <!--  <div *ngIf="item.angular_version"><span>Angular Version:  </span>{{item.angular_version}}</div>-->
+                        <div *ngIf="item.comments">{{item.comments}}</div>
+                        <hr/>
+
+
+                    </div>
+                </div><!-- end ngFor -->
+
+                <div><strong class="light-blue-text">Maintained by</strong></div>
+
+                <ul class="list-unstyled list-inline">
+                    <li><img class="environment-favicon" src="assets/images/favicon.png" alt=""/> Sesame Communications.
+                        Inc
+                    </li>
+                    <li> &bull;</li>
+                    <li>Gary King, gking@sesamecommunications.com</li>
+                    <li> &bull;</li>
+
+                    <li>James Stillion, For builkit (CSS, layout.php)</li>
+                    <li>&nbsp;</li>
+                </ul>
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+
+</div>

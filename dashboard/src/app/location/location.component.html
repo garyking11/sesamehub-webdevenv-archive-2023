@@ -1,0 +1,459 @@
+<div class="location-container" *ngIf="locInterface">
+
+    <h2>{{title}}</h2>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn" data-wow-duration=".5s">
+
+        <!-- instructions -->
+        <div>
+
+            <button mat-raised-button class="instructions-button"
+                    (click)="showHide(showLocationInst = !showLocationInst);">Instructions
+            </button>
+
+            <div [ngClass]="{'hide': !showLocationInst }">
+
+                <p class="text-success">Store images in '/assets/uploads/images/'</p>
+                <p>
+                    Complete the form and "Grab your HTML." Practice name, one doctor name, address and phone#
+                    are required.
+                    <span class="sesame-blue">Blue placeholder text</span> indicates a required field.
+                </p>
+
+                <p>
+                    Space for up to 3 doctors has been made available. If you require more doctor names, you
+                    will need to
+                    add them to your HTML manually. And, style="width=100%" and mobile phone formatted telephone
+                    number has been added automatically.
+                </p>
+
+                <p>
+                    The google embed code will automatically be cleaned. ie: width="600", frameborder="0" have
+                    been removed.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- add item -->
+        <button type="button" mat-raised-button (click)="addLocation()">
+            <mat-icon class="mat-18 sesame-blue">add</mat-icon>
+            Add
+        </button>
+
+        <!-- start form  -->
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+
+            <mat-accordion multi="false">
+
+                <div *ngFor="let location of locInterface.locations; let i = index; let even=even; let odd=odd;"
+                     [ngClass]="{ odd: odd, even: even }" cdkDrag>
+
+                    <!-- location array -->
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header [ngClass]="{ odd: odd, even: even }">
+
+                            <!-- title -->
+                            <mat-panel-title>
+                                <!-- add delete buttons-->
+                                <div class="add-button">
+                            <span class=" text-info"
+                                  (click)="addLocation(); $event.stopPropagation()">
+                                <mat-icon>add</mat-icon>
+                            </span>
+                                </div>
+
+                                <!-- delete method -->
+                                <span class=" text-danger"
+                                      (click)="removeLocation(i)">
+                            <mat-icon>delete</mat-icon>
+                            </span>
+                                <div class="clear"></div>
+
+                                <div *ngIf="location.practiceName; else noname">
+                                    <span class="sesame-blue">{{location.practiceName}}</span>
+                                    &nbsp; -
+                                    <span class="sesame-green">{{location.doctorOne.substring(0, 32)}}</span>&nbsp;
+                                    <span class="sesame-green">{{location.doctorTwo.substring(0, 32)}}</span>&nbsp;
+                                    <span class="sesame-green">{{location.doctorThree.substring(0, 32)}}</span> &nbsp;
+                                </div>
+                                <ng-template #noname>
+                            <span class="sesame-green">
+                            Enter practice name or select from standard forms</span>
+                                </ng-template>
+                            </mat-panel-title>
+
+                        </mat-expansion-panel-header>
+
+                        <br>
+
+                        <!-- practice name -->
+                        <div class="border-sesame-green practice-name-wrap">
+                            <h3>Practice Name</h3>
+                            <mat-form-field>
+                                <mat-label>Practice Name</mat-label>
+                                <input matInput
+                                       type="text"
+                                       required
+                                       name="practiceName"
+                                       [(ngModel)]="location.practiceName"
+                                       placeholder="Practice Name"
+                                       #practiceName>
+                            </mat-form-field>
+
+                        </div>
+
+                        <br>
+
+                        <!-- optional image  -->
+
+                        <div class="border-sesame-green float-end"
+                             style="width: 48%;">
+
+                            <h3>Optional Image</h3>
+                            <div>
+                                <image-selector [image]="location.image" directory="{{ imageDirectory }}"></image-selector>
+                            </div>
+
+                            <br>
+
+                            <!-- show image -->
+                            <div>
+                                <img style="text-align: center; margin: 0 auto; width: 100%;"
+                                     class="preview-image"
+                                     name="image"
+                                     ngDefaultControl
+                                     src="../{{siteContext.account}}/assets/{{imageDirectory}}/{{location.image.path}}"
+                                     alt=""/>
+                            </div>
+
+                            <!-- addresses -->
+                            <div class="">
+                                <h3>Address</h3>
+                                <mat-form-field>
+                                    <mat-label>Address line 1</mat-label>
+                                    <input matInput type="text"
+                                           name="addressLineOne"
+                                           [(ngModel)]="location.addressLineOne"
+                                           placeholder="Address1" #address1>
+                                </mat-form-field>
+
+                                <!-- address 2 -->
+                                <mat-form-field class=" ">
+                                    <mat-label>City, ST Zip</mat-label>
+                                    <input matInput type="text"
+                                           name="addressLineTwo"
+                                           [(ngModel)]="location.addressLineTwo"
+                                           placeholder="address2" #address2>
+                                </mat-form-field>
+
+                                <!-- phone/email -->
+                                <div>
+                                    <div>
+                                        <mat-form-field>
+                                            <mat-label>Phone <span
+                                                    class="label-instructions">format: (123) 456-7890</span>
+                                            </mat-label>
+                                            <input matInput
+                                                   type="text"
+                                                   name="telephone"
+                                                   [(ngModel)]="location.telephone"
+                                                   placeholder="Phone" #telephone>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <mat-form-field>
+                                            <mat-label>FAX</mat-label>
+                                            <input matInput
+                                                   type="text"
+                                                   name="fax"
+                                                   [(ngModel)]="location.fax"
+                                                   placeholder="FAX" #fax>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <mat-label>Email <span
+                                                    class="label-instructions">bob@boblaw.com</span>
+                                            </mat-label>
+                                            <input matInput
+                                                   type="text"
+                                                   name="email"
+                                                   [(ngModel)]="location.email"
+                                                   placeholder="Email" #email>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <mat-label>Email <span
+                                                    class="label-instructions">Email link text</span>
+                                            </mat-label>
+                                            <input matInput
+                                                   type="text"
+                                                   name="emailText"
+                                                   [(ngModel)]="location.emailText"
+                                                   placeholder="Email Text" #emailText>
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div class="clear"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- doctors -->
+                        <div class="border-sesame-green location-doctors-wrap float-start"
+                             style="width: 48%;">
+
+                            <h3>Doctors</h3>
+                            <mat-form-field>
+                                <mat-label>Doctor Name1 <span
+                                        class="label-instructions">optional</span></mat-label>
+                                <input matInput type="text"
+                                       name="doctorOne"
+                                       [(ngModel)]="location.doctorOne"
+                                       placeholder="Doctor Name1" #doctorOne>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Doctor Name2 <span
+                                        class="label-instructions">optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="doctorTwo"
+                                       [(ngModel)]="location.doctorTwo"
+                                       placeholder="Doctor Name2" #doctorTwo>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Doctor Name3 <span
+                                        class="label-instructions">optional</span></mat-label>
+                                <input matInput type="text"
+                                       name="doctorThree"
+                                       [(ngModel)]="location.doctorThree"
+                                       placeholder="Doctor Name3" #doctorThree>
+                            </mat-form-field>
+
+
+                            <!-- office hours -->
+                            <h3>Office Hours</h3>
+                            <mat-form-field>
+                                <mat-label>Sunday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="sunday"
+                                       [(ngModel)]="location.days.sunday"
+                                       placeholder="day" #sunday>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Monday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="monday"
+                                       [(ngModel)]="location.days.monday"
+                                       placeholder="day" #monday>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Tuesday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="tuesday"
+                                       [(ngModel)]="location.days.tuesday"
+                                       placeholder="day" #tuesday>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Wednesday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="wednesday"
+                                       [(ngModel)]="location.days.wednesday"
+                                       placeholder="day" #wednesday>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Thursday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="thursday"
+                                       [(ngModel)]="location.days.thursday"
+                                       placeholder="day" #thursday>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Friday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="friday"
+                                       [(ngModel)]="location.days.friday"
+                                       placeholder="day" #friday>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Saturday <span
+                                        class="label-instructions"> optional</span>
+                                </mat-label>
+                                <input matInput type="text"
+                                       name="saturday"
+                                       [(ngModel)]="location.days.saturday"
+                                       placeholder="day" #saturday>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <br>
+
+
+                        <!-- google scripts -->
+                        <div class="google-scripts-wrap border-sesame-green">
+                            <h3>Google Scripts</h3>
+                            <!--<mat-form-field>
+                                <mat-label>Google Share Link</mat-label>
+                                <input matInput
+                                       name="googleShareLink"
+                                       [(ngModel)]="location.googleShareLink"
+                                       #googleShareLink/>
+                            </mat-form-field>-->
+
+                            <!-- Google embed -->
+                            <mat-form-field>
+                                <mat-label>Google Map Embed Code</mat-label>
+                                <textarea matInput
+                                          name="googleEmbedCode"
+                                          cdkTextareaAutosize
+                                          [(ngModel)]="location.googleEmbedCode"
+                                          #googleEmbedCode></textarea>
+                            </mat-form-field>
+
+                        </div>
+
+                        <br>
+
+                        <!-- notes -->
+                        <div class="border-sesame-green notes-wrap">
+                            <h3>Notes</h3>
+
+                            <mat-form-field>
+                        <textarea matInput
+                                  cdkTextareaAutosize
+                                  name="notes"
+                                  [(ngModel)]="location.notes"
+                                  #notes>{{location.notes}}</textarea>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="clear"></div>
+
+                    </mat-expansion-panel>
+
+                </div>
+
+                <div>
+                    <button mat-raised-button
+                            class="save-button"
+                            (click)="saveLocations(locInterface)"
+                            type="button">
+                        <mat-icon>save</mat-icon>
+                        Save
+                    </button>
+                </div>
+
+            </mat-accordion><!-- end accordion -->
+
+        </div>
+
+    </div><!-- end drop zone -->
+
+</div><!-- end cols -->
+
+<br><br>
+
+
+<p class="copy sesame-blue" (click)="copyHTMLToClipboard();" data-target="#copy">
+    <mat-icon style="cursor: pointer;">file_copy</mat-icon>
+    Grab your HTML
+</p>
+
+<code id="copy" *ngIf="locInterface">
+
+    <div *ngFor="let markup of locInterface.locations; let i = index;">
+
+        <div *ngIf="markup.image.path">
+            &lt;div&gt;<span *ngIf="markup.image.path">&lt;img class="locationimg" src="/assets/uploads/images/{{markup.image.path}}" width="{{markup.image.width}}" height="{{markup.image.height}}" </span>
+             &nbsp;alt=""&gt;&lt;/div&gt;
+        </div>
+        <br><br>
+
+        <span *ngIf="markup.doctorOne">&lt;h2&gt;{{markup.doctorOne}}<br>
+        <span *ngIf="markup.doctorTwo">&lt;br /&gt;{{markup.doctorTwo}}
+            <br></span>
+        <span *ngIf="markup.doctorThree">&lt;br /&gt;{{markup.doctorThree}}</span><br><span>&lt;/h2&gt;</span><br>
+  <br></span>
+
+        <span *ngIf="markup.practiceName">&lt;h3&gt;{{markup.practiceName}}&lt;/h3&gt;<br></span><br>
+
+        <span *ngIf="markup.addressLineOne || markup.addressLineTwo || markup.telephone || markup.fax">
+            &lt;p&gt;
+        <span *ngIf="markup.addressLineOne">&lt;strong&gt;Address: &lt;/strong&gt;&lt;br /&gt;</span>
+
+        <span *ngIf="markup.addressLineOne"><br></span><span *ngIf="markup.addressLineOne">{{markup.addressLineOne}}&lt;br /&gt;<br></span>
+        <span *ngIf="markup.addressLineTwo">{{markup.addressLineTwo}}&lt;br /&gt;<br></span>
+        <span *ngIf="markup.telephone">&lt;strong&gt;Phone:&lt;/strong&gt;&nbsp;&lt;a href="tel:{{markup.telephone | removeParenthesis}}
+            "&gt;{{markup.telephone}}&lt;/a&gt;</span>
+        <span *ngIf="markup.fax">&lt;br /&gt;&lt;strong&gt;FAX:&lt;/strong&gt;&nbsp;{{markup.fax}}</span>&lt;/p&gt;
+        </span>
+
+        <span *ngIf="markup.email">
+  <span><br>&lt;p&gt;</span>&lt;strong&gt;Email: &lt;/strong&gt;&lt;a class="email" title="{{markup.emailText}}" rel="{{markup.email | replaceEmailAt}}
+            "&gt;{{markup.emailText}}&lt;/a&gt;&lt;/p&gt;<br></span>
+
+        <div *ngIf="markup.days.sunday
+        ||  markup.days.monday
+        ||  markup.days.tuesday
+        ||  markup.days.wednesday
+        ||  markup.days.thursday
+        ||  markup.days.friday
+        ||  markup.days.saturday">
+            <br>
+            &lt;div&gt;&lt;strong class="office-hours" &gt;Office Hours:&lt;/strong&gt;&lt;/div&gt;<br>
+            <br>&lt;table border="0" height="50" width="100%" class="office-hours"&gt;<br>
+            &lt;tbody&gt;
+
+        <div>
+            <span *ngIf="markup.days.sunday">&lt;tr&gt;&lt;td&gt;Sunday: &lt;/td&gt;&lt;td&gt;{{markup.days.sunday}}&lt;/td&gt;&lt;/tr&gt;</span>
+            <span *ngIf="markup.days.monday">&lt;tr&gt;&lt;td&gt;Monday: &lt;/td&gt;&lt;td&gt;{{markup.days.monday}}&lt;/td&gt;&lt;/tr&gt;</span>
+            <span *ngIf="markup.days.tuesday">&lt;tr&gt;&lt;td&gt;Tuesday: &lt;/td&gt;&lt;td&gt;{{markup.days.tuesday}}&lt;/td&gt;&lt;/tr&gt;</span>
+            <span *ngIf="markup.days.wednesday">&lt;tr&gt;&lt;td&gt;Wednesday: &lt;/td&gt;&lt;td&gt;{{markup.days.wednesday}}&lt;/td&gt;&lt;/tr&gt;</span>
+            <span *ngIf="markup.days.thursday">&lt;tr&gt;&lt;td&gt;Thursday: &lt;/td&gt;&lt;td&gt;{{markup.days.thursday}}&lt;/td&gt;&lt;/tr&gt;</span>
+            <span *ngIf="markup.days.friday">&lt;tr&gt;&lt;td&gt;Friday: &lt;/td&gt;&lt;td&gt;{{markup.days.friday}}&lt;/td&gt;&lt;/tr&gt;</span>
+            <span *ngIf="markup.days.saturday">&lt;tr&gt;&lt;td&gt;Saturday: &lt;/td&gt;&lt;td&gt;{{markup.days.saturday}}&lt;/td&gt;&lt;/tr&gt;</span>
+
+            &lt;/tbody&gt;<br>
+            &lt;/table&gt;<br>
+        </div></div>
+
+        <span *ngIf="markup.googleEmbedCode">&lt;div class="embed-container"&gt;{{markup.googleEmbedCode}}&lt;/div&gt;<br><br></span>
+
+        <span *ngIf="markup.notes">&lt;p&gt;{{markup.notes}}&lt;/p&gt;</span><br>
+        <br>
+        <hr>
+        <br>
+    </div>
+
+</code>
+
+
+
+

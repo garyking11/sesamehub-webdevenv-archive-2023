@@ -1,0 +1,37 @@
+<div class="container">
+
+    <div class="row">
+
+        <h1>Login</h1>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn">
+            <!--[formGroup]="loginForm" novalidate (ngSubmit)="onLogin(contentDataForm)" -->
+
+            <div class="title">
+                Welcome
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input [(ngModel)]="username" id="username"
+                           type="username" class="validate form-control">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input [(ngModel)]="password" id="password"
+                           type="password" class="validate form-control">
+
+                </div>
+
+                <p class="text-danger">{{errorMsg}}</p>
+                <button (click)="login()"
+                        class="btn"
+                        type="submit" name="action">Login
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

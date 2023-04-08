@@ -1,0 +1,422 @@
+<div id="section-container" class="section-container container" *ngIf="secInterface">
+
+    <h1>Create Buildkit</h1>
+
+    <div class="row">
+
+        <!-- left column -->
+        <div class="col-lg-5 col-md-5 col-sm-12 center-column">
+
+            <div class="get-hub-data-wrap">
+                <!-- get welcome text and main nav from the hub -->
+                <dev-get-hub-data sitename="{{account}}"></dev-get-hub-data>
+            </div>
+
+            <br/>
+
+            <!-- create buildkit form -->
+            <div class="create-buildkit-wrap">
+
+                <h2>Create Buildkit</h2>
+
+                <!-- page settings -->
+                <mat-form-field class="float-start" style="width: 46%;">
+                    <mat-label>Nav Options</mat-label>
+                    <mat-select name="navOptions"
+                                [(ngModel)]="secInterface.navOptions"
+                                placeholder="Main Nav Options">
+                        <mat-option *ngFor="let nav of navOptionsArray"
+                                    [value]="nav.value">{{nav.display}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="float-end" style="width: 46%;">
+                    <mat-label>GA Code <span class="label-instructions">(UA-XXXXXXXXX)</span></mat-label>
+                    <input matInput
+                           name="gacode"
+                           [(ngModel)]="secInterface.gacode"
+                           placeholder="GA Code">
+                </mat-form-field>
+
+                <div class="clear"></div>
+
+                <!-- tagline -->
+                <mat-form-field>
+                    <mat-hint class="text-warning">
+                        Smiles for a &lt;span class="trait"&gt;lifetime &lt;/span&gt;
+                    </mat-hint>
+                    <mat-label>Tagline</mat-label>
+                    <textarea matInput
+                              [(ngModel)]="secInterface.tagline"
+                              name="tagline"
+                              placeholder="Tagline"></textarea>
+                </mat-form-field>
+
+                <br/> <br/>
+
+                <div class="clear"></div>
+
+                <!-- add/reset component buttons -->
+                <button id="btn-reset-component"
+                        mat-raised-button
+                        type="button"
+                        (click)="clearComponents()">Reset Sections
+                </button>
+
+                <button id="btn-add-component"
+                        type="button"
+                        mat-raised-button
+                        (click)="addItem()">Add Section
+                </button>
+
+                <div class="clear"></div>
+
+
+                <mat-accordion multi="false">
+                    <div id="" cdkDropList (cdkDropListDropped)="drop($event)">
+
+                        <div *ngFor="let item of secInterface.formData;
+                                  let i = index; let even=even; let odd=odd;" cdkDrag>
+                            <div>
+
+                                <mat-expansion-panel>
+
+                                    <!-- header and title -->
+                                    <mat-expansion-panel-header [ngClass]="{ odd: odd, even: even }">
+                                        <mat-panel-title>
+                                            <!-- add delete buttons -->
+                                            <div class="add-delete-wrap "
+                                                 (click)="$event.stopPropagation();">
+
+                                                <div class="delete-button">
+
+                                                    <!-- add/delete buttons -->
+                                                    <div class="float-start"
+                                                         style="width: 49%;
+                                                                   text-align: center;">
+                                                        <!--  add method -->
+                                                        <span class=" text-info"
+                                                              (click)="addItem()">
+                                                          <mat-icon>add</mat-icon>
+                                                          </span>
+                                                    </div>
+
+                                                    <!-- delete method -->
+                                                    <div class="float-end"
+                                                         style="width: 49%; text-align: center;">
+                                                              <span class="text-danger"
+                                                                    (click)="removeItem(i)"
+                                                                    value="delete Component"><mat-icon>delete</mat-icon>
+                                                              </span>
+                                                    </div>
+                                                </div><!-- end buttons -->
+
+                                                <div class="clear"></div>
+
+                                            </div><!-- end add-delete-wrap -->
+
+                                            <span class="sesame-blue" *ngIf="item.name else selectSpotlight">
+
+                                                <!-- hide if selected does not equal Spotlight -->
+                                                   <span class="sesame-blue" [ngSwitch]="item.name">
+<!--                                                       [{{ item.name | replaceDashSpace | replaceUnderscoreSpace| titlecase }}]-->
+
+                                                       <span *ngSwitchCase="'Spotlight'">
+                                                           <span *ngIf="item.spotlight_layout_style; else selectLayout">
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-one-horizontal'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] One Horizontal') | titlecase | replaceDashSpace }}</span>
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-two-horizontal'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] Two Horizontal') | titlecase | replaceDashSpace }}</span>
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-three-horizontal'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] Three Horizontal') | titlecase | replaceDashSpace }}</span>
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-four-horizontal'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] Four Horizontal') | titlecase | replaceDashSpace }}</span>
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-five-horizontal'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] Five Horizontal') | titlecase | replaceDashSpace }}</span>
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-column-img-left'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] Image Left') | titlecase | replaceDashSpace }}</span>
+                                                                <span class="sesame-blue"
+                                                                      *ngIf="item.spotlight_layout_style  == 'spotlight-column-img-right'">{{ item.spotlight_layout_style.replace(item.spotlight_layout_style, '[Spotlight] Image right') | titlecase | replaceDashSpace }}</span>
+                                                           </span>
+                                                       </span>
+                                                       <span *ngSwitchCase="'Hero'">
+                                                           <span class="sesame-blue"
+                                                                 *ngIf="item.slideshow_layout_style; else selectLayout">
+                                                               <span class="sesame-blue"
+                                                                     *ngIf="item.slideshow_layout_style  == 'classic'">
+                                                                   {{ item.slideshow_layout_style.replace(item.spotlight_layout_style, '[Hero] ') | titlecase | replaceDashSpace }}</span>
+                                                               <span class="sesame-blue"
+                                                                     *ngIf="item.slideshow_layout_style  == 'video'">
+                                                                   {{ item.slideshow_layout_style.replace(item.spotlight_layout_style, '[Hero] ') | titlecase | replaceDashSpace }}</span>
+
+                                                           </span>
+                                                       </span>
+                                                       <span *ngSwitchCase="'Content'">
+                                                           <span class="sesame-blue"
+                                                                 *ngIf="item.content_layout_style; else selectLayout">
+                                                               <span *ngIf="item.content_layout_style  == 'content-top-oriented-subnav'">
+                                                                   {{ item.content_layout_style.replace(item.content_layout_style, '[Content] Top SubNav') | titlecase | replaceDashSpace }}</span>
+                                                               <span class="sesame-blue"
+                                                                     *ngIf="item.content_layout_style  == 'content-side-oriented-subnav'">
+                                                                   {{ item.content_layout_style.replace(item.content_layout_style, '[Content] Side SubNav ') | titlecase | replaceDashSpace }}</span>
+                                                           </span>
+                                                       </span>
+                                                       <span *ngSwitchCase="'Testimonial_Rotator'">
+                                                           <span class="sesame-blue"
+                                                                 *ngIf="item.testimonial_rotator_layout_style; else selectLayout">
+                                                               {{ item.testimonial_rotator_layout_style | titlecase | replaceDashSpace }}
+                                                           </span>
+                                                       </span>
+                                                       <span *ngSwitchCase="'Association_Logos'">
+                                                           <span class="sesame-blue"
+                                                                 *ngIf="item.assn_logo_layout_style; else selectLayout">
+                                                               {{ item.assn_logo_layout_style | titlecase | replaceDashSpace }}
+                                                           </span>
+                                                       </span>
+                                                    </span>
+                                                  </span>
+
+                                            <!-- if not selected -->
+                                            <ng-template #selectSpotlight><span
+                                                    class="text-warning"> * Select a Spotlight Type</span>
+                                            </ng-template>
+
+                                            <ng-template #selectLayout><span
+                                                    class="text-warning"> * Select a Layout</span>
+                                            </ng-template>
+
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+
+                                    <br/>
+
+                                    <!-- select a component -->
+                                    <div>
+                                        <div class="float-start" style="width: 49%; ">
+                                            <div>
+                                                <mat-form-field appearance="fill" hideRequiredMarker>
+                                                    <mat-label>Select a Spotlight</mat-label>
+                                                    <mat-select [(ngModel)]="item.name"
+                                                                required
+                                                                name="name">
+
+                                                        <mat-option *ngIf="item.name"
+                                                                    value="{{ item.name }}">{{ item.name }}</mat-option>
+
+                                                        <mat-option
+                                                                *ngFor="let type of getAvailableTypes()"
+                                                                value="{{type}}"> {{type | replaceDashSpace | replaceUnderscoreSpace | capitalizeEachWord}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <!--  <mat-hint></mat-hint>-->
+                                                </mat-form-field>
+
+                                                <!-- <div [hidden]="item.name || item.name" class="bg-danger small"> Name is required </div>-->
+
+                                            </div><!-- end form group -->
+                                        </div>
+
+                                        <!-------------------- start layout styles ----------------------->
+                                        <div class="float-end" style="width: 49%; ">
+                                            <div>
+
+                                                <!-- spotlight -->
+                                                <div *ngIf="item.name === 'Spotlight'">
+
+                                                    <mat-form-field appearance="fill" hideRequiredMarker>
+                                                        <mat-label>Select a Layout</mat-label>
+                                                        <mat-select
+                                                                [(ngModel)]="item.spotlight_layout_style"
+                                                                name="spotlight_layout_style"
+                                                                required="required">
+
+                                                            <mat-option
+                                                                    *ngFor="let style of spotlightLayoutArray"
+                                                                    value="{{style.value}}">{{style.display | replaceDashSpace | capitalizeEachWord}}
+                                                            </mat-option>
+
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div><!-- end spotlight -->
+
+                                                <!-- slideshow -->
+                                                <div *ngIf="item.name === 'Hero'">
+                                                    <mat-form-field appearance="fill" hideRequiredMarker>
+                                                        <mat-label>Select a Layout</mat-label>
+                                                        <mat-select [(ngModel)]="item.slideshow_layout_style"
+                                                                    name="slideshow_layout_style"
+                                                                    required="required">
+
+                                                            <mat-option
+                                                                    *ngFor="let style of slideshowLayoutArray"
+                                                                    value="{{style.value}}">{{style.display | replaceDashSpace | capitalizeEachWord}}
+                                                            </mat-option>
+
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div><!-- end slideshow -->
+
+                                                <!-- testimonials -->
+                                                <div *ngIf="item.name === 'Testimonial_Rotator'">
+                                                    <mat-form-field appearance="fill" hideRequiredMarker>
+                                                        <mat-label>Select a Layout</mat-label>
+                                                        <mat-select
+                                                                [(ngModel)]="item.testimonial_rotator_layout_style"
+                                                                name="testimonial_rotator_layout_style"
+                                                                required="required">
+
+                                                            <mat-option
+                                                                    *ngFor="let style of testimoniaRotatorLayoutArray"
+                                                                    value="{{style.value}}"
+                                                            >{{style.display | replaceDashSpace | capitalizeEachWord}}
+                                                            </mat-option>
+
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <!-- end testimonials -->
+
+                                                <!-- association-logos -->
+                                                <div *ngIf="item.name === 'Association_Logos'">
+                                                    <mat-form-field appearance="fill" hideRequiredMarker>
+                                                        <mat-label>Select a Layout</mat-label>
+                                                        <mat-select [(ngModel)]="item.assn_logo_layout_style"
+                                                                    name="assn_logo_layout_style"
+                                                                    required="required">
+
+                                                            <mat-option *ngIf="item.assn_logo_layout_style !== ''"
+                                                                        selected="selected"
+                                                                        value="{{item.assn_logo_layout_style}}">
+                                                                {{item.assn_logo_layout_style | replaceDashSpace | replaceUnderscoreSpace | capitalizeEachWord}}
+                                                            </mat-option>
+
+                                                            <mat-option
+                                                                    *ngFor="let style of assnLogosLayoutArray"
+                                                                    value="{{style.value}}">{{style.display | replaceDashSpace | capitalizeEachWord}}
+                                                            </mat-option>
+
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div><!-- end association-logos -->
+
+                                                <!-- content -->
+                                                <div *ngIf="item.name === 'Content'">
+                                                    <mat-form-field appearance="fill" hideRequiredMarker>
+                                                        <mat-label>Select a Layout</mat-label>
+                                                        <mat-select [(ngModel)]="item.content_layout_style"
+                                                                    name="content_layout_style"
+                                                                    required="required">
+                                                            <mat-option
+                                                                    *ngFor="let style of contentLayoutArray"
+                                                                    value="{{style.value}}">{{style.display | replaceDashSpace | capitalizeEachWord}}
+
+                                                            </mat-option>
+
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                            </div><!-- end form group -->
+
+                                        </div><!-- end layout styles -->
+
+                                    </div><!-- end bg-info -->
+
+                                </mat-expansion-panel>
+                            </div><!-- end ngFor -->
+
+                        </div><!-- end items -->
+                    </div>
+                </mat-accordion>
+
+                <br/>
+
+                <div>
+                    <!--<p class="panel danger-panel" *ngIf="hasDuplicates"><strong class="text-danger">You have
+                        duplicates
+                        sections.</strong> <br/><span
+                            class="text-warning">The only allowed section duplicates are Spotlight. <br/></span>
+                        <span *ngFor="let dupe of dupeArray">{{dupe}}<br/></span>
+                    </p>-->
+
+                    <p class="panel danger-panel" *ngIf="!isContentSectionAdded()">
+                        <strong class="text-danger">Content component is required</strong> <br/>
+                        <span class="text-warning">The 'Content' component is missing and is required!</span>
+                    </p>
+
+                    <p class="text-info">7. <span class="text-warning"
+                                                  style="font-size: 1.25em;text-transform: uppercase;">Restart Gulp</span>
+                        to turn on webP converter.<br/>(Control C, then 'gulp watch' in your terminal).</p>
+
+                    <h2>CLICK FINISH</h2>
+
+                    <p class="text-warning"><span class="text-danger">WARNING: </span>If you click the finish
+                        button
+                        after the site has been
+                        created and you perhaps have done some work, <span class="alert-danger"> &nbsp;the existing buildkit with that account-name
+                              will be overwritten with a new buildkit. &nbsp;</span></p>
+
+                </div>
+                <div>
+                    <button (click)="saveBuildkitValues()"
+                            [disabled]="!isContentSectionAdded()"
+                            id="sectionSaveBtn"
+                            mat-raised-button
+                            type="button"
+                            class="finish-button sesame-blue-background"
+                            style="width: 100%;">SAVE/FINISH
+                    </button>
+
+
+                </div>
+                <br/>
+
+                <h2>Refresh Browser</h2>
+                <p class="steps-to-create">8. Go to the newly created browser tab and hard refresh the starter
+                    buildkit</p>
+                <p>Mac: http://localhost:8888/{{account}}
+                    <br/>PC: http://localhost/{{account}}/#/</p>
+
+                <p class="steps-to-create">9. READY TO BUILD</p>
+
+                <p><span> RE-STARTING A PROJECT: </span>You can restart the build by clicking the
+                    'FINISH'
+                    button. This will overwrite your current account-name directory.
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- right column -->
+        <div class="col-lg-7 col-md-7 col-sm-12">
+
+            <p><a class="support-link" [routerLink]="['/support']" style="text-decoration: none;">
+                <span><span class="material-icons" style="font-size: 1.0em; vertical-align: text-bottom; color: #0099cc;">arrow_forward arrow_forward&nbsp;&nbsp;</span>NEW! Support and documentation page </span>
+            </a></p>
+
+            <dev-resources></dev-resources>
+
+        </div><!-- end row -->
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div>
+                <div style="border-top: 1px solid #d8d8d8; padding: 10px 0;">
+                    <ul>
+                        <li><strong>Maintained by</strong></li>
+                        <li>Gary King</li>
+                        <li>James Stillion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

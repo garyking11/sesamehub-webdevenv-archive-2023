@@ -1,0 +1,35 @@
+<dev-modal-static #confirm></dev-modal-static>
+
+<div class="container">
+
+    <h1>Dashboard</h1>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+
+            <h2 id="btn btn-primary">
+                <a class="cursor-pointer" [routerLink]="['/sections']"
+                [routerLinkActive]="['active']">Buildkit</a>
+            </h2>
+        </div><!-- end col -->
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+
+            <h3>Changelog</h3>
+            <span class="content-data" *ngFor="let formDataValue of admindata| keys; let i = index; let first = first;">
+
+                <div *ngIf="i<3">
+                    <div *ngIf="formDataValue.value.version"><span
+                            *ngIf="first">Current</span> Version: {{formDataValue.value.version}}&nbsp;{{formDataValue.value.date}}</div>
+                    <div *ngIf="formDataValue.value.comments">{{formDataValue.value.comments}}</div>
+                <hr/>
+                </div>
+
+            </span>
+
+        </div><!-- end col -->
+
+    </div><!-- end row -->
+
+</div>

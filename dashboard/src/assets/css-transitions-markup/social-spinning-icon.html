@@ -1,0 +1,142 @@
+<style>
+
+    .social-icons .fas {
+        vertical-align: baseline;
+    }
+
+    .social-icons a {
+        clear: both;
+        display: none;
+        text-align: center;
+        padding: 10px;
+        color: #fff;
+        margin: 5px 0;
+    }
+
+    @media only screen and (min-width: 48em) {
+
+        .social-icons {
+            width: 134px;
+            position: fixed;
+            top: 202px;
+            right: 0;
+            clear: both;
+            display: block;
+            text-align: center;
+            z-index: 10000;
+        }
+
+        .social-icons a {
+            -webkit-transition-duration: 0.3s;
+            -moz-transition-duration: 0.3s;
+            -o-transition-duration: 0.3s;
+            -ms-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+            line-height: 1.75;
+            background: #0099cc;
+            vertical-align: middle;
+            text-align: left;
+            color: #fff;
+            margin: 1px 0;
+            padding: 10px;
+            border-bottom: 1px solid #000;
+            -webkit-transition-duration: 0.3s;
+            -moz-transition-duration: 0.3s;
+            -o-transition-duration: 0.3s;
+            -ms-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+
+        .social-icons a .icon {
+            display: inline-block;
+            animation-fill-mode: both;
+            animation-duration: 0.8s;
+            -webkit-transform-origin: center bottom;
+            -moz-transform-origin: center bottom;
+            -ms-transform-origin: center bottom;
+            -o-transform-origin: center bottom;
+            transform-origin: center bottom;
+        }
+
+        .social-icons a .icon:before {
+            display: inline-block;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: all 0.6s ease-in-out;
+            -moz-transition: all 0.6s ease-in-out;
+            -o-transition: all 0.6s ease-in-out;
+            -ms-transition: all 0.6s ease-in-out;
+            transition: all 0.6s ease-in-out;
+            -webkit-perspective: 800px;
+            -moz-perspective: 800px;
+            -ms-perspective: 800px;
+            -o-perspective: 800px;
+            perspective: 800px;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        .social-icons a:hover .icon {
+            animation-name: pulse;
+        }
+
+        .social-icons a:hover .icon:before {
+            -webkit-transform: translateX(0) rotateY(-360deg);
+            -moz-transform: translateX(0) rotateY(-360);
+            -ms-transform: translateX(0) rotateY(-360);
+            -o-transform: translateX(0) rotateY(-360);
+            transform: translateX(0) rotateY(-360);
+            color: #b2bb1c;
+        }
+
+    }
+
+    @media only screen and (min-width: 64em) {
+        .social-icons {
+            width: 116px;
+            position: fixed;
+            top: 215px;
+            right: 0px;
+            text-align: left;
+            margin: 20px 0 25px;
+        }
+
+        .social-icons a:hover .icon {
+            animation-name: pulse_custom;
+        }
+
+        /* .social-icons  a:hover .icon:before {
+             -webkit-transform: translateX(0) rotateY(-360deg);
+             -moz-transform: translateX(0) rotateY(-360);
+             -ms-transform: translateX(0) rotateY(-360);
+             -o-transform: translateX(0) rotateY(-360);
+             transform: translateX(0) rotateY(-360);*/
+
+    }
+
+    }
+</style>
+
+<!- social icons -->
+<div class="social-icons">
+    <!-- Icons -->
+    <a class="addy" aria-label="office location" href="/office-location"><span class="icon fas fa-map-marker-alt" aria-hidden="true"></span> Link</a>
+    <a class="callUs" aria-label="phone number" href="#"> <span class="icon fas fa-mobile" aria-hidden="true"></span> Link</a>
+    <a class="emailUs" aria-label="email us" href="mailto:smile@orthodonticsondanforth.com"><span class="icon fas fa-envelope" aria-hidden="true"></span> Link</a>
+    <a href="/" aria-label="facebook"><span class="icon fab fa-facebook-f" aria-hidden="true"></span> Link</a>
+    <a href="/" aria-label="google"><span class="icon fab fa-google" aria-hidden="true"></span> Link</a>
+    <a href="/" aria-label="twitter"><span class="icon fab fa-twitter" aria-hidden="true"></span> Link</a>
+    <a href="/" aria-label="youtube"><span class="icon fab fa-youtube" aria-hidden="true"></span> Link</a>
+    <a href="/blog" aria-label="blog"><span class="icon fas fa-rss" aria-hidden="true"></span> Link</a>
+    <a href="/" aria-label="healthgrades"><span class="icon fa fa-healthgrades2" aria-hidden="true"></span> Link</a>
+
+</div>

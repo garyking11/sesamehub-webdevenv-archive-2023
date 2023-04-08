@@ -1,0 +1,16 @@
+{
+  "updates": [
+    {
+      "name": "Added changelog",
+      "version": "14.4.0",
+      "date": "04-03-2023",
+      "comments": "No comments"
+    },
+    {
+      "name": "Added more",
+      "version": "14.4.0",
+      "date": "04-03-2023",
+      "comments": "Yes comments"
+    }
+  ]
+}

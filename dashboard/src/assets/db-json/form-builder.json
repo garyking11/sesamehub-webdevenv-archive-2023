@@ -1,0 +1,19 @@
+{
+  "formBuilderBasics": {
+    "type": "text",
+    "name": "esttest",
+    "required": "test"
+  },
+  "formBuilderLayout": [
+    {
+      "type": "text",
+      "name": "Name of form field",
+      "required": "Required"
+    },
+    {
+      "type": "select",
+      "name": "Another Name of form field",
+      "required": "Not Required"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+<!-- Callouts Flipper CSS -->
+<style>
+    #bd-callouts-flip {
+        text-align: center;
+        width: 100%;
+        position: relative;
+        /*background: url(../images/texture.jpg) top center;*/
+        border-top: 10px solid #999;
+        padding: 20px 0;
+    }
+
+    #bd-callouts-flip a {
+        display: inline-block;
+        vertical-align: top;
+        width: 211px;
+        margin: 10px;
+        color: #669966;
+    }
+
+    #bd-callouts-flip .module {
+        width: 100%;
+        height: 211px;
+        position: relative;
+    }
+
+    #bd-callouts-flip .decoration {
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        -webkit-perspective: 800px;
+        -moz-perspective: 800px;
+        -ms-perspective: 800px;
+        -o-perspective: 800px;
+        perspective: 800px;
+        width: 100%;
+        border: 4px solid rgba(151, 162, 84, 0.5);
+        /*background: url(../images/co-bkg.jpg) top center no-repeat;*/
+    }
+
+    #bd-callouts-flip .co-text {
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 1.0em;
+        line-height: 1.038461538461538em;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    #bd-callouts-flip .co-text .ln1 {
+        display: block;
+        text-transform: lowercase;
+        /*font-family: 'Pinyon Script', cursive;*/
+        font-size: 1.384615384615385em;
+    }
+
+    #bd-callouts-flip .dec-hover {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        -webkit-perspective: 800px;
+        -moz-perspective: 800px;
+        -ms-perspective: 800px;
+        -o-perspective: 800px;
+        perspective: 800px;
+        -webkit-transform: translateX(0) rotateY(-180deg);
+        -moz-transform: translateX(0) rotateY(-180deg);
+        -ms-transform: translateX(0) rotateY(-180deg);
+        -o-transform: translateX(0) rotateY(-180deg);
+        transform: translateX(0) rotateY(-180deg);
+        width: 100%;
+        height: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 4px solid rgba(151, 162, 84, 0.5);
+        text-shadow: -0.15em -0.01em 0 rgba(236, 0, 140, 0.6),
+        -0.2em 0.15em 0 rgba(0, 114, 188, 0.5),
+        0.2em -0.15em 0 rgba(141, 198, 63, 0.3);
+    }
+
+    #bd-callouts-flip a:hover .dec-hover {
+        opacity: 1;
+        -webkit-transform: translateX(0) rotateY(0deg);
+        -moz-transform: translateX(0) rotateY(0deg);
+        -ms-transform: translateX(0) rotateY(0deg);
+        -o-transform: translateX(0) rotateY(0deg);
+        transform: translateX(0) rotateY(0deg);
+    }
+
+    #bd-callouts-flip a:hover .decoration {
+        opacity: 0;
+        -webkit-transform: translateX(0) rotateY(-180deg);
+        -moz-transform: translateX(0) rotateY(-180deg);
+        -ms-transform: translateX(0) rotateY(-180deg);
+        -o-transform: translateX(0) rotateY(-180deg);
+        transform: translateX(0) rotateY(-180deg);
+    }
+
+    @media only screen and min-width: 64em;) {
+        #bd-callouts-flip {
+            padding: 41px 0 41px;
+        }
+
+        #bd-callouts-flip a {
+            margin: 10px 28px;
+        }
+
+        #bd-callouts-flip .co-01 {
+            margin-left: 0;
+        }
+
+        #bd-callouts-flip .co-03 {
+            margin-right: 0;
+        }
+    }
+
+</style>
+
+<!-- Callouts Flipper HTML -->
+<div id="bd-callouts-flip">
+    <div class="container row">
+        <a href="#" class="co-01">
+            <div class="module">
+                <div class="decoration"><span class="co-text"><span class="ln1">Meet</span> Dr. Bob Smith</span>
+                </div>
+                <!--                        <img class="dec-hover" src="/assets/images/co-011.jpg" alt="No Photo Text Test"/>-->
+
+                <span class="dec-hover">this is a test for flipping text and ie</span>
+            </div>
+        </a>
+        <a href="#" class="co-02">
+            <div class="module">
+                <div class="decoration"><span class="co-text"><span class="ln1">Meet</span> Our Team</span>
+                </div>
+                <span class="dec-hover"><i class="fal fa-file-alt"></i> </span>
+            </div>
+        </a>
+        <a href="#" class="co-03">
+            <div class="module">
+                <div class="decoration"><span class="co-text"><span
+                        class="ln1">Appointment</span> Request</span></div>
+                <img class="dec-hover" src="/assets/images/co-03.jpg" alt=""/>
+            </div>
+        </a>
+    </div>
+</div>

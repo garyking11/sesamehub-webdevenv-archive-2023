@@ -1,0 +1,119 @@
+{
+  "users": [
+    {
+      "username": "vita",
+      "password": "vita",
+      "confirm_password": "vita",
+      "information": "",
+      "role": "Builder"
+    },
+    {
+      "username": "admin",
+      "password": "admin",
+      "confirm_password": "admin",
+      "information": "Information for admin. This is not the current functioning database.  Currently localStorage is being used for un/pw storage.",
+      "role": "Admin",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Linsey Reed",
+      "password": "",
+      "confirm_password": "",
+      "information": "SM v10.0.0\nMac\ngit installed\nnodejs 16.14.0\nweb-converter-v2.0.0",
+      "role": "Admin",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "gking",
+      "password": "admin",
+      "confirm_password": "admin",
+      "information": "Maintains Sesame Dev Environment",
+      "role": "Admin",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Ricky Rivas",
+      "password": "admin",
+      "confirm_password": "",
+      "information": "",
+      "role": "Builder",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "kristopher",
+      "password": "kris",
+      "confirm_password": "kris",
+      "information": "SM v10.0.0\nMac\ngit installed\nnodejs 16.14.0\nwebp-converter-v2.0.0",
+      "role": "Builder",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Ryan Postell",
+      "password": "",
+      "confirm_password": "",
+      "information": "SM v10.0.0\nPC\ngit installed\nnodejs 16.14.0\nwebp-converter-v2.0.0",
+      "role": "Builder",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "James Stillion",
+      "password": "",
+      "confirm_password": "",
+      "information": "SM v10.0.0\nMac\ngit installed\nnodejs 16.14.0\nwebp-converter-v2.0.0",
+      "role": "Builder",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Alex VanDerStuyf",
+      "password": "",
+      "confirm_password": "",
+      "information": "",
+      "role": "Producer",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Erin",
+      "password": "",
+      "confirm_password": "",
+      "information": "",
+      "role": "Producer",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Michael Van Fleet",
+      "password": "",
+      "confirm_password": "",
+      "information": "Mac",
+      "role": "Producer",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "Jonathan Zaragoza",
+      "password": "",
+      "confirm_password": "",
+      "information": "Mac\ngit installed\nnodejs 16.14.0\nweb-converter-v2.0.0",
+      "role": "Production-Artist",
+      "nodeVersion": null,
+      "gulpVersion": null
+    },
+    {
+      "username": "staceystraddle",
+      "password": "stacey",
+      "confirm_password": "stacey",
+      "information": "PC\nnodejs 16.14.0\nwebp-converter-v2.0.0",
+      "role": "Production-Artist",
+      "nodeVersion": null,
+      "gulpVersion": null
+    }
+  ]
+}

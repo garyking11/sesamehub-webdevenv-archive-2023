@@ -1,0 +1,421 @@
+{
+  "account": "king-gary3",
+  "selectedAccount": "king-gary-1",
+  "practiceName": "Bob's Orthodontics",
+  "reviewDate":  "2022-05/01",
+  "dueDate":  "2022-06/01",
+  "builder": "James",
+  "producer": "Erin",
+  "buildTime": 12,
+  "url": "https:sesamecommunications.com",
+  "qaitems": [
+    {
+      "description": "Visual Check",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Implement the build notes listed on the spec",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Did they send you the proof?"
+    },
+    {
+      "description": "All photos/text content in resources included on site",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Did you look at the proof?"
+    },
+    {
+      "description": "If a Canadian practice, Canadian content has been used",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Did you actually build this?"
+    },
+    {
+      "description": "Readable text (matches proof, spacing, size, hex color)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Homepage has proper H1 (Welcome to Practice Name) as well as Lorem Ipsum text if no text provided",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Headings hierarchically proportionate in size",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Live text used as possible (slideshow, footer, taglines, etc)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Rollover action on all links/buttons & text links denoted by underlining or distinctive coloring",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Tel: number matches practice's phone number in all instances",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Favicon has been created and displays correctly SHOULD BE CUSTOMIZED TO MATCH THE LOGO",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Back to Top links exist/function",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Sesame 24-7 attribute link in footer works",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Link Check (Xenu/Integrity) THE SITE SHOULD HAVE NO BROKEN LINKS WHATSOEVER",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "No errors in DevTools console on homepage",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Site validates per w3c.org compliance standards",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Evaluate accessibility on wave.webaim.org",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "301 redirects present",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Correct Patient Forms (custom, if provided) and forms open in a new tab/window",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Social media icons hidden or linked properly",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Patient Login button hidden or linked properly",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Financial Page: Online section hidden if no Patient Login",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Map: Correct Dr. and location (Make sure owner-verified listing is being used)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Patient Login graphics completed",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Forms tested/appropriately styled (verify email for receipt)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Email used: ",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Location page(s) follow proper contact info format:",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Doctor Name(s)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Dr. Sam Sesame, Dr.Samantha Sesame"
+    },
+    {
+      "description": "Practice Name",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Address Line1",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Address Line 2",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Phone (no periods. Dashes only. Parenthesis okay on area code)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Fax (same format as phone)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Email",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Hours (set in a table)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "GA script installed",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "First Call script installed (if noted by the producer)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Tap to Text migrated (if installed on current website)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Ngage Chat migrated (if installed on current website)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Virtual Consultation migrated (if installed on current website)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "---- Images / Photos / Slideshows ----",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Photos depicted match demographics in spec.",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Photos are relevant to content: (braces on braces page, plain teeth on dental, surgical, two phase, sleep apnea, pediatric, etc.)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Stock photos are NOT present on: (Types of Braces, Office Tour, Common Treatments, Before & After, Meet the Team)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Doctor's page photo is displayed for all devices",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Homepage slideshow images are framed appropriately in all browsers (faces are not hidden)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Slideshows are functional in all browsers (Homepage, OT, B&A)",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Module should be CENTERED on the page, and stock photo in sidebar removed",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Desktop / Tablet / Mobile Testing",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Site appears consistent to standards in preceding sections across the following systems:",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "PC:",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-FF",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-Chrome",
+      "builder": "x",
+      "producer": "",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-IE11",
+      "builder": "",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-Microsoft Edge",
+      "builder": "x",
+      "producer": "",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Mac:",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-Safari",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-Chrome",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-FF",
+      "builder": "x",
+      "producer": "",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Mobile",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-iOS 5 - Current",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-Android 2.3 - Current",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Tablet:",
+      "builder": "",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "-iPad",
+      "builder": "",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Site tested at 2560 x 1440",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Phone number is click to call enabled on mobile",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "More Topics menu is visible on mobile and tablet",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    },
+    {
+      "description": "Balanced margin: Logo/Practice Name on mobile and tablet",
+      "builder": "x",
+      "producer": "x",
+      "comments": "Do it over again"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+<div id="upload-container" class="upload-container container">
+    <!--   *ngIf="DDUploadInterface" -->
+    <h1>{{title}}</h1>
+    <h2>{{selectImageType}}</h2>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <p class="text-warning">Upload files to the selected image directories. Select destination, drag or drop
+                images to upload to specified directory. webP images will automatically be created. Default directory is assets/uploads/images/ </p>
+            <!-- select image directory to populate -->
+            <div class="select-image-directory  border-sesame-green">
+                <h3>Select Destination</h3>
+                <div class="sesame-green">Default is uploads/images</div>
+                <mat-form-field>
+                    <mat-label>Select category</mat-label>
+                    <mat-select
+                            name="directory"
+                            (selectionChange)="imageDirectoryChanged($event)"
+                            #directory>
+                        <mat-option *ngFor="let dir of directoryArray" [value]="dir.value">
+                            {{dir.display}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <!-- select images -->
+            <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileChange($event)">
+                <div class="text-wrapper">
+                    <div class="centered">
+                        <input type="file" name="file" id="file" (change)="onFileChange($event.target.files)" multiple>
+                        <label for="file">
+                            <mat-icon class="sesame-blue"
+                                      style="font-size: 60px; text-align: center;width: 100%;">upload_file
+                            </mat-icon>
+                            <br>
+                            <span style="text-align: center;">Select your file(s) or drop them here!</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- start display images -->
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12">
+        <br>
+        <!-- list images/slideshow images-->
+        <h4 class="center">slideshow</h4>
+
+        <div *ngFor="let img of localImages['images/slideshow']; let i = index;">
+           <span style="display: block; border: 1px solid #9ac628; padding: 4px; margin: 4px 0; border-radius: 6px;">
+                <mat-icon class="text-warning" style="vertical-align: top;"
+                          (click)="deleteImage('images/slideshow', img)">close</mat-icon>&nbsp;<span
+                   class="sesame-blue">{{img}}</span></span>
+            <div><img src="../{{account}}/assets/images/slideshow/{{img}}" style="max-width: 100%;"/></div>
+        </div>
+
+        <br>
+
+        <br><br>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+        <br>
+
+        <!-- list images/office-tour images -->
+        <h4 class="center">office tour</h4>
+
+        <div *ngFor="let img of localImages['images/office-tour']; let i = index;">
+            <span style="display: block; border: 1px solid #9ac628; padding: 4px; margin: 4px 0; border-radius: 6px;">
+                <mat-icon class="text-warning" style="vertical-align: top;"
+                          (click)="deleteImage('images/office-tour', img)">close</mat-icon>&nbsp;<span
+                    class="sesame-blue">{{img}}</span></span>
+            <div><img src="../{{account}}/assets/images/office-tour/{{img}}" style="max-width: 100%;"/></div>
+        </div>
+        <br>
+
+
+        <!-- list before-after-cycle images -->
+        <h4 class="center">before and after</h4>
+        <div *ngFor="let img of localImages['images/before-after-cycle']; let i = index;">
+            <span style="display: block; border: 1px solid #9ac628; padding: 4px; margin: 4px 0; border-radius: 6px;">
+                <mat-icon class="text-warning" style="vertical-align: top;"
+                          (click)="deleteImage('images/before-after-cycle', img)">close</mat-icon>&nbsp; <span
+                    class="sesame-blue">{{img}}</span></span>
+            <div><img src="../{{account}}/assets/images/before-after-cycle/{{img}}" style="max-width: 100%;"/>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-3 col-md-3 col-sm-12">
+        <br>
+        <!-- list images/spotlight images-->
+        <h4 class="center">spotlights</h4>
+        <div *ngFor="let img of localImages['images/spotlight']; let i = index;">
+            <span style="display: block; border: 1px solid #9ac628; padding: 4px; margin: 4px 0; border-radius: 6px;">
+                <mat-icon class="text-warning" style="vertical-align: top;"
+                          (click)="deleteImage('images/spotlight', img)">close</mat-icon>&nbsp;<span
+                    class="sesame-blue">{{img}}</span></span>
+            <div><img src="../{{account}}/assets/images/spotlight/{{img}}" style="max-width: 100%;"/></div>
+        </div>
+
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+        <br>
+        <!-- list uploads/images images-->
+        <h4 class="center">uploads</h4>
+        <div *ngFor="let img of localImages['uploads/images']; let i = index;">
+            <span style="display: block; border: 1px solid #9ac628; padding: 4px; margin: 4px 0; border-radius: 6px;">
+                <mat-icon class="text-warning" style="vertical-align: top;"
+                          (click)="deleteImage('uploads/images', img)">close</mat-icon>&nbsp;<span
+                    class="sesame-blue">{{img}}</span></span>
+            <div><img src="../{{account}}/assets/uploads/images/{{img}}" style="max-width: 100%;"/></div>
+        </div>
+
+    </div>
+</div>
+<br><br>

@@ -1,0 +1,75 @@
+{
+  "account": "king-gary7",
+  "layout_data_version": "1.0.0",
+  "formatData": [
+    {
+      "layout_component": "top",
+      "top": [
+        {
+          "style": "address-top",
+          "logo": "logo-left"
+        }
+      ],
+      "layout_component": "slideshow",
+      "slideshow": [
+        {
+          "style": "video"
+        }
+      ],
+      "layout_component": "callouts",
+      "callouts": [
+        {
+          "style": "two-across",
+          "test": "testing",
+          "isActive": true,
+          "name": "Callout One",
+          "class": "this is the class",
+          "background_image": "background-image.jpg",
+          "url": "URL",
+          "icon": "icon",
+          "image": "image",
+          "imageClass": "image-class",
+          "alt": "alt",
+          "caption": "caption"
+        }
+      ],
+      "layout_component": "spotlight",
+      "spotlight": [
+        {
+          "style": "video"
+        }
+      ],
+      "layout_component": "testimonial",
+      "testimonial": [
+        {
+          "style": "video"
+        }
+      ],
+      "layout_component": "services",
+      "services": [
+        {
+          "style": "video"
+        }
+      ],
+      "layout_component": "association_logos",
+      "association_logos": [
+        {
+          "style": "video"
+        }
+      ],
+      "layout_component": "ft",
+      "ft": [
+        {
+          "style": "video"
+        }
+      ],
+      "layout_component": "links",
+      "links": [
+        {
+          "style": "video"
+        }
+      ]
+
+    }
+  ]
+}

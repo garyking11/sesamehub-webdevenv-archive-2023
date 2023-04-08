@@ -1,0 +1,86 @@
+ {
+      "name": "socialicons",
+      "items": [
+        {
+          "name": "PLACEHOLDER",
+          "icon": "ICON_PLACEHOLDER"
+        },
+        {
+          "name": "invisalign",
+          "icon": "fa fa-invisalign"
+        },
+        {
+          "name": "facebook",
+          "icon": "fab fa-facebook-f"
+        },
+        {
+          "name": "delicious",
+          "icon": "fab fa-delicious"
+        },
+        {
+          "name": "blog",
+          "icon": "custom-icon-blog"
+        },
+        {
+          "name": "flickr",
+          "icon": "fab fa-flickr"
+        },
+        {
+          "name": "foursquare",
+          "icon": "fab fa-foursquare"
+        },
+        {
+          "name": "google",
+          "icon": "fab fa-custom-google-g"
+        },
+        {
+          "name": "healthgrades",
+          "icon": "fa fa-healthgrades"
+        },
+        {
+          "name": "healthgrades2",
+          "icon": "fa fa-healthgrades2"
+        },
+        {
+          "name": "instagram",
+          "icon": "fab fa-instagram"
+        },
+        {
+          "name": "linkedin",
+          "icon": "fab fa-linkedin-in"
+        },
+        {
+          "name": "pinterest",
+          "icon": "fab fa-pinterest-p"
+        },
+        {
+          "name": "reddit",
+          "icon": "fab fa-reddit-alien"
+        },
+        {
+          "name": "skype",
+          "icon": "fab fa-skype"
+        },
+        {
+          "name": "stumbleupon",
+          "icon": "fab fa-stumbleupon"
+        },
+        {
+          "name": "twitter",
+          "icon": "fab fa-twitter"
+        },
+        {
+          "name": "yahoo",
+          "icon": "fab fa-yahoo"
+        },
+        {
+          "name": "yelp",
+          "icon": "fab fa-yelp"
+        },
+        {
+          "name": "youtube",
+          "icon": "fab fa-youtube"
+        }
+        ]
+
+}

@@ -1,0 +1,162 @@
+<div class="container css-mixins">
+    <h1 class="less-mixins-list">MIXINS</h1>
+    <dev-subnav *ngIf="router.url == '/css-mixins'"></dev-subnav>
+    <div class="row vars">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <ul class="less-mixins-list">
+                <li class="mixins-heading">LESS MIXINS</li>
+                <li class="mixins-sub-heading">FONT MIXINS</li>
+                <li>.th&#123; font-weight:100; &#125;</li>
+                <li>.xlt &#123;font-weight:200; &#125;</li>
+                <li>.lt&#123; font-weight:300; &#125;</li>
+                <li>.roman&#123; font-weight:400; &#125;</li>
+                <li>.mbold&#123; font-weight:500; &#125;</li>
+                <li>.sbold&#123; font-weight:600; &#125;</li>
+                <li>.bold&#123; font-weight:700; &#125;</li>
+                <li>.xbold&#123; font-weight:800; &#125;</li>
+                <li>.ubold, .black&#123; font-weight:900; &#125;</li>
+                <li>.ob&#123; font-style:oblique; &#125;</li>
+                <li>.italic&#123; font-style:italic; &#125;</li>
+
+                <li>.upp&#123; text-transform:uppercase; &#125;</li>
+                <li>.loww&#123; text-transform:lowercase; &#125;</li>
+                <li>.noo&#123; text-transform:none; &#125;</li>
+
+                <li>.supp&#123; font-variant:small-caps; &#125;</li>
+                <li>.normal&#123; font-style:normal; &#125;</li>
+
+                <li class="mixins-sub-heading">LETTER SPACING, LINE HEIGHT and FONT-SIZE</li>
+                <li>.ls(@spacing)&#123; letter-spacing:@spacing; &#125;</li>
+                <li>.lh(@val) &#123; line-height:@val; &#125;</li>
+                <li>.fs(@val) &#123; font-size:@val; &#125;</li>
+
+                <li>.aligncenter&#123; text-align:center; &#125;</li>
+                <li>.alignright&#123; text-align:right; &#125;</li>
+                <li>.alignleft&#123; text-align:left; &#125;</li>
+                <li>.justify&#123; text-align:justify; &#125;</li>
+
+                <li class="mixins-sub-heading">HELPER MIXINS</li>
+                <li>.clear&#123; clear:both; &#125;</li>
+                <li>.clearright&#123; clear:right; &#125;</li>
+                <li>.clearleft&#123; clear:left; &#125;</li>
+                <li>.near&#123; clear:none; &#125;</li>
+
+                <li>.wimp&#123; width:100%!important; &#125;</li>
+                <li>.wall&#123; width:100% &#125;</li>
+                <li>.hall&#123; height:100%; &#125;</li>
+
+                <li>.auto&#123; width:auto; &#125;</li>
+                <li>.autoy&#123; height:auto; &#125;</li>
+
+                <li>.autox&#123; width:auto;height:auto; &#125;</li>
+                <li>.zerox&#123; width:0;height:0; &#125;</li>
+
+                <li>.line&#123; .wall;height:1px; &#125;</li>
+
+                <li>.trbl(@val)&#123; top:@val;right:@val;bottom:@val;left:@val; &#125;</li>
+
+                <li>.show&#123; display:block; &#125;</li>
+                <li>.inline&#123; display:inline; &#125;</li>
+                <li>.inline-block, .ib&#123; display:inline-block; &#125;</li>
+                <li>.va(@args)&#123; vertical-align:@args; &#125;</li>
+
+                <li>.hide&#123; display:none; &#125;</li>
+                <li>.obliterate&#123;
+                    .lh(0);.fs(0);text-indent:-999em;width:0;height:0;padding:0;margin:0;display:none;visibility:hidden;
+                    &#125;
+                </li>
+
+                <li>.left&#123; float:left; &#125;</li>
+                <li>.right&#123; float:right; &#125;</li>
+                <li>.nofloat&#123; float:none; &#125;</li>
+
+                <li>.behave&#123; .show;.left; &#125;</li>
+                <li>.rehave&#123; .show;.right; &#125;</li>
+                <li>.restrain&#123; .auto;.inline-block;float:none; &#125;</li>
+
+                <li>.center&#123; margin-left:auto;margin-right:auto; &#125;</li>
+
+                <li>.trans&#123; .transition-duration(0.3s); &#125;</li>
+                <li>.fade&#123; opacity:0.5; &#125;</li>
+
+                <li>.round&#123; .rounded(50%); &#125;</li>
+                <li>.rounded(@radius)&#123; border-radius:@radius; &#125;</li>
+
+                <li>.bc(@color) &#123; background-color:@color; &#125;</li>
+
+                <li class="mixins-sub-heading">FUNCTIONAL MIXINS</li>
+                <li>.vertical-align &#123; position:absolute;top:50%;.translate(0, -50%); &#125;</li>
+                <li>.vertical-align-nul &#123;position: relative;top:auto;.translate(0, 0); &#125;</li>
+
+                <li>.overlay&#123; .wall;.hall;.show;position:absolute;top:0;left:0; &#125;</li>
+                <li>.inlay&#123; .autox;.show;position:absolute; &#125;/* use with .trbl */</li>
+
+                <li>.grey, .gray&#123; -webkit-filter:grayscale(1); -webkit-filter:grayscale(100%); filter:gray;
+                    filter:grayscale(100%); &#125;
+                </li>
+
+                <!--<li>
+                    .mediaminmax(@val1, @val2)&#123;
+                    @media only screen and (min-width: @val1) and (max-width: @val2) &#123;&#125;
+                    &#125;
+                    <br /><br />
+                    .mediamin(@val)&#123;
+                    @media only screen and (min-width: @val) &#123;&#125;
+                    &#125;
+                    <br /><br />
+                    .mediamax(@val)&#123;
+                    @media only screen and (max-width: @val) &#123;&#125;
+                    &#125;
+
+                </li>-->
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <!--<ul class="less-mixins-list">
+                <li class="mixins-heading">SCSS MIXINS</li>
+                <li class="mixins-sub-heading">MEDIA QUERY MIXIN </li>
+                <br/>$tablet-breakpoint: 640px;
+                <br/>$desktop-breakpoint: 1027px;
+                <br/>$edge-breakpoint: 1440px;
+
+                <li>@mixin tablet &#123;
+                    @media only screen and (min-width: $tablet-breakpoint)&#123;
+                    @content;
+                    <br/>&#125;
+                    <br/>&#125;
+                    <br/>@mixin desktop &#123;
+                    <br/>@media only screen and (min-width: $desktop-breakpoint)&#123;
+                    <br/>@content;
+                    <br/>&#125;
+                    <br/>&#125;
+                    <br/>@mixin bigger-desktop &#123;
+                    <br/>@media only screen and (min-width: $edge-breakpoint)&#123;
+                    <br/>@content;
+                    <br/>&#125;
+                    <br/>&#125;
+
+                <li class="scss-useage-heading">USEAGE</li>
+                <li>#section &#123;
+                    <br/> position: relative;
+                    <br/>
+                    <br/>.box&#123;
+                    <br/>background-color: #ccc;
+                    <br/>@include tablet&#123;
+                    <br/>background-color: #ddd;
+                    <br/>&#125;
+                    <br/> @include desktop&#123;
+                    <br/>background-color: #eee;
+                    <br/>background-color: #eee;
+                    <br/>&#125;
+                    <br/>background-color: #eee;<br/>
+                    <br/>@include bigger-desktop&#123;
+                    <br/>background-color: #000;
+                    <br/>&#125;
+                    <br/>&#125;
+                    <br/>&#125;
+                </li>
+            </ul>-->
+
+        </div>
+    </div>
+</div>

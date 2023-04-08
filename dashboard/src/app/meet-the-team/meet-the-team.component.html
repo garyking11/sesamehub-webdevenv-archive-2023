@@ -1,0 +1,185 @@
+<div class="meet-the-team-container container" *ngIf="MTTInterface">
+
+    <h2>Meet the Team</h2>
+
+    <!-- Instructions -->
+    <div>
+        <button type="button" mat-raised-button class="instructions-button"
+                (click)="showHide(showOfficeTourInst = !showOfficeTourInst);">
+            Instructions
+        </button>
+        <div [ngClass]="{'hide': !showOfficeTourInst }">
+            <p class="text-success">Place team member images in the '/assets/uploads/images/' directory.</p>
+            <p>Complete the form and "Grab your HTML." Member name is required.</p>
+        </div>
+    </div>
+    <!-- add item -->
+    <button type="button" mat-raised-button (click)="addMember()">
+        <mat-icon class="mat-18 sesame-blue">add</mat-icon> Add
+    </button>
+
+    <mat-accordion multi="false">
+
+        <div class="col-lg-6 col-md-6 col-sm-12"  cdkDropList (cdkDropListDropped)="drop($event)">
+
+
+            <div *ngFor="let item of MTTInterface.members;
+             let i = index; let even=even; let odd=odd;" cdkDrag>
+
+
+                <!-- title header -->
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <!-- add delete buttons-->
+                            <div class="add-button">
+                     <span class=" text-info"
+                           (click)="addMember(); $event.stopPropagation()">
+                            <mat-icon>add</mat-icon>
+                     </span>
+                            </div>
+
+                            <!-- delete method -->
+                            <span class=" text-danger"
+                                  (click)="removeMember(i)">
+                        <mat-icon>delete</mat-icon>
+                    </span>
+                            <div class="clear"></div>
+
+                            <div *ngIf="item.name || name.value; else noname">
+                                <span *ngIf="!name.value; else itemNameOnly" class="sesame-blue">{{item.name}}</span>
+                            </div>
+
+                            <ng-template #noname>
+                                <span class="sesame-green">Enter team member name</span>
+                            </ng-template>
+
+                            <ng-template #itemNameOnly>
+                                <span class="sesame-blue">{{name.value}}</span>
+                                &nbsp;<span class="sesame-green">{{position.value}}</span>
+                            </ng-template>
+
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <br/>
+
+
+                    <!-- Member name -->
+                    <div>
+                        <mat-form-field class="float-start"
+                                        style="width: 48%;
+                            margin-right: 2%;">
+                            <mat-label>Member Name <span
+                                    class="label-instructions"> Jenny Jones</span>
+                            </mat-label>
+                            <input matInput type="text"
+                                   [(ngModel)]="item.name"
+                                   placeholder="Member Name"
+                                   #name>
+                        </mat-form-field>
+
+                        <!-- position -->
+                        <mat-form-field class="float-end"
+                                        style="width: 48%; margin-left: 2%;">
+                            <mat-label>Position</mat-label>
+                            <input matInput type="text"
+                                   [(ngModel)]="item.position"
+                                   placeholder="Position" #position>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="clear"></div>
+                    <!-- bio -->
+                    <div class="meet-the-team-bio-wrap">
+                        <label style="display: block;">Bio</label>
+                        <textarea [(ngModel)]="item.bio"
+                                  placeholder="Bio"
+                                  #bio>{{bio}}</textarea>
+                    </div>
+
+                    <br/>
+
+                    <!-- start image -->
+                    <div>
+                        <div class="float-start"
+                             style="width: 48%; margin-right: 2%;">
+                            <div>
+                                <image-selector caption="Optional Image" directory="{{ imageDirectory }}" [image]="item.image"></image-selector>
+                            </div>
+                        </div>
+
+                        <div>
+                            <img class="float-end preview-image"
+                                 ngDefaultControl
+                                 [(ngModel)]="item.image"
+                                 src="../{{siteContext.account}}/assets/uploads/images/{{item.image.path}}"
+                                 alt=""/>
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+
+                </mat-expansion-panel>
+
+            </div><!-- end sortable index -->
+        </div>
+
+        <div>
+            <button mat-raised-button
+                    class="save-button"
+                    (click)="saveMeetTheTeamMembers(MTTInterface)"
+                    type="button">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+
+        </div>
+    </mat-accordion>
+
+</div>
+<!--    </div>&lt;!&ndash; end row &ndash;&gt;-->
+
+<br/>
+<p class="copy sesame-blue" (click)="copyHTMLToClipboard();" data-target="#copy">
+    <mat-icon style="cursor: pointer;">file_copy</mat-icon>
+    Grab your HTML
+</p>
+
+<code id="copy" *ngIf="MTTInterface">
+
+    <div *ngFor="let markup of MTTInterface.members; let i = index; let last = last">
+
+        <div class="bg-items">
+
+        <span *ngIf="markup.image.path">
+        <span *ngIf="markup.image">&lt;div&gt;&lt;img src="/assets/{{markup.image.path}}"
+            width="{{markup.image.width}}"
+            height="{{markup.image.height}}"
+        </span>
+        <span> class="staff"</span>
+        <span>&nbsp;alt=""</span>&gt;&lt;/div&gt;
+        </span>
+           <br>
+
+            <span *ngIf="markup.name">&lt;h2&gt;{{markup.name | capitalizeEachWord}}&lt;/h2&gt;<br/></span>
+
+            <span *ngIf="markup.position">&lt;h3&gt;{{markup.position}}
+                &lt;/h3&gt;<br/></span>
+
+            <span *ngIf="markup.bio">&lt;p&gt;{{markup.bio}}&lt;/p&gt;</span>
+
+            <br/>
+
+            <span *ngIf="!last">&lt;hr class="clear"&gt;<br/></span>
+
+            <br/><br/>
+
+        </div>
+
+    </div>
+
+</code>
+
+

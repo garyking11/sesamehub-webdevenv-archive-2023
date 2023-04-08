@@ -1,0 +1,17 @@
+
+
+    <i class="fa fa-trash" (click)="deleteSite();"></i>
+
+    <span *ngIf="showDeletedSpinner" class="confirm-backup small"> Deleting buildkit ...
+        <!--<img class="show-inline" src="assets/images/navSpinner.gif" alt="Deleting" style="width: 20px;">-->
+    </span>
+
+
+    <i class="fa fa-download" (click)="backup()"></i> {{site}} &nbsp;
+    <span *ngIf="showSpinner" class="confirm-backup"><img class="show-inline" src="assets/images/navSpinner.gif" alt="Loading!" style="width: 20px;"></span>
+
+    <span class="text-warning" *ngIf="hasBackup">Backup created</span>
+    <span *ngIf="!hasBackup">Needs Backup</span>
+
+
+

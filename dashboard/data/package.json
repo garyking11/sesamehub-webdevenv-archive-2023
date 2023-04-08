@@ -1,0 +1,11 @@
+{
+  "name": "data-watch",
+  "version": "1.0.0",
+  "description": "sesame package",
+  "main": "data-watch.js.js",
+  "dependencies": {
+    "log-timestamp": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {}
+}

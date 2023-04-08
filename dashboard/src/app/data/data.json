@@ -1,0 +1,7 @@
+{
+  "users": [
+    {"username" : "gking", "password" : "", "role": "admin", "information" : "gking@sesamecommunications.com"} ,
+    {"username" : "bob", "password" : "", "role": "builder", "information" : "gking@sesamecommunications.com"},
+    {"username" : "joe", "password" : "", "role": "producer", "information" : "gking@sesamecommunications.com"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "members": [
+    {
+      "name": "Bob",
+      "position": "Staff1",
+      "bio": "I am staff1",
+      "image": "image-one",
+      "imageAlt": "Bobby",
+      "imageClass": "pull-right"
+    },
+    {
+      "name": "Tanya",
+      "position": "Staff2",
+      "bio": "I am staff2",
+      "image": "image-two",
+      "imageAlt": "Tawnny",
+      "imageClass": "pull-right"
+    },
+    {
+      "name": "Sammy",
+      "position": "Staff3",
+      "bio": "I am staff3",
+      "image": "image-three",
+      "imageAlt": "Sammy Sesame",
+      "imageClass": "pull-right"
+    }
+
+  ]
+}

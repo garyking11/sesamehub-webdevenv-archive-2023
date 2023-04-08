@@ -1,0 +1,41 @@
+<div id="dev-dashboard" class="container">
+
+    <div class="col span6 offset3">
+
+        <div id="dev-set-navigation" class="row" [ngClass]="{'hide': sitename == 'dashboard'}">
+
+            <div class="col span6 offset3 ">
+
+                <form class="form-group">
+                    <button class="btn btn-small button button-medium site-button-color box-round box-shadow"
+                            (click)="getHubNavData(sitename)">Get #main-nav
+                    </button>
+                    <button id="getStockNavData"
+                            class="btn btn-small button button-medium site-button-color box-round box-shadow"
+                            (click)="getStockNavData()">Get STOCK #main-nav
+                    </button>
+                    <button class="btn btn-small button button-medium site-button-color box-round box-shadow"
+                            (click)="onHubPost(nResponse, sitename)">Apply
+                    </button>
+                    <div class="form-group"
+                         style="background-color: #0099cc; line-height:2em; text-align: center">
+
+                        <label style="color: #fff; ">{{ sitename }}</label>
+                        <textarea id="hub_navigation" name="navigation" class="form-control"
+                                  [(ngModel)]="nResponse"
+                        ></textarea>
+                        <!-- [(ngModel)]="response" -->
+                        <div style="color: #fff; font-size: 0.9em;" *ngIf="nResponse === undefined || nResponse === ''">
+                            <span style="color: #fff;">required ... Select Hub Navigation Option</span>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+<form [formGroup]="createSiteSeedForm"
+      (ngSubmit)="onCreateSiteSeed(createSiteSeedForm);">
+    <button mat-raised-button
+            [disabled]="!siteSeed.value"
+            type="submit">
+        Create Directory
+    </button>
+
+    <mat-form-field>
+        <input matInput
+               ngModel
+               required
+               placeholder="Create Directory"
+               formControlName="siteSeed"
+               name="siteSeed"
+                #siteSeed>
+    </mat-form-field>
+</form>

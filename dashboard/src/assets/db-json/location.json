@@ -1,0 +1,44 @@
+{
+  "locations": [
+    {
+      "practiceName": "Bob's Ortho",
+      "optionalImage": "image-one.jpg",
+      "imageAlt": "imageAlt",
+      "imageClass": "imageClass",
+      "imageHeight": 123,
+      "imageWidth": 456,
+      "doctorOne": "Dr. Bob Roberts",
+      "doctorTwo": "Dr. Jim Jones",
+      "doctorThree": "Dr. Robert",
+      "addressLineOne": "Address line one",
+      "addressLineTwo": "Address line two",
+      "telephone": "(123) 456-7890",
+      "fax": "(123) 456-7890",
+      "email": "bob@bobs.com",
+      "officeHours": "9am-5pm",
+      "notes": "Office notes",
+      "googleShareLink": "Google share link",
+      "googleEmbedCode": "Google embed code"
+    },
+    {
+      "practiceName": "Janey's Ortho",
+      "optionalImage": "image-two.jpg",
+      "imageAlt": "imageAlt",
+      "imageClass": "imageClass",
+      "imageHeight": 123,
+      "imageWidth": 456,
+      "doctorOne": "Dr. Samantha Sesame",
+      "doctorTwo": "Dr. Sam Sesame",
+      "doctorThree": "Dr. Bob Jones",
+      "addressLineOne": "Address line one",
+      "addressLineTwo": "Address line two",
+      "telephone": "(123) 456-7890",
+      "fax": "(123) 456-7890",
+      "email": "janey@janeysortho.com",
+      "officeHours": "9am-5pm",
+      "notes": "Office notes",
+      "googleShareLink": "Google share link",
+      "googleEmbedCode": "Google embed code"
+    }
+  ]
+}

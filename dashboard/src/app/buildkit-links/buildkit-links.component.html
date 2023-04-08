@@ -1,0 +1,142 @@
+<div class="container buildkit-links">
+
+    <h1>Links and resources</h1>
+
+    <dev-subnav *ngIf="router.url == '/buildkit-links'"></dev-subnav>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+
+            <ul class="less-mixins-list">
+
+                <li>
+                    <a href="https://validator.w3.org/" target="_blank">W3C Validator</a>
+                </li>
+                <li>
+                    <a href="https://fonts.google.com/" target="_blank">Google Fonts</a>
+                </li>
+                <li>
+                    <a href="https://validator.w3.org/" target="_blank">W3C Markup Validator</a>
+                </li>
+
+                <li>
+                    <a href="https://developers.google.com/speed/pagespeed/insights" target="_blank">Page Speed</a>
+                </li>
+                <li>
+                    <a href="https://fonts.google.com/" target="_blank">W3C Link Checker</a>
+                </li>
+                <li><a href="https://www.sesamecommunications.com" target="_blank">Sesame Communications</a></li>
+                <li><a href="http://sesamehub.com/designer_resources" target="_blank">Designer Resources</a></li>
+                <li><a href="https://www.dreamstime.com" target="_blank">Dreamstime</a></li>
+                <li><a href="https://www.flickr.com" target="_blank">Flickr</a></li>
+                <li><a href="http://fontawesome.io/icons" target="_blank">Font Awesome</a></li>
+                <li><a href="https://caniuse.com/" target="_blank">Can I Use</a></li>
+
+
+            </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+            <ul class="less-mixins-list">
+                <li>
+                    <a href="https://www.w3schools.com/cssref/default.asp" target="_blank">CSS Reference</a>
+                </li>
+
+                <li>
+                    <a href="https://www.tinypng.com" target="_blank">Tiny PNG WebP</a>
+                </li>
+
+                <li>
+                    <a href="https://www.compressor.io" target="_blank">Compressor.io</a>
+                </li>
+
+                <li>
+                    <a href="https://www.colorzilla.com/gradient-editor" target="_blank">Gradient Generator</a>
+                </li>
+                <li>
+                    <a href="https://css-tricks.com/examples/nth-child-tester/" target="_blank">:nth tester</a>
+                </li>
+                <li>
+                    <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>
+                </li>
+
+                <li>
+                    <a href="https://bennettfeely.com/clippy/" target="_blank">CSS Clip path maker</a>
+                </li>
+                <li>
+                    <a href="https://maketintsandshades.com/" target="_blank">Instant Color Shades</a>
+                </li>
+                <li><strong>FONTS</strong></li>
+                <li><a href="https://www.fontsquirrel.com/matcherator" target="_blank">Font Squirrel Matcherator</a>
+                </li>
+                <li><a href="http://www.identifont.com/index.html" target="_blank">Identifont</a> </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+
+            <h2>Github</h2>
+            <ul class="less-mixins-list">
+
+                <li>
+                    <a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+                       target="_blank">
+                        Configuring Github two-factor authorization</a>
+                </li>
+
+                <li>
+                    <a href="https://github.com/settings/keys" target="_blank">SSH Keys</a>
+                </li>
+
+                <li><a href="https://github.com/sesacom/sesamehub-webdevenv" target="_blank">Github
+                    sesamehub-webdevenv</a>
+                </li>
+
+                <li>
+                    <a href="https://support.apple.com/guide/keychain-access/add-a-password-to-a-keychain-kyca1120/mac" target="_blank">
+                        Add a password to keychain on Mac</a>
+                </li>
+                <li>
+
+                    <strong>How to update Sesame Dev Environment from the terminal:</strong>
+
+                    <code>
+                        <ul class="list-unstyled">
+                            <li><strong>FIRST TIME OR IF THERE HAS BEEN A MAJOR UPDATE</strong></li>
+                            <li><strong>(OSX/PC)</strong></li>
+                            <li>cd MAMP/www</li>
+                            <li>git status</li>
+                            <li>git fetch</li>
+                            <li>git checkout psds-buildkit- &lt;current version&gt;</li>
+                            <li>git pull</li>
+                            <li>git branch (should display current version)</li>
+                            <li><strong>MINOR UPDATES</strong></li>
+                            <LI>cd into MAMP/www</LI>
+                            <li>git pull</li>
+                        </ul>
+                    </code>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+            <h2>sesamehub-webdevenv</h2>
+            <ul class="less-mixins-list">
+                <li><a href="https://wiki.sesamecommunications.com:8443/display/DT/Sesame+Web+Dev+Environment"
+                       target="_blank">Sesame Web Dev Environment WIKI</a>
+                </li>
+                <li><a class="cursor-pointer" [routerLink]="['/build-info']" [routerLinkActive]="['active']">
+                    How to Run GULP</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div><!-- end row -->
+
+</div>

@@ -1,0 +1,362 @@
+<div id="resources-container" class="container">
+
+    <!--    <h1>((title))</h1>-->
+
+    <!--<div class="row">
+
+        <div class="col-sm-12 col-md-12 col-lg-6">-->
+    <h4>Buildkit Changelog</h4>
+
+    <mat-accordion multi="false">
+
+
+        <!--<mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>March 5 , 2023</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>content goes here</p>
+        </mat-expansion-panel>-->
+
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>03-26-2023</mat-panel-title>
+            </mat-expansion-panel-header>
+            <h4>Changelog 03/26/2023</h4><h5>CSS/LESS:</h5>
+            <ul>
+                <li>testimonial slideshow ‘.controls’ element and ‘button’ elements within it have ‘pointer-events’
+                    rules added so that the buttons behave as expected, without the ‘.controls’ element causing an
+                    un-targetable band across the slideshow itself on tablet/desktop device widths.
+                </li>
+                <li>testimonial slideshow ‘.controls’ rules updated to reflect ‘.icon’ class on controls vs previously
+                    targeting
+                    <pre>
+                </pre>
+                    element.
+                </li>
+                <li>ALL less ‘@variables’ uniformly placed directly above parent sections of the elements they affect in
+                    order to unlock global scope for more powerful/meaningful use opportunities. Previously *some*
+                    elements had variables nested within them, most noticeable example is on elements within
+                    ‘#contactinfo’ where ‘@addresslh, @addressfs, @phonelh, @phonefs’ used to be enclosed with the
+                    ‘.address’ and ‘.phone’ element, ex:<br> <em>Used to be like this:</em><br>
+                    <pre> .address&#123;
+                        @addresslh:30;//line-height @addressfs:20;//font-size line-height:@addresslh/@addressfs; font-size:@addressfs/20em; other:rules; et:cetera; } .phone&#123;
+                        @phonelh:30;//line-height @phonefs:20;//font-size line-height:@phonelh/@phonefs; font-size:@phonefs/20em; other:rules; et:cetera; } </pre>
+                    <br> <em>Now live above the ‘#contactinfo’ element:</em><br>
+                    <pre> /* =============================================== contact info =============================================== */ @addresslh:30;//line-height @addressfs:20;//font-size @phonelh:30;//line-height @phonefs:20;//font-size #contactinfo&#123;
+                        .address&#123; other:rules; } .phone&#123; et:cetera; } } </pre>
+                </li>
+                <li> '@bttlineheight' variable added for ‘a#backtotop’ element. It is is still set equal to
+                    ‘@linkslineheight’ for common use but in the event that it needs to be different, it can now be
+                    adjusted via the variable minimizing the need for re-factoring code within.
+                </li>
+                <li>generic button class ‘intbtn’ added for use by PM/PAs to add quick buttons to pages to streamline
+                    the post-build editing process. (Thank you for recommending this Mike)
+                </li>
+                <li>‘invisalign-videos’ page added to list of centered content pages with .before-after, .office-tour,
+                    etc…
+                </li>
+                <li> ’embed-container’ enhancement added for modern browsers improving the rendering and capping the
+                    size so they aren’t so visually imposing on larger devices.
+                </li>
+            </ul>
+            <h5>LAYOUT:</h5>
+            <ul>
+                <li>Scripts section updated to make all javaScript es6 standard. this includes:
+                    <ul>
+
+                        <li>use of arrow functions instead of the ‘function’ keyword where appropriate:<br> <a
+                                target="_blank" rel="noreferrer noopener"
+                                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">more
+                            about Arrow Functions</a></li>
+                        <li>use of the const keyword to declare constant variables (since they do not need to be
+                            re-assigned):<br>
+                            <a target="_blank" rel="noreferrer noopener"
+                               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">more
+                                about const keyword</a></li>
+                        <li>use of let keyword to declare limited block scoped local variables:<br> <a target="_blank"
+                                                                                                       rel="noreferrer noopener"
+                                                                                                       href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">more
+                            about let keyword</a></li>
+                    </ul>
+                </li>
+                <li> 'slideshow.php' include corrected - slide4 was duplicated instead of having a slide5.</li>
+                <li>’fetchpriority’ attribute added to all img tags as they no longer flag errors in w3c validation
+                    (after almost exactly an entire year!)<br>
+                    <a target="_blank" rel="noreferrer noopener" href="https://web.dev/priority-hints/">more about
+                        priority hints</a></li>
+                <li> 'GA code' publication has now been automated, i.e. the builder no longer needs to uncomment the
+                    section; If the '$gacode' field is populated on the site manager or posthumously at the top of
+                    layout.php, the GA code script will automatically activate.
+                </li>
+                <li>'mediaslider' control's icons have ‘icon’ class added and FA font-weight specific class ‘fa-solid’
+                    added
+                </li>
+            </ul>
+            <h5>JS:</h5>
+
+            <ul>
+                <li>lazysizes updated to v5.3.2.</li>
+                <li>curated version of 'modernizer.js' added to '/concat-js-files/' directory to be included as standard
+                    until Sesame officially stops supporting ie11. This is necessary to ease support for es6
+                    standards.<br> <strong>Instructions on how to use this to target ie11 more easily via Javascript and
+                        css:</strong><br>
+                    <ul>
+                        <li><strong>CSS -</strong> modernizr adds a class of ’.appearance’ to the
+                            <pre>html</pre>
+                            elements if its not ie11 and ‘,no-apeparance’ if it is ie11:<br>
+                            <pre> .no-appearance .box  &#123;to target ie11 only. &#125; .appearance .box &#123; to hide your cutting edge styling from expired non-compliant browsers that shouldn’t even be out there for use anymore. &#125; </pre>
+                        </li>
+                        <li><strong>JS -</strong> javascript can be used to target non-ie11 browsers utilizing the same
+                            ‘appearance’ keyword:<br>
+                            <pre> if (Modernizr.appearance) &#123; // supported &#125; else &#123; // not-supported &#125; </pre>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>local.js:</strong><br>parallax script for slideshow upgraded:
+                    <ol>
+                        <li>to include `will-change: transform` when transforming to improve performance, and</li>
+                        <li>only activates on desktop devices so that it doesn’t highjack styling that occurs mobile
+                            devices.
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>01-24-2023</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Here's the compilation of everything that has been done since late sept/early oct of
+                2022:</p>
+
+            <h3>Buildkit:CSS:</h3>
+
+            <h2>Changelog 02/15/2023</h2>
+
+            <h3>CSS/LESS:</h3>
+            <ul>
+                <li>actually changed 'meet-the-doctor' class mentioned in previous change log</li>
+
+                <li>all css files reviewed for rule order, redundancies, and comment relevancy - adjustments made to
+                    reduce errors/redundancies in all categories, including but not limited to:
+                    <ul>
+                        <li>comments for custom HP line-height and font-size updated and marked with
+                            <pre>'&lt;&lt; customHP'</pre>
+                            signposts to be more easily identified within the less document
+                        </li>
+                        <li>duplicate and unnecessary rules removed between mobile main-nav to desktop main-nav</li>
+                    </ul>
+                </li>
+                <li>added ‘max-width:none;’ to '.home #bd #content' from '768 to 1300' due to cascade of subpage rules
+                    of the same type causing latent misstyles
+                </li>
+                <li>‘max-width’ rule on ‘.home #bd #content’ adjusted from kicking in at 1024 to 1300 instead;</li>
+
+                <li>added ‘screenreader’ class to superlatives section for descriptive text on vaguely worded buttons to
+                    facilitate higher accessibility rankings:<br>
+                    <a target="_blank" rel="noreferrer noopener"
+                       href="https://gomakethings.com/hidden-content-for-better-a11y/#hidden-labels">gomakethings.com:
+                        hidden content for better accessibility (a11y)</a>
+                </li>
+                <li>'.spotlight a( border-radius: 50% )' removed because child element '.decoration' also has
+                    border-radius, causing an unnecessary doubling of the effect
+                </li>
+
+                <li>@trigger var grouped with other main-nav vars</li>
+                <li>@trigger value Increased to 48px in line with mobile minimum link dimensions as defined in google
+                    pageSpeed Insights and WCAG AAA standards.<br>
+                    <a target="_blank" rel="noreferrer noopener" href="https://web.dev/accessible-tap-targets/">Accessible
+                        tap targets article from web.dev</a><br>
+                    <a target="_blank" rel="noreferrer noopener"
+                       href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html">w3.org standards and
+                        exception to this rule</a>
+                </li>
+                <li>#hd container default padding updated to reflect @trigger value as well</li>
+
+                <li>rules added to video and slideshow to facilitate a default ‘full bloom’ at 1300px-1999px device
+                    width and continue flexing after 2000px
+                </li>
+
+                <li>‘#subnav a’ rules adjusted (namely padding and margin) to increase clickable area of individual
+                    links for mobile devices
+                </li>
+
+                <li>‘locationimg’ class added for sitemanager's location page generator feature</li>
+
+                <li>'svg ( display:inline-block; )' rule added for enhanced svg styling</li>
+
+                <li>styling added to blog sidebar elements contained in sharethiswidget.php include: 'blog_search' and
+                    'share-text' elements adjusted for design consistency
+                </li>
+
+                <li>`.mediaslider` rules updated to reflect
+                    <pre><button></button></pre>
+                    element for previous/next controls
+                </li>
+
+                <li>mobile main-nav fly-in animation updated to utilize compositor-only properties</li>
+            </ul>
+
+            <h3>LAYOUT:</h3>
+            <ul>
+                <li>socialmedia link `aria-labels` enhanced with more descriptive text</li>
+
+                <li>'favicon.svg' and 'pinned-tab.svg' link tags removed from head due to non-use. Physical vector image
+                    files moved from '/images/icons/' to '/resources/' folder for continued utilization in branding
+                    enhancement.<br>
+                    <a target="_blank" rel="noreferrer noopener"
+                       href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html">Apple
+                        guidance for creating mask-icon</a>
+                </li>
+
+                <li>'meta name=“viewport”' content attribute updated to 'user-scalable=5' - in line with scalability
+                    minimum as defined in google pageSpeed Insights to respond to audit flag: '[user-scalable="no"] is
+                    used in the
+                    <pre><meta name="viewport"></pre>
+                    element or the [maximum-scale] attribute is less than 5.'<br>
+                    <a target="_blank" rel="noreferrer noopener"
+                       href="https://web.dev/learn/html/document-structure/#viewport-metadata">web.dev info about
+                        Viewport metadata</a>
+                    <a target="_blank" rel="noreferrer noopener"
+                       href="https://dequeuniversity.com/rules/axe/4.6/meta-viewport">WCAG Guidelines: Zooming and
+                        scaling must not be disabled</a>
+                </li>
+
+                <li>url parser for blog page moved into an include called 'parseblogpage.php' in the includes directory.
+                    (Thank you for recommending this Peter)
+                </li>
+
+                <li>'sharethiswidget.php' include updated so 'share on social media' blog post options actually appear
+                </li>
+
+                <li>added `aria-haspopup="menu"` to trigger element to indicate the availability of interactive popup
+                    main-nav element for non-visual web-users
+                </li>
+
+                <li>`assets/resources/mediaslider.php` file updated to reflect
+                    <pre><button></button></pre>
+                    element for previous and next controls. <strong>Please update your local snippets libraries to
+                        reflect these changes and be sure to only use the updated version moving forward.</strong></li>
+
+                <li>link to local.js: 'defer' attribute added as all code contained is not onLoad critical</li>
+            </ul>
+
+            <h3>JS:</h3>
+            <ul>
+                <li>jQuery version updated to v3.6.3.<br>
+                    <strong>ATTENTION BUILDERS and PAs:</strong><br>
+                    <h4>The load() method was deprecated in jQuery version 1.8 and removed in version 3.0:</h4><br>
+                    <pre>$(window).load(function(e) ( *** ));</pre>
+                    <br>
+
+                    <h4>Use the on() or trigger() method instead:</h4><br>
+                    <pre>$(window).on("load",function(e) ( *** ));</pre>
+                </li>
+                <li>'global.js' adjustments made to remain compatible with updated jQuery version</li>
+                <li>'cycle2.js' adjustments made to remain compatible with updated jQuery version</li>
+            </ul>
+
+            <h3>ALL:</h3>
+            <ul>
+                <li>main-nav trigger updated to a
+                    <pre><button>button</button></pre>
+                    element for enhanced accessibility on layout.<br> instantiation updated in scripting area on layout.<br>
+                    Styles updated on less
+                </li>
+            </ul>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>01-06-2023</mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul>
+                <li>option added for fractional sub bdbg image</li>
+                <li>added light blur to map marker shadow bg on ‘alt’ &amp; ‘classic’ options</li>
+                <li>exception for sidebar suppression on mobile devices for meet the doctor pages changed because rule
+                    was discovered to be insufficient under some circumstances:
+                    <ul>
+                        <li>from: body[class^=“meet-dr-”]</li>
+                        <li>to: body[class*=“meet-dr-”]</li>
+                    </ul>
+                </li>
+                <li>rule added for 'office-tour' and 'before-after' page '#content' to center it</li>
+                <li>styling added for
+                    <pre><blockquote></blockquote></pre>
+                    element
+                </li>
+                <li>LESS calculation for map marker shadow adjusted for accuracy and intended responsive resizing when
+                    font-size changes
+                </li>
+                <li>map marker style added for ‘simplerev’</li>
+            </ul>
+            <h3>LAYOUT:</h3>
+            <ul>
+                <li>
+                    <pre>‘/&gt;’</pre>
+                    closing html slash removed on self closing elements
+                </li>
+                <li>quotes in footer scripting area standardized to all be single quotes</li>
+                <li>language on instructions for hg preloaded icon changed from ‘delete’ to ‘comment’ if !is hg icon
+                </li>
+                <li>masthead markup changed from
+                    <pre><div></div></pre>
+                    to
+                    <pre><header></header></pre>
+                    as html5 standards have recently changed to allow for this
+                </li>
+            </ul>
+            <h3>BOTH:</h3>
+            <ul>
+                <li>Testimonials slideshow controls updated from
+                    <pre><a></a></pre>
+                    <a> tags to
+                        <pre><button>button</button></pre>
+                        tags. Styles required to undo button defaults added to local.less</a></li>
+                <a>
+                </a></ul>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+
+    <mat-accordion multi="false">
+        <h4>Site Manager changelog</h4>
+        <!--<mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>March 9, 2023</mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>content goes here</p>
+        </mat-expansion-panel>-->
+
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>03-29-2023</mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul>
+                <li>Updated admin section with authentication</li>
+                <li>Added drag and drop image uploader which provides an easy drag and drop way to select images for the
+                    website
+                </li>
+                <li>Site Manager and buildkit changelog appear on home page for easy access.</li>
+                <li>Added the image selector module that gathers information about images located in the local
+                    account-name assets folder and prints the size of the images
+                    automatically in the "Grab your HTML" markup within the site tools
+                </li>
+                <li>Updated PC script to open newly formed buildkit in a new browser.</li>
+                <li>
+                    Moved text from "Create Buildkit" to newly created support page for site manager tools
+                </li>
+                <li>
+                    Added changelog documentation to home page
+                </li>
+                <li>Added new resources/support page</li>
+                <li>Updated .gitignore to prevent necessity of deleting certain files on update</li>
+                <li>Under the hood improvements. Bug fixes</li>
+            </ul>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+</div>
+<!--    </div>
+</div>-->

@@ -1,0 +1,14 @@
+{
+  "standardHeight": 123,
+  "standardWidth": 456,
+  "images": [
+    {
+      "image": "before-image.jpg",
+      "imageAlt": "I am Before After imageAlt 1"
+    },
+    {
+      "image": "another-before-image.png",
+      "imageAlt": "I am Before After imageAlt 2"
+    }
+  ]
+}

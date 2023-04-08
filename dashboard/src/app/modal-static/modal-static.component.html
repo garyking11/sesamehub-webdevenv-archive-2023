@@ -1,0 +1,73 @@
+<div>
+    <!-- *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
+     class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"> -->
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title pull-left text-danger">ALERT: {{errorMessage}}</h6>
+
+                <button type="button" class="btn btn-primary" aria-label="Close"
+                        (click)="hideModal()">
+                    <span aria-hidden="true">{{buttonText}}</span>
+                </button>
+
+
+                <div *ngIf="alertType == 'confirm'">
+
+                    <button type="button" class="btn btn-primary"
+                            style="margin-top: 15px !important;"
+                            aria-label="Confirm"
+                            (click)="confirm(true)">
+                        Confirm delete!
+                    </button>
+
+                    <!--<button type="button" class="btn btn-primary"
+                            style="margin-top: 15px !important;"
+                            aria-label="Backup Account Buildkit"
+                            (click)="backupAccountBuildkit(siteBuildKit)">
+                        Backup {{siteBuildKit}}
+                    </button>
+                    <div class="text-warning" *ngIf="backupStatus">Backup created</div>-->
+
+                </div>
+
+            </div>
+
+            <div class="modal-body">
+                <p>{{popupBody}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- this goes into the component's html. -->
+<!--<dev-modal-static #duplicateError></dev-modal-static>-->
+
+<!--<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title pull-left text-danger">Error: {{errorMessage}}</h6>
+                <button type="button" class="btn btn-primary pull-right" aria-label="Close" (click)="hideModal()">
+                    <span aria-hidden="true">{{buttonText}}</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>{{popupBody}}</p>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="launchSectionError(e)">Render auto-shown modal</button>
+</div>
+-->
+
+
+
+<!--<p class="panel danger-panel" *ngIf="hasDuplicates"><strong class="text-danger">You have duplicates
+    sections.</strong> <br/><span
+        class="text-warning">The only allowed section duplicates are Spotlight. <br/></span>
+    <span *ngFor="let dupe of dupeArray">{{dupe}}<br/></span>
+</p>-->

@@ -1,0 +1,254 @@
+<div class="container">
+  <h1>VARIABLES</h1>
+  <div class="row vars">
+    <div class="col-sm-12 col-md-12 col-lg-6 vars-sub">
+
+      <dev-subnav *ngIf="router.url == '/css'"></dev-subnav>
+      <ul>
+        <li>
+          <ul>
+            <li class="vars-heading">LESS VARIABLES</li>
+            <li class="mixins-sub-heading">COLOR VARIABLES</li>
+            <li>@color0:#0099cc; /* color */</li>
+            <li>@color1:#b9d233; /* color || hyperlinks */</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">LINE HEIGHT VARIABLES</li>
+            <li>@contentlineheight:36;</li>
+            <li>//line-height from main content area on psd proof</li>
+            <li>@contentfontsize:20;</li>
+            <li>//font size from main content area on psd proof (will affect .content-area only)</li>
+
+            <li class="useage-heading">USEAGE</li>
+            <li>h3&#123;</li>
+            <li>font-size:24em/@contentfontsize;</li>
+            <li>&#125;</li>
+
+            <li>@contentlineheight:36;</li>
+            <li>//line-height from main content area on psd proof</li>
+            <li>@contentfontsize:20; only)</li>
+            <li>//font size from main content area on psd proof (will affect .content-area</li>
+
+
+            <li>line-height:@contentlineheight/@contentfontsize;</li>
+            <li>&#125;</li>
+            <li>h3&#123;</li>
+            <li>font-size:24em/@contentfontsize;</li>
+            <li>>&#125;</li>
+
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">MAIN NAV VARIABLES</li>
+            <li>@mainnavstyle:'standard';</li>
+            <li>through desktop don't forget to alter breakpoint on local.js</li>
+            <li>@primary:15;</li>
+            <li>//main nav item font size from psd proof</li>
+            <li>@secondary:13;</li>
+            <li>//drop menu item font size from psd proof</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>a[id]&#123;</li>
+            <li>line-height:40/@primary;</li>
+            <li>font-size:@primary/20em;</li>
+            <li>height: 40em/@primary;</li>
+            <li>&#125;</li>
+
+            <li>a &#123;</li>
+            <li>line-height: 40/@secondary;</li>
+            <li>font-size: @secondary/20em;</li>
+            <li>height:40em/@secondary;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">LOGO VARIABLES</li>
+            <li>#logo&#123;</li>
+            <li>@logowidth:240;</li>
+            <li>//logo width from psd proof</li>
+            <li>@logoheight:94.3;</li>
+            <li>//logo height from psd proof</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>width: @logowidth/20em;</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">SOCIAL MEDIA VARIABLES</li>
+            <li>.socialmedia&#123;</li>
+            <li>@icondimensions:48;</li>
+            <li>//social-icon height (and often width) from psd proof</li>
+            <li>@iconfontsize:16;</li>
+            <li>//social-icon font-size from psd proof</li>
+            <li class="useage-heading">USEAGE</li>
+
+            <li>line-height: @icondimensions/@iconfontsize;</li>
+            <li>font-size: @iconfontsize/20em;// default 15 - value may change per psd proof</li>
+            <li>color:#fff;</li>
+            <li>height:(@icondimensions/@iconfontsize)*1em;</li>
+            <li>width:(@icondimensions/@iconfontsize)*1em;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">SLIDESHOW VARIABLES</li>
+            <li>@slideshowstyle:'classic';</li>
+            <li>//SLIDESHOW style => video or classic</li>
+            <li>@slideshowheight:800;</li>
+            <li>//height of slideshow from psd proof - applies to classic slideshow only</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>& when (@slideshowstyle = 'classic')&#123; min-height:(@slideshowheight / 21) * 1vw;/*
+              adjust
+              to match slideshow height from proof */ &#125;
+            </li>
+            <li>& when (@slideshowstyle = 'video')&#123; min-height:55vw; &#125;</li>
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">SUBNAV VARIABLES</li>
+            <li>@subnavorientation:'top';</li>
+            <li>//SUBNAV ORIENTATION => side or top</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>/* TOP ORIENTED */</li>
+            <li>#subnav when (@subnavorientation = 'top')&#123;</li>
+            <li>@subnavlinkheight:18;</li>
+            <li>@subnavlinkfontsize:15;</li>
+            <li>@subnavbottompadding:42;</li>
+            <li>//space between links and bottom of section</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>padding:(@subnavbottompadding/20em) 0;</li>
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">CONTENT VARIABLES</li>
+            <li>@bdcontainerwidth:1200;</li>
+            <li>//pixel width of interior bd container on proof</li>
+            <li>@bdcontentwidth:840;</li>
+            <li>//pixel width of interior content area on proof</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>max-width:@bdcontentwidth/20em;</li>
+            <li>width:(@bdcontentwidth / @bdcontainerwidth) * 100%;</li>
+            <li>&#125;</li>
+            <li>#bd .container&#123;</li>
+            <li>max-width:@bdcontainerwidth/20em;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li>
+            <li class="mixins-sub-heading">HOME PAGE VARIABLES</li>
+            <li>@homepagebdcontainerwidth:1140;</li>
+            <li>// pixel width of homepage bd container on proof</li>
+            <li>@homepagecontentwidth:660;</li>
+            <li>// pixel width of homepage content area on proof</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>.home #bd&#123;</li>
+            <li>@media only screen and (min-width: 48em) &#123;</li>
+            <li>padding:4em 0 2.6em;</li>
+            <li>/* midTab 780w */</li>
+            <li>&#125;</li>
+            <li>.container&#123;</li>
+            <li>max-width:@homepagebdcontainerwidth/20em;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">LIST VARIABLES</li>
+            <li>@ullineheight:35;</li>
+            <li>@ulfontsize:23;</li>
+            <li>@ulullineheight:39;</li>
+            <li>@ululfontsize:20;</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>ul a &#123;</li>
+            <li>line-height:(@ullineheight / @ulfontsize);</li>
+            <li>font-size:(@ulfontsize / @contentfontsize) * 1em;</li>
+            <li>-webkit-transition-duration:0s;</li>
+            <li>transition-duration:0s;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">SIDEBAR VARIABLES</li>
+            @sidebarwidth: 300;
+            <li>// sidebar width from psd proof usually matches width of sitepic
+            <li class="useage-heading">USEAGE</li>
+            <li>#sidebar&#123;</li>
+            <li>& when (@subnavorientation = 'side') &#123;</li>
+            <li>&#125;</li>
+            <li>& when (@subnavorientation = 'top') &#123;</li>
+            <li>max-width:@sidebarwidth/20em;</li>
+            <li>&#125;</li>
+            <li>@media only screen and (min-width: 48em) &#123;</li>
+            <li>width:(@sidebarwidth / @bdcontainerwidth) * 100%;</li>
+            <li>& when (@subnavorientation = 'side') &#123; padding-top:41%; } //adjust to make space for
+            </li>
+            <li>&#125;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">FOOTER VARIABLES</li>
+            <li>@ftaddressfontsize:18;</li>
+            <li>@ftphonefontsize:22;</li>
+            <li>@ftmapmarkerfontsize:66;</li>
+            <li class="useage-heading">USEAGE</li>
+            <li>.address &#123;</li>
+            <li>line-height:20/@ftaddressfontsize;</li>
+            <li>font-size:@ftaddressfontsize/20em;</li>
+            <li>&#125;</li>
+          </ul>
+        </li>
+
+        <li>
+          <ul>
+            <li class="mixins-sub-heading">HR VARIABLES</li>
+            @hrcolor:#666;
+            <li>@hrheight:1px;
+            <li>@hrwidth:100%;//either 100% or the pixel value from the proof without the 'px'
+            <li>hr, .types-of-braces #content div.clear&#123;
+            <li>font-size:inherit;
+            <li>height:@hrheight;
+            <li class="useage-heading">USEAGE</li>
+            <li>& when (@hrwidth = 100%) &#123;</li>
+            <li>width:@hrwidth;</li>
+            <li>margin:1.58em 0;</li>
+            <li>&#125;</li>
+            <li>& when not (@hrwidth = 100%)&#123;</li>
+            <li>width:(@hrwidth / @contentfontsize) * 1em;</li>
+            <li>margin:1.58em auto 1.58em 0;</li>
+            <li>&#125;</li>
+            <li>background:@hrcolor;</li>
+          </ul>
+        </li>
+
+      </ul>
+
+
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6">
+
+    </div>
+  </div>
+
+
+</div>

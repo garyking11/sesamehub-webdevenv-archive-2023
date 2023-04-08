@@ -1,0 +1,2699 @@
+/* ===============================================
+	
+ Buildkit Version: 10.1.0
+
+client_name
+Written by: Builder_Name
+
+ Sesame Communications - All rights reserved. (c)2022
+ Any reproduction or intentional misuse is strictly prohibited
+ 
+=============================================== */
+
+/* ===============================================
+					colors
+=============================================== */
+
+@color0:#0099cc;	/* color */	
+@color1:#b9d233;	/* color || hyperlinks */	
+
+/* ===============================================
+					fonts
+=============================================== */
+//utilize font-display: swap; property for @ff kit
+
+.fontH{
+	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ===============================================
+					Mixins 
+=============================================== */
+@import 'mixins.less';
+
+/* ===============================================
+Basic Stylings
+These will affect every size of the site.
+=============================================== */
+
+/*resets*/
+*, *:before, *:after { 
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+/*GLOBAL OVERRIDES*/
+.fab, .fas, .fal, .far, .fad{ 
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	vertical-align:0; 
+}
+
+
+/* ==================================================================
+	main content-text font sizes
+=================================================================== */
+@contentlineheight:36;//line-height from main content area on psd proof
+@contentfontsize:20;//font size from main content area on psd proof (will affect .content-area only)
+
+//if HP content fonts are different from subpage - corresponding rules to uncomment located under home#bd below
+//@hpcontentlineheight:36;
+//@hpcontentfontsize:20;
+
+/* ===============================================
+	body 
+=============================================== */
+
+body, input, select, textarea{ .fontH; }//for font declaration that will affect most site elements
+form button{ .fontH; }//for font declaration that will affect button elements only 
+
+body {
+	font-size:15px;//do not change - this informs factor for em units on mobile devices || is not content font-size ||
+	color:#333;
+	background:#ccc;
+	overflow:hidden;
+	
+	@media only screen and (min-width: 1300px) { 
+		font-size:20px;//do not change - this informs factor for em units on desktop layouts || is not content font-size ||
+	/* desk 1300w */
+	}
+}
+
+
+/* ===============================================
+	links 
+=============================================== */
+
+a{ text-decoration:none; }
+#content a{ 
+	color:@color1;
+	text-decoration:none;
+	transition:color 0.33s ease-in-out;
+	
+	 &:hover{ 
+		 text-decoration:underline;
+		 color:@color0; 
+	} 
+}
+
+/* ===============================================
+	h family || hfam 
+=============================================== */
+@h2fs:25;
+@h3fs:24;
+@h4fs:23;
+@h5fs:22;
+@h6fs:21;
+
+h1, h2:not(.topic), h3:not(.topic), h4, h5, h6 {
+	line-height:1;
+	text-align:left;
+	color:@color1;
+ 	margin:0 0 36em/@h2fs;
+	text-rendering:auto;
+}
+
+//subpage h1
+.sub h1 { @h1fs:50;//subpage h1 font-size from psd proof 
+	font-size:10vw;//do not change || update px value from psd in @fs variable above  
+	font-weight:400;
+	text-transform:uppercase;
+	margin-bottom:38em/@h1fs;
+	
+	@media only screen and (min-width: 480px){ 
+		font-size:@h1fs/20em;
+	/* mintab 480w */
+	}
+}
+
+//hp h1
+.home h1{ @h1fs:60;//HP h1 font-size from psd proof
+	font-size:10vw;//do not change || update px value from psd in @fs variable above  
+	text-align:center;
+	margin:0;
+	
+	@media only screen and (min-width: 480px){ 
+		font-size:@h1fs/20em;
+	/* mintab 480w */
+	}
+	
+	&:after{ content:'';
+		width:150em/@h1fs;
+		height:2px;
+		margin:20em/@h1fs auto 42em/@h1fs;
+		background:@color0;
+		display:block; 
+	}
+	
+	.trait{ display:block;
+		&.top{ @tfs:25;//trait fontsize 
+			line-height:30/@tfs;//trait line-height
+			font-size:(@tfs/@h1fs)*1em;
+			text-transform:none;
+		} 
+		&.bottom{ 
+			font-weight:700;
+		}
+	}
+}
+
+h2:not(.topic){ 
+	font-size:(@h2fs/@contentfontsize)*1em; 
+}
+h3:not(.topic){ 
+	font-size:(@h3fs/@contentfontsize)*1em; 
+}
+h4{ 
+	font-size:(@h4fs/@contentfontsize)*1em; 
+}
+h5{ 
+	font-size:(@h5fs/@contentfontsize)*1em; 
+}
+h6{ 
+	font-size:(@h6fs/@contentfontsize)*1em; 
+}
+
+/* ===============================================
+	containers
+=============================================== */
+
+.container{ 
+	max-width:60em;
+}
+
+/* ===============================================
+	list styles - global overrides
+=============================================== */
+
+.what-sets-us-apart, 
+.meet-the-team, 
+.our-office,
+.office-tour,
+body[class*='-after'] { 
+	#content ol{ 
+		margin:0; 
+	}
+}
+
+#content ul li { 
+	list-style:disc outside;
+	/* list-style-image:none; */
+}
+
+/* ==================================================================
+	masthead
+=================================================================== */
+
+#masthead{ 
+	width:100%;
+	padding:0;
+	background-color:#fff;
+	position:relative;
+	z-index:3000;
+	
+	@media only screen and (min-width: 1024px) { 
+		font-size:1.1em;
+		width:100%;		
+	/* maxTab 1024w */
+	}
+	
+	@media only screen and (min-width: 1300px) { 
+		font-size:inherit;
+		position:fixed;
+		top:0;
+		z-index:3000;
+	/* desk 1300w */
+	}
+	
+	.container{ 
+		width:100%;
+		max-width:none;
+		
+		@media only screen and (min-width: 1024px) {  
+ 			max-width:60em;
+		/* maxTab 1024w */
+		} 
+	}
+}
+
+/* ==================================================================
+	main-nav
+=================================================================== */
+
+@mainnavstyle:'standard';
+// MAIN-NAV STYLE => 'standard' (most common) or 'fullmob' for mobile nav through desktop
+// if FULLMOB don't forget to alter breakpoint on local.js
+// if FULLMOB don't forget to delete .container from #main-nav on layout.php
+
+
+@primary:15;// main nav item font size from psd proof
+@secondary:13;// drop menu item font size from psd proof
+
+#main-nav {
+	@trigger:43px; // height and width and lineHeight of .trigger 
+	font-size:1.2em;
+	text-align:center;
+	height:@trigger;
+	width:@trigger;
+	padding:0;
+	margin:0;
+	box-shadow:-1px 1px 0 fade(@color1, 40%);
+	position:absolute;
+	top:0;
+	right:0;
+	z-index:600;
+	clear:both;
+	
+	.container { 
+		height:100%;
+		padding:0;
+	}
+	
+	.trigger { 
+		line-height:@trigger;
+		color:@color1;
+		width:100%;
+		height:100%;
+		padding:0;
+		margin:0 auto;
+		position:relative;
+		z-index:600;
+		transition:color 0.33s ease-in-out;
+		
+		.navicon{ 
+			width:12px;
+			height:8px;
+			display:inline-block;
+			position:relative;
+			top:-0.2em;//adjust positioning of navicon from top
+			
+			span{ 
+				height:2px;
+				width:100%;
+				background:currentcolor;
+				display:block;
+				position:absolute;
+				left:0;
+				opacity: 1;
+				transform:rotate(0deg);
+				transition:width 0.3s ease, top 0.3s ease, left 0.3s ease, transform 0.3s ease;
+				&:nth-child(1) { top: 0px; }
+				&:nth-child(2), &:nth-child(3) { top: 50%; }
+				&:nth-child(4) { top: 100%; } 
+			} 
+		}
+		
+		&:hover{ color:@color1;
+			.navicon span{ /* background:@color1; */ }
+		}
+	}
+	.open .trigger{ color:@color0;//should contrast against ul background color declared below
+		 
+		.navicon span{ //background:@color1;
+			&:nth-child(1),
+			&:nth-child(4){ width: 0;top: 50%;left: 50%; }
+			&:nth-child(2) { transform:rotate(45deg); }
+			&:nth-child(3) { transform:rotate(-45deg); }
+		}
+	}
+		
+	ul {
+		width:100vw;
+		margin: (@trigger * -1) 0 0;
+		padding:1em 0;
+		background-color:fade(#fff, 90%);
+		background-image: -moz-linear-gradient(top,  fade(#fff, 0) 0%, fade(#fff, 99%) 100%);
+		background-image: -webkit-linear-gradient(top,  fade(#fff, 0) 0%,fade(#fff, 99%) 100%);
+		background-image: linear-gradient(to bottom,  fade(#fff, 0) 0%,fade(#fff, 99%) 100%);
+		position:relative;
+		float:right;
+		z-index:550;
+		
+		
+		li { clear:both;
+			a[id]{
+				
+				line-height:40/@primary;
+				font-size:@primary/20em;
+				text-transform:uppercase;
+				color:#000;
+				width:auto;
+				height: 40em/@primary;
+				margin:0;
+				padding:0;
+				display:inline-block;
+				vertical-align:top;
+				position:relative;
+				transition:color 0.33s ease;
+				&:after{ content:''; 
+					width:100%;
+					height:1px;
+					background-color:currentcolor;
+					display: block;
+					position:absolute;
+					left:0;
+					bottom:0.6em;
+					transition:transform 0.33s ease-in-out, opacity 0.33s ease-in-out;
+					transform:scaleX(0);
+					opacity:0;
+				}
+			}
+		}
+		li.open > a[id],
+		li.active > a[id],
+		li:hover > a[id]{ 
+			color:@color1;
+			text-decoration:none;
+			transition-duration:0.15s;
+			&:after{
+				transition-duration:0.15s;
+				transform:scaleX(1);
+				opacity:1;
+			}
+		}
+		
+		ul { 
+		width:100%;
+		margin:0;
+		padding:0;
+		background:fade(#3eadca, 89%);
+		display:inline;
+		float:left;
+			
+			li{ 
+				width:100%;
+				background:none;
+				float:left;
+				
+				a {
+					line-height:40/@secondary;
+					font-size: @secondary/20em; 
+					color:#fff;
+					width:100%;
+					height:40em/@secondary;
+					margin:0;
+					padding:0;
+					display:inline-block;
+					vertical-align:top;
+					position:relative;
+				}
+			}
+		}
+		
+		li.active ul li a:hover,
+		ul li a:hover, 
+		ul li a.active { 
+			text-decoration:none;
+			color:#3eadca;
+			margin-bottom:0;
+			background:#fff;
+			border:none; 
+		}
+	}
+}
+
+/* main-nav make li fly in all cool */
+#main-nav .collapsible.open > ul {
+	animation:flyinmobilenav 0.4s 1;
+}
+#main-nav .collapsible.open ul ul { 
+	animation:none;
+}
+
+/* make flyouts expand on mobile */
+#main-nav ul ul li { 
+	height:0;
+	overflow: hidden;
+	transition-duration:0.33s;
+	opacity: 0;
+}
+/* all about that open class */
+#main-nav .open ul{ 
+	display:inline-block;
+	 
+	.open ul{ 
+		padding:1em 0;
+		
+		li { 
+			height:2em;
+			opacity: 1;
+		}
+	}
+}
+
+/* ===============================================
+	FULLMOB RULES
+=============================================== */
+@media only screen and (min-width: 1024px) {  
+/* main-nav */
+
+	//global override for hamburger on desktop layouts. Don't forget to adjust the responsive nav breakpoint on local.js as well.
+	#main-nav when (@mainnavstyle = 'fullmob'){
+		font-size:1em;
+		//width:330/20em;
+		right:0;
+		z-index:3000;
+		
+		.collapsible{
+			.trigger{ 
+				display:block;
+				box-shadow:none;
+			}
+		}
+	}
+	
+	nav when (@mainnavstyle = 'fullmob'){ 
+		&.horizontal ul li{ 
+			width:100%;
+			float:none;
+		}
+		 .collapsible ul{ 
+			display:none
+		}
+		 .open > ul{ 
+			display:block
+		}
+	}
+
+//end fullmob styles
+
+/* midTab 1024w */
+}
+
+
+/* ==================================================================
+	header
+=================================================================== */
+
+#hd { 
+	text-align:center;
+	color:@color1;//color should reflect color of phone number in header - 
+	padding:0;
+	position:relative;
+	@media only screen and (min-width: 666px) { 
+		text-align:right;
+	/* custom 666w */ 
+	}
+	@media only screen and (min-width: 1024px) { 
+		z-index:3000;
+	/* maxTab 1024w */
+	}
+	
+	.container{
+		@media only screen and (min-width: 666px) and (max-width: 1023px) { 
+			padding:0.66em 55px 0.66em 0;//55 clears trigger from main nav
+		/* range 666w - 1023oo */ 
+		}
+		@media only screen and (min-width: 1024px) {
+			padding:0.66em 0 0;
+		/* midTab 1024w */
+		}
+	}
+}
+
+/* ===============================================
+	logo
+=============================================== */
+
+#logo{
+	@logomobilecenter:false;//to center the logo from 320w - 479w change to true
+	@logowidth:240;//logo width from psd proof
+	@logoheight:94.3;//logo height from psd proof
+	
+	line-height:0;
+	font-size:0.7em;
+	width: @logowidth/20em;
+	margin:0.5em auto 1em 2%;
+	display:block;
+	position:relative;
+	
+	& when (@logomobilecenter = true) {
+		@media only screen and (max-width: 479px){
+			margin:0.5em auto 1em;
+		/* mintab 480oo */
+		}
+	}	
+	
+	@media only screen and (min-width: 666px) { 
+		position:absolute;
+		top:0;
+		left:2%;
+	/* custom 666w */ 
+	}
+	@media only screen and (min-width: 1024px) {
+		font-size:inherit; 
+		margin:0;
+		top:0.6em;
+		left:0;
+	/* maxTab 1024w */ 
+	}
+	
+	a{ 
+		display:inline-block;
+		vertical-align:top; 
+	}
+	//img{ width: @logowidth/20em; }
+	svg{ 
+		width: @logowidth/20em;
+		height: @logoheight/20em; 
+	}
+}
+
+/* ===============================================
+	contact info
+=============================================== */
+
+#contactinfo{ 
+	text-align:center;
+	width:100%;
+	margin:0 0 0.5em;
+	display:inline-block;
+	vertical-align:top;
+	
+	@media only screen and (min-width: 480px){ 
+		width:auto;
+		margin:0 0.5em 0 0;
+	/* mintab 480w */
+	}
+	
+	//address and phone must be declared individually as the phone ceases to be a link after 768px device width
+	.address{
+		@addresslh:30;//line-height
+		@addressfs:20;//font-size
+		
+		line-height:@addresslh/@addressfs; 
+		font-size:@addressfs/20em;
+		color:@color1;
+		width:auto;
+		margin-right:20em/@addressfs;
+		display:inline-block;
+		vertical-align:top;
+	}
+	.phone{ 
+		@phonelh:30;//line-height
+		@phonefs:20;//font-size
+		
+		line-height:@phonelh/@phonefs; 
+		font-size:@phonefs/20em;
+		color:@color1;
+		display:inline-block;
+		vertical-align:top;
+	}
+	
+	a{ 
+		transition:color 0.33s ease-in-out; 
+		&:hover{ 
+			color:@color0; 
+		}
+	}
+}
+
+/* ===============================================
+	utility-nav
+=============================================== */
+
+#utilitynav{ 
+	line-height:0;
+	width:auto;
+	margin:0;
+	padding:0;
+	display:inline-block;
+	vertical-align:top;
+	position:relative;
+	z-index:400;
+	
+	ul{ 
+		//normalize global values for ease of styling a links 
+		line-height:0;
+		width:auto;
+		margin:0;
+		padding:0;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		//normalize global values for ease of styling a links
+		
+		li{ 
+			//normalize global values for ease of styling a links 
+			line-height:0;
+			width:auto;
+			margin:0;
+			padding:0;
+			display:inline-block;
+			vertical-align:top;
+			position:relative;
+			//normalize global values for ease of styling a links
+			&:nth-child(n+2){ margin:0 0 0 0.5em; }
+			
+			a[id]{ }
+		}	
+	}
+	
+	
+	a{  
+		@unavlh:30;//line-height
+		@unavfs:13;//font-size
+		
+		line-height:@unavlh/@unavfs; 
+		font-size:@unavfs/20em;
+		text-align:center;
+		text-transform:uppercase;
+		color:#000;
+		padding:0;
+		background:@color1;
+		display:inline-block;
+		vertical-align:top;
+		transition:color 0.33s ease-in-out, background-color 0.33s ease-in-out;
+		
+		&:hover{ 
+			color:#fff;
+			background-color:@color0;
+		}
+		&.appointmentrequest{ @btnwidth:169;//width of button
+			width:(@btnwidth/@unavfs)*1em;
+		}
+		&.patient-login{ @btnwidth:117;//width of button
+			width:(@btnwidth/@unavfs)*1em;
+		}
+	}
+}
+
+/* ===============================================
+	socialmedia || aka social-icons
+=============================================== */
+
+.socialmedia{
+	@icondimensions:48;//social-icon height (and often width) from psd proof
+	@iconfontsize:16;//social-icon font-size from psd proof
+	
+	line-height:0;
+	text-align:center;
+	width:100%;
+	height:auto;
+	padding:0;
+	margin:1em 0 0;
+	position:relative;
+	z-index:300;
+	
+	@media only screen and (max-width: 1023px) {
+		display:flex;
+		justify-content:center;
+	/* midTab 1024oo */
+	}
+	
+	@media only screen and (min-width: 1024px) { 
+		width:@icondimensions/20em;
+		margin:0;
+		display: block;
+		position:absolute;
+		right:1em;// value may change
+		top:250/20em;// default 250 - value may change
+	/* maxTab 1024w */
+	}
+	@media only screen and (min-width: 1300px) { 
+		position:fixed;
+	/* desk 1300w */
+	}
+	
+	a{ 	
+		line-height: @icondimensions/@iconfontsize;
+		font-size: @iconfontsize/20em;
+		color:#fff;
+		height:(@icondimensions/@iconfontsize)*1em;
+		width:(@icondimensions/@iconfontsize)*1em;
+		border-radius: 50%;
+		margin:0 2px 0 0;
+		background:fade(@color1, 70%);
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		transition:transform 0.33s ease-in-out, color 0.33s ease-in-out;
+		
+		@media only screen and (min-width: 1024px) {  
+			margin:0 0 3px 0;
+		/* maxTab 1024w */
+		}
+		
+		&:nth-last-of-type(1){
+			margin:0;
+		}
+		
+		&:hover{ 
+			color:#fff;
+			background:@color0;
+			z-index:400;
+			transform:scale(1.44);
+		}
+		
+		.icon{ position:relative; }
+	}
+}
+
+/* ==================================================================
+	slideshow
+=================================================================== */
+
+@slideshowstyle:'classic';//SLIDESHOW style => video or classic
+@slideshowheight:800;//height of slideshow from psd proof - applies to classic slideshow only
+
+#slideshow{
+	font-size:2vw; 
+	text-align:center;
+	color:#fff;
+	background:#000;
+	& when (@slideshowstyle = 'classic'){ min-height:(@slideshowheight / 21) * 1vw;/* adjust to match slideshow height from proof */ }
+	& when (@slideshowstyle = 'video'){ min-height:55vw; } 
+	position:relative;
+	z-index:400;
+	
+	@media only screen and (min-width: 64em) {  
+		font-size:inherit;
+		width:100%;
+		margin-top:0;
+		top:0;
+	/* maxTab 1024w */
+	}
+
+	& when (@slideshowstyle = 'video'){
+		.welcomevid{ 
+			width:100%;
+			vertical-align:top;
+			aspect-ratio:~"16 / 9";//reduces cls
+			//uncomment below for parallax video - dont't forget to uncomment local.js parallax code
+			//@media only screen and (min-width: 81.25em) {
+			//  display: block;
+			//  position:fixed;
+			//  top:0;
+			//  left:0;
+			//}
+		}
+	}
+	
+	& when (@slideshowstyle = 'classic'){
+		#home-slideshow{ 
+			width:100%;
+			margin:0;
+			aspect-ratio:~'2000 /' @slideshowheight;//reduces cls
+			@media only screen and (min-width: 64em) { 
+				position:relative;
+				.hpslide{ 
+					max-width:none;width:100%;
+				}
+			/* maxTab 1024w */ 
+			}
+			//uncomment below for parallax slideshow - dont't forget to uncomment local.js parallax code
+			//@media only screen and (min-width: 81.25em) {
+			//  display: block;
+			//  position:fixed;
+			//  top:0;
+			//  left:0;
+			//}
+		}
+	}
+	
+	//for slogans and other overlaying elements
+	.ssoverlay{ 
+		line-height:35/40;
+		font-size:40/20em;
+		color:currentcolor;
+		width:100%;
+		display:block;
+		position:absolute;
+		left:0;
+		top:50%;
+		transform:translate3d(0,-50%,0);
+		z-index:420;
+		
+		.trait{ 
+			line-height:1;
+			font-size:2em;
+			text-transform: uppercase;
+			display:block;
+		}
+	}
+}
+
+
+/* ==================================================================
+	.spotlight
+=================================================================== */
+.spotlight{ 
+	text-align:center;
+	position:relative;
+	z-index:400;
+	> div{ 
+		position:relative;
+	}
+}
+
+/* ==================================================================
+	spot01 || COMMON SERVICES/CALLOUT-LIKE SECTION EXAMPLE
+=================================================================== */
+.spot01{ 
+	text-align:center;
+	padding:2em 0;
+	margin:0;
+	background:@color1;
+	position:relative;
+	z-index:410;
+	
+	@media only screen and (max-width: 479px){ 
+		font-size:3.2vw;
+	/* mintab opt-out 480oo */
+	}
+	@media only screen and (min-width: 480px){
+		font-size:1.7vw;
+	/* mintab 480w */
+	}
+	@media only screen and (min-width: 979px) {
+		font-size:inherit;padding:5em 0;
+	/* custom 979w */
+	}
+	
+	a{
+		color:@color1;
+		width:236/20em;
+		border-radius: 50%;
+		padding:0;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		transition:transform 0.33s ease-in-out;
+		@media only screen and (max-width: 665px) { 
+			&:nth-of-type(3){ 
+				display:block;
+				margin-right:auto;
+				margin-left:auto;
+			}
+		/* custom 666oo */
+		}
+		@media only screen and (max-width: 767px) { 
+			margin:2%;
+		/* midTab opt-out 768oo */
+		}
+				
+		@media only screen and (min-width: 768px) {
+			margin:0 1em;
+		/* midTab 768w */
+		}
+		
+		&:hover{
+			color:#fff;
+			background-color:fade(#fff, 10%);
+			transform:scale(1.23);
+			z-index:400;
+		}
+		
+		.decoration{ 
+			width:100%;
+			border-radius: 50%;
+			transition:transform 0.33s ease-in-out;
+		}
+		
+		.info{  
+			width:100%;
+			display:block;
+			position:absolute;
+			top:50%;
+			left:0;
+			transform:translate3d(0,-50%,0);
+		}
+		
+		.icon{
+			width:2em;
+			margin:0 auto 1em;
+			transition:transform 0.33s ease-in-out;
+		}
+		
+		h2.topic{ 
+			line-height:20/18;
+			font-size:18/20em;
+			text-transform: uppercase;
+			color:currentcolor;
+			width:100%;
+			display:block;
+			
+			.trait{
+				font-weight:700; 
+				font-style:italic;
+			}
+		}
+	}
+}
+
+/* ===============================================
+	spot02 || COMMON GENERAL INFORMATION SPOTLIGHT SECTION
+=============================================== */
+
+.spot02{
+	color:#fff;
+	background-color:@color0;
+	background-repeat: no-repeat;
+	@media only screen and (max-width: 665px) { 
+		padding:3em 0;
+	/* custom opt-out 665oo */
+	}
+	@media only screen and (min-width: 666px) {
+		font-size:~'min(1.4vw, 1em)';
+	/* custom 666w */
+	}
+	@media only screen and (min-width: 1300px) { 
+		font-size:inherit;
+	/* desk 1300w */
+	}
+	
+	.decoration{
+		width:80%;
+		max-width:20em;
+		display:inline-block;
+		vertical-align:middle;
+		@media only screen and (max-width: 665px) { 
+			margin:0 0 1em;//margin bottom while decoration and mod are stacked
+		/* custom opt-out 666oo */
+		}
+		@media only screen and (min-width: 666px) {
+			margin:0 1em 0 0;//margin left when decoeration and mod line up horizontally
+		/* custom 666w */
+		}
+	}
+	
+	.mod{ 
+		width:96%;// if you add a container element to the html this should change to 100%
+		max-width:504/20em;
+		padding:2em 0;	
+		display:inline-block;
+		vertical-align:middle;
+		
+		@media only screen and (min-width: 768px) { 
+			text-align:left;
+			padding:0; 
+			/* midTab 768w */
+		}
+	}
+	
+	h2.topic{
+		line-height:49/50; 
+		font-size:50/20em;
+		font-weight: 400;
+		text-transform:uppercase;
+		color:#fff;
+		margin:0 0 0.5em;
+		 
+		.trait{
+			letter-spacing:0.12em;
+			line-height:37/31; 
+			font-size:31/50em;
+			font-weight:300;
+		}
+	}
+	
+	.info{
+		line-height:21/15; 
+		font-size:15/20em;
+		margin:0 0 58/15em;
+		display:none;//hidden from mobile devices
+		
+		@media only screen and (min-width: 1300px) { 
+			display:block;//displays only on desktop
+			/* desk 1300w */
+		}
+	}
+	
+	.spotbtn{
+		@lineheight:43;
+		@fontsize:13;
+		@width:123;
+		@height:43;
+		
+		letter-spacing: 0.14em;
+		line-height:@lineheight/@fontsize;
+		font-size:@fontsize/20em;
+		text-align:center;
+		font-weight: 300;
+		text-transform: uppercase;
+		color:#fff;
+		width:(@width/@fontsize) * 1em;
+		height:(@height/@fontsize) * 1em;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		z-index:420;
+		transition:color 0.33s ease-in-out;
+		
+		&:hover{ 
+			color:#bfc57e;
+			transition-duration:0.33s;
+			&:after{ 
+				background-color:#878787;
+			}
+		}
+		&:after{ content:'';
+			width:100%;
+			height:100%;
+			display:block;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:-1;
+			border:2px solid #fff;
+			transition:background-color 0.33s ease-in-out;
+		}
+	}
+}
+
+/* ===============================================
+	spot03 || COMMON GENERAL INFORMATION SPOTLIGHT SECTION REVERSE
+=============================================== */
+
+.spot03{
+	color:#fff;
+	background-color:@color0;
+	background-repeat: no-repeat;
+	
+	@media only screen and (max-width: 665px) { 
+		padding:3em 0;
+	/* custom opt-out 666oo */
+	}
+	@media only screen and (min-width: 666px) {
+		font-size: ~'min(1.4vw, 1em)';
+	/* custom 666w */
+	}
+	@media only screen and (min-width: 768px) {
+		direction:rtl;//reverses direction of 'float'
+	/* midTab 768w */
+	}
+	@media only screen and (min-width: 1300px) { 
+		font-size:inherit;
+	/* desk 1300w */
+	}
+	
+	.decoration{
+		width:80%;
+		max-width:20em;
+		display:inline-block;
+		vertical-align:middle;
+		
+		@media only screen and (min-width: 666px) {
+			margin:0 0 0 2em;//margin left when decoeration and mod line up horizontally
+		/* custom 666w */
+		}
+	}
+	
+	.mod{ 
+		width:96%;// if you add a container element to the html this should change to 100%
+		max-width:504/20em;
+		padding:2em 0;	
+		display:inline-block;
+		vertical-align:middle;
+		direction:ltr;//prevents type direction from being reversed by parent declaration
+		
+		@media only screen and (min-width: 768px) { 
+			text-align:right; 
+			padding:0;
+			/* midTab 768w */
+		}
+	}
+	
+	h2.topic{
+		line-height:49/50; 
+		font-size:50/20em;
+		font-weight: 400;
+		text-transform:uppercase;
+		color:#fff;
+		margin:0 0 0.5em;
+		 
+		span.trait{
+			letter-spacing:0.12em;
+			line-height:37/31; 
+			font-size:31/50em;
+			font-weight:300;
+		}
+	}
+	
+	.info{
+		line-height:21/15; 
+		font-size:15/20em;
+		margin:0 0 58/15em;
+		display:none;//hidden from mobile devices
+		
+		@media only screen and (min-width: 1300px) { 
+			display:block;//displays only on desktop
+		/* desk 1300w */
+		}
+	}
+	
+	.spotbtn{
+		@lineheight:43;
+		@fontsize:13;
+		@width:123;
+		@height:43;
+		
+		letter-spacing: 0.14em;
+		line-height:@lineheight/@fontsize;
+		font-size:@fontsize/20em;
+		text-align:center;
+		font-weight: 300;
+		text-transform: uppercase;
+		color:#fff;
+		width:(@width/@fontsize) * 1em;
+		height:(@height/@fontsize) * 1em;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		z-index:420;
+		transition:color 0.33s ease-in-out;
+		
+		&:hover{ 
+			color:#bfc57e;
+			transition-duration:0.33s;
+			&:after{ 
+				background-color:#878787;
+			}
+		}
+		&:after{ content:'';
+			width:100%;
+			height:100%;
+			display:block;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:-1;
+			border:2px solid #fff;
+			transition:background-color 0.33s ease-in-out;
+		}
+	}
+}
+
+
+/* ==================================================================
+	
+	subnav || aka subnav-outer || aka ipSub
+	TOP OF PAGE orientation - for sidebar orientation scroll or search down to 'side oriented' [=
+	
+=================================================================== */
+
+@subnavorientation:'top';//SUBNAV ORIENTATION => side or top
+
+/* TOP ORIENTED */
+#subnav when (@subnavorientation = 'top'){
+	
+@subnavlinklineheight:18;
+@subnavlinkfontsize:15;
+
+@subnavtoppadding:160;//larger padding to push subnav links down below fixed positioned #masthead elements
+@subnavbottompadding:42;//space between links and bottom of section
+
+	text-align:center;
+	color:#000;
+	padding:(@subnavbottompadding/20em) 0;
+	position:relative;
+	overflow:hidden;
+	
+	@media only screen and (min-width: 1300px) {  
+		padding-top:@subnavtoppadding/20em;
+	/* desk 1300w */
+	}
+	
+	p{ 
+		line-height:@subnavlinklineheight/@subnavlinkfontsize;
+		font-size:@subnavlinkfontsize/20em;
+		margin:0;
+		padding:0; 
+	}
+	a{ 
+		color:#333;
+		margin:0.2em 0.8em;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		
+		@media only screen and (min-width: 1024px) { 
+			margin:0;
+		/* maxTab 1024w */ 
+		}
+		
+		&:after{ content:'';
+			width:100%;
+			height:1px;
+			background:currentcolor;
+			display:block;
+			position:absolute;
+			bottom:0;
+			left:0;
+			transition:transform 0.33s ease-in-out, opacity 0.33s ease-in-out;
+			transform:scaleX(0);
+			opacity:0;
+		}
+		&:hover, &.active{ 
+			color:@color0;
+			text-decoration:none; 
+			&:after{ 
+				opacity:1;
+				transform:scaleX(1);
+			}
+		}
+	}
+	.divider{ 
+		display:none;
+		 
+		@media only screen and (min-width: 1024px) { 
+			margin:0 0.3em;
+			display:inline-block;
+			vertical-align: top;
+		/* maxTab 1024w */
+		}
+	}
+}
+
+
+/* ==================================================================
+	content || aka .interior-content
+=================================================================== */
+
+@bdcontainerwidth:1200;//pixel width of interior bd container on proof
+@bdcontentwidth:840;//pixel width of interior content area on proof
+
+#bd{
+	padding:3em 0;
+	& when (@subnavorientation = 'side'){ padding:0 0 3em; }
+	background:#fff;
+	position:relative;
+	z-index:400;
+	
+	@media only screen and (min-width: 768px) { 
+		padding:100/20em 0 120/20em;//adjust padding to match proof
+	/* midTab 768w */
+	}
+	.container{ 
+		max-width:@bdcontainerwidth/20em;
+	}
+}
+
+#content { display: block; 
+	@media only screen and (min-width: 768px) {
+		max-width:@bdcontentwidth/20em;
+		width:(@bdcontentwidth / @bdcontainerwidth) * 100%;
+		float:left;
+		
+		p{ 
+			text-align:justify; 
+		} 
+	/* midTab 768w */ 
+	}
+	.content-text{
+		line-height:@contentlineheight/@contentfontsize;
+		
+		// for content area w/ text smaller (or larger) than 20px
+		@media only screen and (min-width: 1300px) {  
+			font-size:@contentfontsize/20em;
+		/* desk 1300w */	
+		}
+	}
+}
+
+/* ==================================================================
+	.home content || aka #home-content
+=================================================================== */
+
+@homepagebdcontainerwidth:1140;// pixel width of homepage bd container on proof
+@homepagecontentwidth:660;// pixel width of homepage content area on proof
+
+@homepagecontentfloat:'left';//float for HP content width left (default), right, or center
+
+.home #bd{	
+	padding:3em 0;
+	@media only screen and (min-width: 768px) { 
+		padding:4em 0 2.6em;
+	/* midTab 768w */
+	}
+	
+	.container{ 
+		max-width:@homepagebdcontainerwidth/20em;
+	}
+	
+	#content{
+		@media only screen and (min-width: 768px) { 
+			width:100%;
+			max-width:@homepagecontentwidth/20em;
+			float:none;
+			margin-left:auto;
+			margin-right:auto;
+		/* midTab 768w */
+		}
+		
+		@media only screen and (min-width: 1300px) {
+			
+			//max-width:@homepagecontentwidth/20em;
+			
+			& when (@homepagecontentfloat = 'left'){ margin-left:0; }
+			& when (@homepagecontentfloat = 'right'){ margin-right:0; }
+		/* desk 1300w */
+		}
+		.content-text{
+			//un-comment if hp line-height is different from sub-page
+			//line-height:@contentlineheight/@contentfontsize;
+			
+			//un-comment if multiple columns on hp content
+ 			//@media only screen and (min-width: 768px) {  
+	 		//	column-count:2;
+	 		//	column-gap:50em/@contentfontsize;
+	 		///* midTab 768w */
+	 		//}
+	 					
+			//for hp content area text font-size that is different from subpage
+			@media only screen and (min-width: 1300px) {  
+				//font-size:@hpcontentfontsize/20em;
+			/* desk 1300w */	
+			}
+		}
+		p{ 
+			@media only screen and (min-width: 768px) { 
+				text-align:justify;
+			/* midTab 768w */
+			}
+		}
+	}
+}
+
+/* ==================================================================
+	custom content
+=================================================================== */
+
+.mediaslider { text-align:center;
+	.cycle-slideshow { 
+		width:100%;
+		margin: 0.5em 0 1.5em;
+		position:relative;
+		.cycle-slide { 
+			@media only screen and (max-width: 767px) {
+				padding: 0 5%;				
+			/* midTab opt-out 768oo */
+			}
+		}
+	
+		> div { 
+			font-size:2.8em;
+			color:@color1;
+			position: absolute;
+			top: 50%;
+			z-index: 900;
+			transform:translate3d(0,-50%,0);
+					
+			span { 
+				transition:transform 0.35s ease, opacity 0.35s ease; 
+			}
+		
+			&.cycle-prev { 
+				text-align:left;
+				left: 0;
+				
+				span { 
+					transform-origin:left center;
+				}
+			}
+			&.cycle-next { 
+					text-align:right;
+					direction: rtl;
+					right:0;
+					
+				span { 
+					transform-origin:right center;
+				}
+			}
+			&:hover { cursor: pointer;
+				span { 
+					transform:scale(1.44);
+					opacity: 0.68; 
+				}
+			}
+		}
+	}
+}
+
+/* comment line below if patient-login is live and legit */
+.financial-information #financial-online-services{ 
+	display:none; 
+}
+
+/* ===============================================
+ 		common treatments
+=============================================== */
+
+.before-after-image{ 
+	width:44%;
+	display:inline-block;
+	vertical-align:top;
+    img, span{ 
+	    display: block;
+	    
+        @media only screen and (min-width: 768px) { 
+	        width:100%; 
+	    /* midTab 768w */
+	    }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .before-after-box, p.before-after-text{ 
+		width:49%;
+		display:inline-block;
+		vertical-align:top;
+    }
+/* midTab 768w */
+}
+
+/* preventive-care */
+.preventive-care #content{
+	ul{  
+		display:inline-block;
+	}
+}
+
+/* reduces dimensions of coronavirus tab */
+#coronavirus-update{ 
+	font-size:0.85em;
+	padding:0.5em 25/20em!important;
+	left:0.5em!important; 
+	
+	@media only screen and (min-width: 1300px) { 
+		font-size:1em;//returns coronavirus tab to default dimensions
+	/* desk 1300w */
+	}
+}
+
+
+/* ==================================================================
+	meet the team page classes for individual and full team images 
+=================================================================== */
+
+.staff{ 
+	//use instead of (and not in conjunction with) img-right
+	width:45%;
+	max-width:10em;//200px
+	margin:0 0 1em 1em;
+	display: block;
+	float:right;
+}
+
+.team{ 
+	width:100%;
+	max-width:1000px;
+	margin:2% auto;
+	display:block;
+}
+
+
+/* ==================================================================
+	sitemap
+=================================================================== */
+
+@ullineheight:35;
+@ulfontsize:23;
+@ulullineheight:39;
+@ululfontsize:20;
+
+.sitemap{ 
+	#content{ 
+		
+		.column > ul > li{ 
+			margin-bottom:1.45em; 
+		}
+		ul { 
+			margin-left:0px;
+			list-style:none;
+			margin-bottom:0; 
+		}
+		
+		ul a { 
+			line-height:@ullineheight/@ulfontsize;
+			font-size:(@ulfontsize / @contentfontsize) * 1em;
+			font-weight:700;
+			text-transform:uppercase;
+			text-decoration:none;
+			color:@color1;
+			transition-duration:0s;
+		}
+		ul ul li a {
+			line-height:@ulullineheight/@ululfontsize;
+			font-size:(@ululfontsize / @contentfontsize) *1em;
+			font-style: normal;
+			font-weight:400;
+			text-transform:none;
+			color:@color1;
+			margin-left:0;
+			/*to increase space adjust [body.sitemap #bd ul ul li] below*/ 
+		}
+		
+		a:hover { 
+			text-decoration:none;
+			color:@color0;
+		}
+	}
+}
+
+body.sitemap #bd ul li { 
+	list-style: none; 
+}
+
+body.sitemap #bd ul ul li { 
+	list-style:none;/*list-style-image:none;*/
+	margin-left:0;/*default=15px*/ 
+}
+ 
+body.sitemap #content .width1{ 
+	width:100%;
+	@media only screen and (min-width: 48em) {
+		width:50%;/*default 50%*/ 
+		&:not(.first){ 
+			width:auto;
+			float:right;
+		}		
+	/* midTab 768w */
+	}
+}/* global override */
+
+/* ==================================================================
+	sidebar
+=================================================================== */
+
+@sidebarwidth: 300;// sidebar width from psd proof usually matches width of sitepic
+
+#sidebar{
+	& when (@subnavorientation = 'side') {  
+		width:110%;//allows sidebar to span outside of container to appear top oriented for mobile devices
+		margin:0 -5% 3em;//returns sidebar center with negative left margin
+		display:block;
+	} 
+	& when (@subnavorientation = 'top') { 
+		width:100%;
+		max-width:@sidebarwidth/20em;
+		margin:0 auto 6%;
+		display:none;
+	}
+	padding:0;
+	position:relative;
+	z-index:420;
+	
+	@media only screen and (min-width: 768px) { 
+		width:(@sidebarwidth / @bdcontainerwidth) * 100%;
+		margin:0 0 1em;
+		float:right;
+		clear:right;
+		& when (@subnavorientation = 'top') { 
+			display:block;
+		}
+		& when (@subnavorientation = 'side') { 
+			display:flex;
+			flex-direction:column; 
+		}
+	/* midTab 768w */ 
+	}
+}
+
+/* ===============================================
+	sitepics
+=============================================== */
+
+#hide-stock{ position:relative; 
+	& when (@subnavorientation = 'side') { 
+		width:100%;
+		max-width:@sidebarwidth/20em;
+		margin:0 auto 6%;
+		padding:0;
+		display:none;// necessary to hide all hide-stock elements on mobile devices - doctor pages dealt with later
+
+		@media only screen and (min-width: 768px) { 
+			//reconstitutes all hide stock elements from tablet up and positions absolutely above inpage subnav.
+			margin-bottom:1em;
+			display:block;
+			order:1;
+			/* midTab 768w */
+		}
+	}
+}
+.stock{ 
+	width:100%;
+	position:relative;
+}
+
+
+/* ===============================================
+	show doctor image on all devices
+=============================================== */
+
+/*.home,*//*body[class^='meet-the-'], body[class^='meet-our-'],*/
+.meet-the-doctor, body[class^='meet-dr-'], body[class^='meet-doctor-']{ 
+	
+	& when (@subnavorientation = 'side') {   
+		#hide-stock{ display:block; }
+	}
+	& when (@subnavorientation = 'top') { 
+		#sidebar{ display:block; }
+	}
+}
+
+body[class~='blog']{
+	& when (@subnavorientation = 'top') { 
+		#sidebar{ display:block; } 
+	}
+	#hide-stock{ 
+		display:none;// hides hide-stock element on blog page preventing conflict with search widget
+	}
+}
+
+/* ==================================================================
+	SUBNAV || aka subnav-outer || aka ipSub || SIDE ORIENTED
+=================================================================== */	
+
+#subnav when (@subnavorientation = 'side') {
+
+@subnavh2topiclineheight:35;	
+@subnavh2topicfontsize:21;
+
+@subnavlinklineheight:18;
+@subnavlinkfontsize:15;
+	 
+	color:#fff;
+	margin:0 0 6%;
+	background:@color1;
+	position:relative;
+	overflow:hidden;
+	@media only screen and (max-width: 767px) {
+		text-align:center; 
+		padding:3em 10% 4em;
+	/* midTab opt-out 767oo */
+	}
+	@media only screen and (min-width: 768px) {
+		text-align:left;
+		padding:3em 1em 4em;
+		order:2;
+	/* midTab 768w */
+	}
+	
+	h2.topic{
+		line-height:@subnavh2topiclineheight/@subnavh2topicfontsize;
+		font-size:@subnavh2topicfontsize/20em;
+		text-align:inherit;
+		font-weight:400;
+		text-transform:uppercase;
+		color:#fff; 
+		height:(@subnavh2topiclineheight/@subnavh2topicfontsize) * 1em;
+		width:100%;
+		margin:0 auto 2em;
+		display:block;
+		position:relative;
+		z-index:400;
+	}
+	
+	p{ 
+		line-height:@subnavlinklineheight/@subnavlinkfontsize;
+		font-size:@subnavlinkfontsize/20em;
+		text-transform:uppercase;
+		width:100%;
+		margin:0;
+		padding:0;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		z-index:420;
+	}
+	
+	a{ 
+		// allows a-links to horizontally stack on mobile devices
+		color:#fff;
+		white-space:nowrap;
+		display:inline-block;
+		vertical-align:top;
+		margin:0.2em 0.8em;
+		position:relative;
+		
+		@media only screen and (min-width: 768px) { 
+		// on tablet and up a-tag will stack vertically
+			float:left;
+			clear:left;
+			margin:0.2em 0;
+		/* midTab 768w */
+		}
+		@media only screen and (min-width: 1300px) {
+		// on desktop extra margin removed because pointer device (mouse)
+			margin:0;
+		/* desk 1300w */
+		}
+		
+		&:after{ content:'';//underline style for active/hover a-tag
+			width:100%;
+			height:1px;
+			background:currentcolor;
+			display:block;
+			position:absolute;
+			bottom:0;
+			left:0;
+			transition:transform 0.33s ease-in-out;
+			transform:scaleX(0);
+		}
+		&:hover, &.active{ 
+			color:#fff;
+			text-decoration:none; 
+			&:after{
+				transform:scaleX(1);
+			}
+		}
+	}
+}
+
+/* END SIDEBAR - */
+
+/* ==================================================================
+	.spotlight
+=================================================================== */
+
+
+/* ===============================================
+	spot04 || COMMON SERVICES/CALLOUT-LIKE SECTION EXAMPLE
+=============================================== */
+
+.spot04{ 
+	text-align:center;
+	padding:2em 0;
+	margin:0;
+	background:@color1;
+	position:relative;
+	z-index:410;
+	
+	@media only screen and (max-width: 479px){ 
+		font-size:3.2vw;
+	/* mintab opt-out 480oo */
+	}
+	@media only screen and (min-width: 480px){
+		font-size:1.7vw;
+	/* mintab 480w */
+	}
+	@media only screen and (min-width: 979px) {
+		font-size:inherit;padding:5em 0;
+	/* custom 979w */
+	}
+	
+	a{
+		color:@color1;
+		width:236/20em;
+		border-radius: 50%;
+		padding:0;
+		display:inline-block;
+		vertical-align:top;
+		position:relative;
+		transition:transform 0.33s ease-in-out;
+		@media only screen and (max-width: 665px) { 
+			&:nth-of-type(3){ 
+				display:block;
+				margin-right:auto;
+				margin-left:auto;
+			}
+		/* custom 666oo */
+		}
+		@media only screen and (max-width: 767px) { 
+			margin:2%;
+		/* midTab opt-out 768oo */
+		}
+				
+		@media only screen and (min-width: 768px) {
+			margin:0 1em;
+		/* midTab 768w */
+		}
+		
+		&:hover{
+			color:#fff;
+			background-color:fade(#fff, 10%);
+			transform:scale(1.23);
+			z-index:400;
+		}
+		
+		.decoration{ 
+			width:100%;
+			border-radius: 50%;
+			transition:transform 0.33s ease-in-out;
+		}
+		
+		.info{  
+			width:100%;
+			display:block;
+			position:absolute;
+			top:50%;
+			left:0;
+			transform:translate3d(0,-50%,0);
+		}
+		
+		.icon{
+			width:2em;
+			margin:0 auto 1em;
+			transition:transform 0.33s ease-in-out;
+		}
+		
+		h2.topic{ 
+			line-height:20/18;
+			font-size:18/20em;
+			text-transform: uppercase;
+			color:currentcolor;
+			width:100%;
+			display:block;
+			
+			.trait{
+				font-weight:700; 
+				font-style:italic;
+			}
+		}
+	}
+}	
+
+/* ===============================================
+	spot05 || COMMON TESTIMONIAL SLIDESHOW SECTION EXAMPLE
+=============================================== */
+
+.spot05{
+	padding:3em 0;
+	background-color:#ccc;
+	
+	@media only screen and (min-width: 768px) { 
+		padding:5em 0;
+	/* midTab 768w */ 
+	}
+	
+	.cycle-slideshow{ 
+		color:@color0;
+		width:96%;
+		max-width:600/20em;
+		margin:0 auto;
+		display:block;
+		&:hover{ 
+			//color:@color1;
+			color:darken(@color0, 10%);
+		}
+	}
+	.cycle-slide{ // adjustments to placement and position of testimonials slideshow should be made on the .cycle-slideshow  
+		width:100%;
+		display:block;
+		transition:color 0.33s ease-in-out;
+	}
+	.testimony{  
+		line-height:30/13; 
+		font-size:15/20em;
+		display:block;
+	}
+	.testifier{  
+		line-height:43/13; 
+		font-size:13/20em;
+		text-transform:uppercase;
+		font-weight: 700;
+		display:block;
+	}
+	
+	.controls{ 
+		line-height:0;
+		width:96%;
+		max-width:40em;
+		margin:1em auto;
+		display: block;
+		@media only screen and (min-width: 768px) {
+			text-align:right;
+			margin:0 auto;
+			position:absolute;
+			top:50%;
+			right:0;
+			left:0;
+			transform:translate3d(0,-50%,0);
+		/* midTab 768w */
+		}
+		
+		> a{
+			line-height:50/20;
+			font-size:1em;
+			text-align: center;
+			color:#fff;
+			width: 50/20em;
+			height: 50/20em;
+			border-radius: 50%;
+			background-color:@color1;
+			
+			display:inline-block;
+			vertical-align:top;
+			transition:transform 0.33s ease-in-out, opacity 0.33s ease-in-out;
+			
+			&:hover{  
+				transform:scale(1.44);
+				opacity:0.5;
+			}
+			&.prev{
+				margin-right:1em;//adds space between individual controls for mobile's center alignment
+				@media only screen and (min-width: 768px) {
+					float:left;  
+				/* midTab 768w */
+				}
+			}
+			
+			&.next{  }
+		}
+	}		
+}
+
+/* ==================================================================
+	association logos 
+=================================================================== */
+
+.associationlogos{
+	text-align:center;
+	padding:2em 0;
+	background:#fff;
+	position:relative;
+	@media only screen and (max-width: 767px) {
+		font-size:2vw;  
+	/* midTab opt-out 767oo */
+	}
+	@media only screen and (min-width: 768px) {
+		font-size:1.25vw; 
+	/* midTab 768w */
+	}
+	@media only screen and (min-width: 1024px) { 
+		font-size:inherit;//inherits body font declaration  
+	/* maxTab 1024w */
+	}
+	
+	a{ 
+		margin:2%;
+		display:inline-block;
+		vertical-align:middle;
+		transition:opacity 0.33s ease-in-out, transform 0.33s ease-in-out;
+		@media only screen and (min-width: 768px) {
+			margin:0 1em;//losing margin on top and bottom when logos should line up horizontally	  
+		/* midTab 768w */
+		}
+		&:hover{
+			transform:scale(0.88);
+			opacity:0.5;
+		}
+		
+		//association logo dimensions mixin
+		.asologdim(@width, @height){
+			width:@width/20em;height:@height/20em;
+		}
+		
+		&.invisalign{ .asologdim(190, 51); }
+		//&.ada{ .asologdim(width, height); }
+		//&.abo{ .asologdim(width, height); }
+		//&.class{ .asologdim(width, height); }
+	
+		img, svg{ width:100%;height:100%;display:block; }
+	}
+}
+
+/* ==================================================================
+	#ft
+=================================================================== */
+//LAZYLOAD PROCEDURE:
+//once site is uploaded 'url(../images/footer/map.png)' should be removed from the background declaration
+//data-bg on html will handle the image loading
+#ft{
+	text-align:center;color:#fff;
+	width:100%;
+	padding:0;
+	background:#ccc url(../images/footer/map.png) no-repeat center center;
+	background-size: cover;
+	display: inline-block;
+	vertical-align: top;
+	position:relative;
+	@media only screen and (min-width: 1300px) { 
+		background-size:auto 100%;
+	/* desk 1300w */
+	}
+	
+	a{ 
+		color:#fff;
+		transition:color 0.33s ease-in-out;
+		
+		&:hover{ 
+			color:@color0;
+		} 
+	}
+}
+
+/* ===============================================
+		tnav
+=============================================== */
+//text nav rarely used but here it is 'cause it still pops up once in a while
+
+#textnav{ @fs:20;//variable for text-nav font-size || will only affect p.text-nav and a, span etc... 
+	text-align:center;
+	color:#fff;
+	
+	p.text-nav{ 
+		//normalize p tag 
+		.lh(24/@fs);//line-height
+		.fs(@fs/20em);//font-size
+		width:200em/@fs;
+		margin:0;
+		padding:0;
+	}
+	a{ 
+		//colors and hover styles declared in #ft above
+		display:inline-block;
+		vertical-align:top;
+		margin:0 0.6em 0.7em;
+		
+	}
+	span{ 
+		display:none;
+	}
+}
+
+/* ===============================================
+		locations || aka ft-location
+=============================================== */
+
+@ftphonelineheight:20;
+@ftphonefontsize:22;
+
+@ftaddresslineheight:20;
+@ftaddressfontsize:18;
+
+// default mapmarkerstyle is 'alt' (white dot and shadow)
+// for no dot with shadow change to 'classic'
+// for white dot no shadow change to 'simple'
+// for white dot with black dot and no shadow change to 'simpleplus'
+@ftmapmarkerstyle:'alt';
+@ftmapmarkerfontsize:66;
+
+#location{
+	width:100%;
+	padding:3em 0;
+	background-color:fade(@color1, 90%);//background color opaque on mobile to show map
+	display:block;
+	
+	@media only screen and (min-width: 768px) {
+		text-align: right;
+		width:50%;
+		margin-right:50%;
+		background-color:@color1; 
+	/* midTab 768w */
+	}
+	@media only screen and (min-width: 1300px) {
+		//pushes location div further than 50% if necessary 
+		margin-right:~'calc(50% + 50px)';
+		padding-right:2em;
+		float:right;
+	/* desk 1300w */
+	}
+	.mod{ 
+		text-align:center;
+		width:100%; 
+		max-width:20em;
+		display: block;
+		@media only screen and (max-width: 767px) { 
+			margin:0 auto;
+		/* midTab opt-out 768oo */
+		}
+		@media only screen and (min-width: 768px) {
+			margin:0 0 0 auto;
+		/* midTab 768w */
+		}
+		
+	} 
+	.logo{
+		@logow:240;//logo width from psd proof
+		@logoh:94.3;//logo height from psd proof
+		line-height:0;
+		text-align: center;
+		margin:0 auto 1em;
+		display:block;
+		//img{ width:@logow/20em; }
+		svg{ 
+			width:@logow/20em;
+			height:@logoh/20em; 
+			path{ 
+				fill:#fff;
+			}
+		}
+	}
+	
+	.phone{  
+		line-height:@ftphonelineheight/@ftphonefontsize;
+		font-size:@ftphonefontsize/20em;
+		display:block;
+	}
+	
+	.address{
+		line-height:@ftaddresslineheight/@ftaddressfontsize;
+		font-size:@ftaddressfontsize/20em;
+		margin:0 auto;
+		display: block;
+		
+		.marker{
+			line-height:1;
+			font-size:(@ftmapmarkerfontsize / @ftaddressfontsize) * 1em;
+			color:@color1;
+			margin-left:2.4em;
+			position:absolute;left:50%;top:2em;
+			z-index:400;
+			transition:transform 0.33s ease-in-out;
+			transform-origin:center bottom;
+			@media only screen and (max-width: 767px) {
+				display:none;//hidden on mobile devices since not enough room to accommodate horizontal orintation from proof
+			/* midTab 768oo */
+			}
+			@media only screen and (min-width: 768px) {
+				display:block;
+			/* midTab 768w */
+			}
+			
+			&:before{ 
+				& when (@ftmapmarkerstyle ='simple'){ 
+					content:'\f041'; 
+				}
+				& when (@ftmapmarkerstyle ='classic'){ 
+					content:'\f041'; 
+				}
+				color:currentcolor;
+			}
+			&:after{ content:'';
+				& when (@ftmapmarkerstyle = 'alt'){
+					width:73em/@ftmapmarkerfontsize;
+					height:67em/@ftmapmarkerfontsize;
+					background: url(../images/footer/shadowalt.png) no-repeat center center;//image including drop shadow and white dot 
+					left:0.2em;
+					bottom:-0.15em;
+					z-index:-1;
+				}
+				& when (@ftmapmarkerstyle = 'classic'){ 
+					width:64em/@ftmapmarkerfontsize;
+					height:58em/@ftmapmarkerfontsize;
+					background: url(../images/footer/shadow.png) no-repeat center center;//shadow for classic map-marker
+					left:0.075em;
+					bottom:-0.025em;
+					z-index:-1;
+				}
+				& when (@ftmapmarkerstyle = 'simple'){
+					width:10em/@ftmapmarkerfontsize;
+					height:10em/@ftmapmarkerfontsize;
+					.round;
+					.center;
+					.bc(#fff);
+					.show;position:absolute;top:20em/@ftmapmarkerfontsize;right:0;left:0;
+					transition:transform 0.33s ease-in-out;
+				}
+				& when (@ftmapmarkerstyle = 'simpleplus'){ 
+					width:14em/@ftmapmarkerfontsize;
+					height:40em/@ftmapmarkerfontsize;
+					margin:0 auto;
+					background: url(../images/footer/plus.svg) no-repeat center center;//bg for simpleplus map-marker
+					right:0;bottom:-0.08em;left:0;
+				}
+				background-size: cover;
+				position:absolute;
+				
+				transition:transform 0.33s ease-in-out;
+			}
+		}
+		&:hover{
+			.marker{ 
+				transform:scale(2);
+			}
+		}
+	}
+
+	.officehours{
+		line-height:20/18;
+		font-size:18/20em;
+		width:300/18em;
+		margin:7em auto 0;
+		display: block;
+		
+		//change as needed 
+		.days,
+		.hours{  
+			width:48%;
+			display:inline-block;
+			vertical-align: top;
+		}
+	}
+}
+
+/* ==================================================================
+		#links || aka ft-design-credit
+=================================================================== */
+
+@linksheight:100;//height of #links area (formerly known as ft-design-cred)
+
+@linkslineheight:30;//based on backtotop height - this will determine line height of ALL elements in #links
+@linksfontsize:12;//font-size from 'sesame communications | sitemap' element
+
+#links{ 
+	text-align:center;
+	color:#000;
+	padding:2em 0;
+	margin:0;
+	background-color:#fff;
+	
+	@media only screen and (min-width: 768px) { 
+		height:@linksheight/20em;
+		padding:((@linksheight - @linkslineheight) / 40em) 0 0;
+	/* midTab 768w  */
+	}
+	
+	.util{ //contains sesame-link and sitemap link 
+		line-height:@linkslineheight/@linksfontsize;
+		font-size:@linksfontsize/20em;
+		margin-bottom:2em;
+		
+		@media only screen and (min-width: 480px) { //floats util element to left on tablet and up 
+			width:auto;
+			margin:0;
+			float:left;
+			/* mintab 480w */  
+		}
+		a{ 
+			color:#000;
+			transition:color 0.33s ease-in-out;
+			
+			&:hover{
+				color:@color0;
+			}
+		}	
+		a, 
+		.divider{ 
+			display:inline-block; 
+		}
+		.divider{ 
+			margin:0 0.6em;//adjust margin to increase space on left and right 
+		}
+	}
+}
+
+/* ===============================================
+		sesame link
+=============================================== */
+
+@sesameiconmono: false;//if sesame icon is monochromatic (one color) change this value to true
+@sesameiconw: 24;//sesame-icon width
+@sesameiconh: 20;//sesame-icon height
+@sesameiconmarginright: 8;//right margin between icon and letter 'W'
+
+a#sesame-link{
+	.sesameicon{
+		width:(@sesameiconw/@linksfontsize) * 1em;
+		height:(@sesameiconh/@linksfontsize) * 1em;
+		margin-right:(@sesameiconmarginright/@linksfontsize) * 1em;
+		display:inline-block;
+		vertical-align:middle;
+		
+		path when (@sesameiconmono = true) { 
+			fill: currentcolor;
+			transition:fill 0.33s ease-in-out;
+		}
+		path when not (@sesameiconmono = true){ 
+			transition:fill 0.33s ease-in-out;
+			&.top{ fill:#D6E03D; }
+			&.bottom{ fill:#00a5e3; }
+		}
+	}
+	
+	& when not (@sesameiconmono = true) {
+		&:hover{
+			.sesameicon{
+				path{ fill:currentcolor; }
+			}
+		}
+	}	
+}
+
+/* ===============================================
+	backToTop
+=============================================== */
+
+@bttfontsize:13;
+
+#btt{ 
+	text-align:center;
+	width:100%;
+	margin:0;
+	display:block;
+	position:relative;
+	
+	@media only screen and (min-width: 480px) { //floats back to top right from tablet onward
+		width:auto;
+		float:right;
+	 /* mintab 480w */  
+	}
+}
+
+a#backtotop{
+	line-height:@linkslineheight/@bttfontsize;
+	font-size:@bttfontsize/20em;
+	color:@color0;
+	display:inline-block;
+	vertical-align:top;
+	transition:color 0.33s ease-in-out;
+	
+	&:hover{ 
+		color:@color1;
+	}
+}
+
+/*superlative*/
+/************************************************************************************************************************************************/
+
+/* hide double hr aka div.hr */
+@hrcolor:#666;
+@hrheight:1px;//declare with 'px'
+@hrwidth:100%;//either 100% or the pixel value from the proof without the 'px'
+
+hr,
+.types-of-braces #content div.clear{ 
+	font-size:inherit;
+	height:@hrheight;
+	& when (@hrwidth = 100%) { 
+		width:@hrwidth;
+		margin:1.58em 0;
+	}
+	& when not (@hrwidth = 100%){ 
+		width:(@hrwidth / @contentfontsize) * 1em;
+		margin:1.58em auto 1.58em 0;
+	}
+	background:@hrcolor;
+	border:none;
+	display:block;
+}
+.brushing-and-flossing .content-text hr{ .left; }
+
+
+/* ===============================================
+	success message
+=============================================== */
+
+.success{
+	text-transform:none;
+	font-weight:400;
+	color:#fff;
+	width:100%;
+	padding:1rem;
+	float:left;
+	background:@color1;
+}
+
+/* ===============================================
+	Form Buttons
+=============================================== */
+
+form button {	
+	letter-spacing: normal;
+	font-weight:400;
+	text-transform:uppercase;
+	font-size:small;
+	color:#fff;
+	height:38px;
+	padding:0 1.5em;
+	background-color:@color1;
+	border:1px solid @color1;
+	transition:color 0.33s ease-in-out, background-color 0.33s ease-in-out, border-color 0.33s ease-in-out;
+			
+	&:hover {
+		color:#fff;
+		border-color:@color0;
+		background-color:@color0;
+	}
+}
+
+form p { height: auto; }
+
+/* ===============================================
+	chat widget resize for mobile use comfort
+=============================================== */
+
+#bc-chat-container{ 
+	font-size:0.8em!important;
+}
+.bc-minimize-state{ 
+	width:11.8em!important;
+	height:7.7em!important;
+}
+
+/************************************************************************************************************************************************/
+/* end superlatives */
+
+
+/* ===============================================
+Tablet
+Supports 768px (768px) and up
+=============================================== */
+@media only screen and (min-width: 768px) {
+
+
+/* ===============================================
+	blanket content sidebar hide
+=============================================== */
+
+.sitemap,
+.layout-full-width{
+	//& when (@subnavorientation = 'top'){
+		#content{ 
+			width:100%;
+			max-width:none; 
+		}
+		#sidebar{ 
+			display:none;
+		}
+	//}
+}
+
+/* ===============================================
+	custom content
+=============================================== */
+
+/*.success{ width:66%; }*/ //for pages with stock photo in the content area
+/*table.office-hours{ max-width:50%; }*/ //for pages with stock photo in the content area
+
+//.before-after-box, p.before-after-text{ 
+//	& when (@subnavorientation = 'side'){ width:100%; } //for sites subnav in sidebar
+//}
+//.before-after-image img{
+//	& when (@subnavorientation = 'side'){ width:auto; } //for sites subnav in sidebar
+//}
+
+.speed-system img[alt='Speed Braces']{
+	display:block;
+}
+
+/* ===============================================
+	PAGE SPECIFIC
+=============================================== */
+
+.which-is-right-for-me #content{
+	p{ 
+		display:inline-block;
+		float:left;
+	} 
+	a[href^='/sesame_media/docs/']{ 
+		text-align:center;display:block;
+		width:100%;
+		clear:both;
+		img{ 
+			display:inline-block; 
+		}
+	}
+}
+.in-ovation-testimonials .embed-container{ 
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+[class^='inovation-chart-']{ 
+	display:inline-block;
+	max-width:50%; 
+}
+
+.in-ovation-before-after{
+    #content p{ 
+	    text-align:center;
+	    margin-bottom:0; 
+    }
+    .content-text{
+        h3{ 
+	        text-align:center; 
+        }
+        
+        .img-left, .border{ 
+	        max-width:44%;
+	        float:none;
+	        display:inline-block;
+	        margin:2%;
+	    }
+    }
+}
+.in-ovation-videos{
+    .content-text{
+        h2{ 
+	        text-align:center;
+	    }
+        .embed-container{ 
+	        display:block;
+	        margin-left:auto;
+	        margin-right:auto;
+	    }
+    }
+}
+body[class*='in-ovation']{ 
+	.img-right{ 
+		max-width:40%;
+	}
+}
+
+/*END*/	
+}
+
+/* ===============================================
+Large Tablet Stylings
+Supports 1024px (1024px) and up
+=============================================== */
+@media only screen and (min-width: 1024px) {
+
+/* ==================================================================
+	main-nav
+=================================================================== */
+@mainnavfloat:right;// float of main nav - left, right, or none (to center it)
+
+@mainnavmargintop:40;//space above top level (a[id]) main-nav links required to position it properly 
+@mainnavheight:58;// height of main nav from proof  - from top of a[id] to top of drop down
+
+@mainnavitemmargin:36;// distance between top level (a[id]) main-nav links
+
+@dropdownlinkheight:25;// height of links in dropdown nav
+@dropdownoffset:22;// offset horizontal distance of drop menu from left side of main-nav item on psd
+
+//ul width conditional mixin
+.ulcond(left) { width:auto; }
+.ulcond(right) { width:auto; }
+.ulcond(none) { width:100%; }
+
+//ul ul li a padding conditional mixin
+.ululliacond(@a) when (@a = 0){
+	padding:0 ((@dropdownlinkheight/@secondary)*1em);
+}
+.ululliacond(@a) when (@a > 0){
+	padding:0 ((@dropdownoffset/@secondary)*1em);
+}
+
+#main-nav when (@mainnavstyle = 'standard'){
+	font-size:inherit;
+	width:100%;
+	height:@mainnavheight/20em;
+	margin-top:@mainnavmargintop/20em;
+	position:relative;
+	top:auto;
+	z-index:2900;// change to 3000 if nav appears visually above header elements
+	box-shadow:none;// makes outline from trigger disappear
+	/*background:none;*/
+	
+	.container{ 
+		background:none;
+		max-width:@mainnavfloat;//will be invalid css except when var is none (to center it)
+	}
+	div.collapsible{ 
+		margin:0 auto;
+	}
+	
+	ul { 
+		height:@mainnavheight/20em;
+		.ulcond(@mainnavfloat);
+		padding:0;
+		margin:0;
+		border:none;
+		background:none;
+		position:static;
+		float:@mainnavfloat;
+	
+		li { 
+			height:100%;
+			margin:0 @mainnavitemmargin/20em 0 0;
+			background:none;
+			position:relative;
+			vertical-align:top;
+			float:none;
+			clear:none;
+			
+		&.contact, &.contact-us{ 
+			margin-right:0;
+			padding-right:0;
+		}
+		
+			a[id]{
+				line-height:40/@primary;
+				text-align:center;
+				text-decoration:none;
+				height:100%;
+				z-index:3000;
+				
+				&:after{ bottom:16em/@primary; }
+			}
+		}
+		
+		ul {
+			width:auto;
+			height:auto;
+			padding:1em 0;
+			z-index:2800;
+			position:absolute;
+			display:none;
+		
+			li { 
+				width:100%;
+				height:@dropdownlinkheight/20em;
+				margin:0;
+				padding:0;
+				opacity:1;
+				float:left;
+			
+				a {
+				line-height:@dropdownlinkheight/@secondary;
+				text-align:left;
+				white-space:nowrap;
+				height:(@dropdownlinkheight/@secondary) * 1em;
+				width:100%;
+				.ululliacond(@dropdownoffset);
+				float:left;
+				transition-duration:0s;
+				}
+			}
+		}
+	}
+	// reverses text-align for flyout on last nav item
+	ul li.contact-us ul li a,
+	ul li.contact ul li a{
+			text-align:right;
+			float:right;
+	}
+	// special drop locations 
+	ul li:hover ul{ 
+		left:@dropdownoffset / -20em;
+		/*top:37px;*/ //rarely used - should only 'pull' drop menu upwards so as not to create white space between nav and drop menu.
+		display:block; 
+	}
+	ul li.contact-us:hover ul,
+	ul li.contact:hover ul{ 
+			left:auto;
+			right:@dropdownoffset / -20em;
+			margin:0;
+	}
+}
+
+/*END*/
+}
+
+
+/* ie nonsense */
+/***********************************************
+target ie11: html[data-useragent*='Trident/7.0']
+***********************************************/
+html[data-useragent*='Trident/7.0']{ /* END */ }
+
+/* custom animations */
+@keyframes flyinmobilenav {
+  from { left: 300px;opacity: 0; }
+  to { left: 0;opacity: 1; }
+}

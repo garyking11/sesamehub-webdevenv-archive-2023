@@ -1,0 +1,419 @@
+<div id="support-container" class="container">
+
+    <h1>{{title}}</h1>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h2>Tools and Utilities</h2>
+
+            <mat-accordion multi="false">
+
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+
+                        <mat-panel-title>Create Buildkit</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="sesame-blue">This is the process to create the initial buildkit.</p>
+                    <ol>
+                        <li>In your terminal, type cd into your install location:</li>
+                        <li class="sesame-green">- macOS: /Applications/MAMP/www</li>
+                        <li class="sesame-green">- PC: c:/MAMP/www</li>
+                        <li>In your terminal, type gulp watch, then enter
+                        <li>At the top of the page ADD THE ACCOUNT-NAME of the website you are building in the Create
+                            Directory input field ie:
+                            jones-bob.
+                        </li>
+                        <li>CLICK CREATE DIRECTORY</li>
+                        <li>Using Select Account dropdown located under Select Account, select the account name that you
+                            have just entered.
+                        </li>
+                        <li>CLICK SELECT ACCOUNT ie: account-name</li>
+                        <li>ADD builder name</li>
+                        <li>After creating the directory and selecting the account, run 'gulp watch' in your terminal
+                        </li>
+                        <li>If there is an error in the terminal, restart gulp by typing 'gulp watch'</li>
+
+                    </ol>
+                    <li class="text-warning">NOTE: If you are unable to retrieve main-nav or welcome text, upload
+                        the new layout.php to the account-name you are working on.
+                    </li>
+                    <h3>Hub Welcome Text</h3>
+
+                    <p class="sesame-blue">This button will load the welcome text as defined within the Sesame Hub
+                        Dashboard into your
+                        buildkit. It is also editable within the textarea containing the markup.</p>
+
+                    <ul>
+                        <li>This account-name must be present on the HUB!</li>
+                        <li>Alternatively if you do not have an internet connection you can use "STOCK welcome text."
+                        </li>
+                        <li>Click Apply after content is loaded.</li>
+                    </ul>
+
+
+                    <h3>HUB #main-nav</h3>
+                    <p class="sesame-blue">This button will load the current hub sitemap as defined within the Sesame
+                        Hub Dashboard into
+                        your main-nav html within the buildkit. Alternatively if you do not have a internet connection
+                        you can use "STOCK
+                        #main-nav."</p>
+                    <ul>
+                        <li>Click Apply after content is loaded</li>
+                    </ul>
+
+                    <h4>Select Options</h4>
+                    <ul>
+                        <li>Add the GA CODE in the provided form field</li>
+                        <li>Add the tagline for slideshow or video (if present)</li>
+                        <li>This is the tagline this is positioned over the Hero (HTML allowed)</li>
+                    </ul>
+
+                    <h4>Add the following components to buildkit</h4>
+                    <ul>
+                        <li>Hero - Select either the "classic" or "video"</li>
+                        <li class="text-warning">Content (required). Select Top Subnav or Side Subnav</li>
+                        <li><span class="bold">Add Spotlights</span> After reviewing the design select the appropriate
+                            layout
+                        </li>
+                        <ul>
+                            <li>Spotlight One Horizontal</li>
+                            <li>Spotlight Two Horizontal</li>
+                            <li>Spotlight Three Horizontal</li>
+                            <li>Spotlight FourHorizontal</li>
+                            <li>Spotlight Five Horizontal</li>
+                            <li>Spotlight Column Img Left</li>
+                            <li>Spotlight Column img Right</li>
+                            <li>Testimonial Rotator</li>
+                            <li>Association Logos</li>
+                        </ul>
+                        <li>Only the Spotlights and Testimonial Rotators are allowed to have more than one item. If for
+                            example you
+                            want to have 2 slideshows in the
+                            build, add it manually.
+                        </li>
+                    </ul>
+
+                    <p>Restart Gulp! (important)
+                        ERROR TIP: if Gulp quits with an error, type control C from the active terminal and restart Gulp
+                        by typing gulp-watch in the terminal.
+
+                    <h4>webP converter</h4>
+                    <p class="sesame-blue">The site manager has a built-in webP converter. This function will
+                        automatically convert images
+                        placed into their appropriate directories ie: assets/images/office-tour,
+                        assets/before-after-cycle, assets/ uploads/images/ etc.
+                        <br>
+
+                        A new directory will be created in the assets/ directory with the newly created webP images.
+                        These can then be uploaded to the hub.</p>
+
+
+                    <h3>Save/Finish</h3>
+                    <p class="text-warning">WARNING: If you click the SAVE/FINISH' button after the site has been
+                        created and you perhaps have done
+                        some work,
+                        the existing buildkit with that account-name will be overwritten with a new buildkit.</p>
+
+
+                    <h3>Ready to build ...</h3>
+                    <ul>
+                        <li>Navigate to the newly created starter buildkit</li>
+                        <li>Go to the newly created browser tab and hard refresh the starter buildkit<br>
+                            Mac: http"//localhost:8888/account-name/#/<br>
+                            PC: http"//localhost/account-name/#/<br></li>
+                        <li>While Gulp is running your buildkit changes ie: .less and html markup will automatically be
+                            updated and
+                            be
+                            visible on your machine in the starter buildkit.
+                        </li>
+                        <li>The page will then reload automatically to show the changes you have made.</li>
+
+                    </ul>
+
+                    <p>After the build is completed locally
+                        Upload the 'www' directory to the account-name/ on the hub.</p>
+
+                    <p>DELETE AND REPLACE THE HUB 'www' DIRECTORY with the files in your buildkit.</p>
+
+                    <p class="strong">DO NOT UPLOAD the following files/directory:</p>
+
+                    <ul>
+                        <li>.metadata</li>
+                        <li>.hub-welcome-text</li>
+                        <li>Upload the 'www' directory and it's contents to the account-name on the hub.</li>
+                        <li>Finish the build on the HUB.</li>
+                        <li class="text-warning">NOTE: Do not change the current directory structure. ie:
+                            images/callouts etc, includes,
+                            uploads/images.
+                        </li>
+                        <li class="text-warning">NOTE: Do not remove the /assets/includes/data directory or it's
+                            contents.
+                        </li>
+
+                        <li>NOTE: You can reset welcome text and main-nav text only after you have clicked 'Apply' once
+                            during the
+                            creation
+                            of the template.
+                        </li>
+                        <li>Sub navigation menus are hard coded and are not pulled from the hub.</li>
+                    </ul>
+
+                    <h3>RE-STARTING A PROJECT</h3>
+                    <p>You can restart the build by clicking the 'SAVE/FINISH' button.
+                        This will overwrite your current account-name directory and any work you have done.
+                    </p>
+
+                    <h4>KNOWN ERRORS:</h4>
+                    <p>"... Uhoh. Got error write EPIPE ...
+                        Error: write EPIPE
+                        at WriteWrap.onWriteComplete [as oncomplete] (internal/stream_base_commons.js:83:16)"
+                        gulp automatically continues and you can continue also.</p>
+
+                    <p>Restart gulp to fix these errors. (control C, gulp watch)
+                        When a local account-name directory is deleted, gulp will throw an error and quit. Restart gulp
+                        to fix this error. type control C, gulp watch from the terminal.</p>
+
+                    <p>When you re-visit an existing account-name local buildkit. This error will be visible in the
+                        terminal
+                        running
+                        gulp. type control C, gulp watch from the terminal</p>
+
+                    <p>.less syntax errors may cause Gulp to quit and fail. Usually though, the error will show up in
+                        the
+                        terminal
+                        and
+                        direct you to the syntax error. However, if Gulp fails and stops, Fix the error and restart
+                        Gulp.
+                        type
+                        control
+                        C, gulp watch from the terminal</p>
+
+
+                </mat-expansion-panel>
+
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Image Manager</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="sesame-blue">The image manager will allow you to drag and drop images into the appropriate
+                        directories.</p>
+                    <ul>
+                        <li>Use the dropdown menu to select and copy where you want the image placed.</li>
+                        <li>Drag and drop or click to select and upload from the directory where your image are
+                            located.
+                        </li>
+                        <li>webP images will automatically be created and placed in the assets directory</li>
+                    </ul>
+                </mat-expansion-panel>
+
+
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Stock Photo Manager</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="sesame-blue">This page will add images to assets/uploads/images. These images are used for
+                        internal pages.
+                    </p>
+                    <ol>
+                        <li>Select desired ratio (1x1, 3x4 etc)</li>
+                        <li>Select desired category (adult, braces etc)</li>
+                        <li>Select library page</li>
+                        <li>Select image to associate with library page</li>
+
+                        <li>Repeat ...</li>
+
+                        <li>Your selected image will be copied into the local buildkit.
+                            (account-name/assets/uploads/images/)
+                        </li>
+                    </ol>
+
+                    <p>
+                        <img style="width: 100%; max-width: 500px;" src="assets/images/stock-photos-page.png">
+                    </p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Builder Notes</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="sesame-blue">The Site Manager now has a place to store snippets of code that you may want
+                        to use in the
+                        future.
+                        You will be able to add, save and delete notes and snippets.
+                    </p>
+
+                    <ul>
+                        <li>Create (Add) a snippet item in the Builder Notes page and save your snippet. This will be
+                            stored for future use.
+                        </li>
+                        <li>There is a backup made for these snippets to prevent mistakenly overwriting this file. It is
+                            located under MAMP/data/builder-data.json
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Form Builder</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="sesame-blue">The form builder can be used to create custom forms requested by the
+                        producer.</p>
+                    <ul>
+                        <li>Click the Add Form Field Button</li>
+                        <li>Add the page name as it will be named in the HUB dashboard.</li>
+                        <li>Select the desired form type. ie: text, select, textarea, checkbox.</li>
+                        <li>Add the field name.</li>
+                        <li>Special characters are not allowed and the field name will not allow them to be entered.
+                        </li>
+                        <li>Add the Field label -- Special characters ARE allowed.</li>
+                        <li>Select required if desired by checking the 'Required' checkbox.</li>
+                        <li>Form fields can be deleted using the "Delete Form Field." text.</li>
+                        <li>Select form fields allow the builder to add and delete selectable values.</li>
+                        <li>All formatting is done automatically. There is no need to alter the provided HTML.</li>
+                        <li>Form fields are sortable. Sort the order of the form fields desired by dragging and dropping
+                            the fields.
+                        </li>
+                        <li>Click Grab your HTML -- This will copy the HTML markup to the clipboard.</li>
+                        <li>Place the HTML into the appropriate page in the HUB dashboard.</li>
+                    </ul>
+
+                    <div><img src="assets/images/form-image1.png"></div>
+                    <div><img src="assets/images/form-image2.png"></div>
+                    <div><img src="assets/images/form-image3.png"></div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Office Tour</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <h3></h3>
+                    <ul>
+                        <li>Start by first placing the office tour images (if available) into the
+                            assets/images/office-tour
+                            directory. (use the drag and drop "Image Manager"). This will also create webP images for
+                            the
+                            images you select.
+                        </li>
+                        <li>Select the image from the select form.</li>
+                        <li>After selecting the image desired, "Image Height" and "Image Width" are automatically
+                            inserted
+                            into the html.
+                        </li>
+                        <li>Add an alt text if captions are desired.</li>
+                        <li>Click the "Grab your HTML" button to select and copy the HTML markup.</li>
+                        <li>Place the code into the appropriate page in the HUB dashboard.</li>
+                    </ul>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Before and After</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li>Start by first placing the office tour images (if available) into the
+                            assets/images/before-after-cycle
+                            directory. (use the drag and drop "Image Manager"). This will also create webP images for
+                            the
+                            images you select.
+                        </li>
+                        <li>After selecting the image desired, "image Height" and "Image Width" are automatically
+                            inserted
+                            into the html.
+                        </li>
+                        <li>Select the image from the select form.</li>
+                        <li>Add an alt text if captions are desired.</li>
+                        <li>Click the "Grab your HTML" button to select and copy the HTML markup.</li>
+                        <li>Place the code into the appropriate page in the HUB dashboard.</li>
+                    </ul>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Meet The Team</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li>Start by first placing the office tour images (if available) into the assets/uploads/images
+                            directory. (use the drag and drop "Image Manager"). This will also create webP images for
+                            the
+                            images you select.
+                        </li>
+                        <li>After selecting the image desired, "image Height" and "Image Width" are automatically
+                            inserted
+                            into the html.
+                        </li>
+                        <li>Add the team member name</li>
+                        <li>Add the team member position</li>
+                        <li>Add the team member bio</li>
+                        <li>Click the "Grab your HTML" button to select and copy the HTML markup.</li>
+                        <li>Place the code into the appropriate page in the HUB dashboard.</li>
+                    </ul>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Location(s)</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li>Start by first placing the office tour images (if available) into the assets/uploads/images
+                            directory. (use the drag and drop "Image Manager"). This will also create webP images for
+                            the
+                            images you select.
+                        </li>
+                        <li>After selecting the image desired, "image Height" and "Image Width" are automatically
+                            inserted
+                            into the html.
+                        </li>
+                        <li>Add practice name, doctor names (up to 3. Additional doctors will need to be added
+                            manually),
+                            address.
+                        </li>
+                        <li>phone, fax, email, office hours, and any additional information.</li>
+                        <li>Add the Google embed scripts, formatting will be automatic.</li>
+                        <li>Click the "Grab your HTML" button to select and copy the HTML markup.</li>
+                        <li>Place the code into the appropriate page in the HUB dashboard.</li>
+                    </ul>
+                </mat-expansion-panel>
+
+
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Canadian Content</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="sesame-blue">Sesame has Canadian customers and their pages are different from USA pages.
+                        This is a list
+                        of
+                        pages
+                        that are appropriate for their country.
+                    </p>
+                    <ul>
+                        <li>Select the category and page name.</li>
+                        <li>Place the code into the appropriate page in the HUB dashboard.</li>
+                    </ul>
+
+                </mat-expansion-panel>
+
+                <!--<mat-expansion-panel hideToggle>
+         <mat-expansion-panel-header>
+             <mat-panel-title>March 5 , 2023</mat-panel-title>
+         </mat-expansion-panel-header>
+         <p>content goes here</p>
+     </mat-expansion-panel>-->
+
+
+
+            </mat-accordion>
+
+
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+
+            <dev-resources></dev-resources>
+
+        </div>
+    </div>
+</div>

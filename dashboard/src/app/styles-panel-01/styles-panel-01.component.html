@@ -1,0 +1,763 @@
+<div id="styles-panel01-container" class="container">
+    <h1>Features</h1>
+
+    <form [formGroup]="stylesPanel01Form" novalidate (ngSubmit)="setStylePanel01(stylesPanel01Form.value)">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <button class="form-control" type="submit" class="btn-add-component"
+                        style="width: 100%; max-width: 320px; text-align: center; margin-bottom: 50px; position: relative;">
+                    Save Style Congfiguration
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <!--    <h5>Content</h5>
+                 <div class="form-group-wrapper">
+                      <label>Account Name</label>
+                       <input type="text"
+                              formControlName="accountName"
+                              name="accountName"
+                              class="form-control" #accountName
+                       />
+
+                       <label>Builder Name</label>
+                       <input type="text"
+                              formControlName="builderName"
+                              name="builderName"
+                              class="form-control" #builderName
+                       />
+                   </div>-->
+                <!--   <h5>Colors</h5>
+                !--<div class="tooltip" role="tooltip">testtesttest
+                   <div class="tooltip-arrow">test</div>
+                   <div class="tooltip-inner">test</div>
+               </div>-->
+
+                <!--<script>
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
+                </script>-->
+
+
+                <!-- <div class="form-group-wrapper">
+                     <label>Color0</label>
+                     <input type="text" formControlName="color0"
+                            name="color0"
+                            class="form-control" #color0
+                     />
+
+                     <label>Color1</label>
+                     <input type="text" formControlName="color1"
+                            name="color1"
+                            class="form-control" #color1
+                     />
+
+
+                 </div>-->
+                <!--                 <h5>Containers</h5>-->
+                <!--<div class="form-group-wrapper">
+                    <label>Home Container </label>
+                    <input type="text" formControlName="containerWidthHome"
+                           name="containerWidthHome"
+                           class="form-control" #containerWidthHome
+                    />
+
+
+                    <label>Interior Container </label>
+                    <input type="text" formControlName="containerWidthInternal"
+                           name="containerWidthInternal"
+                           class="form-control" #containerWidthInternal
+                    />
+
+                </div>-->
+
+                <h5>Slideshow</h5>
+                <div class="form-group-wrapper">
+                    <label>Slideshow</label>
+
+                    <select formControlName="slideshowstyle"
+                            name="slideshowstyle"
+                            class="form-control" #slideshowstyle>
+
+                        <option *ngFor="let option of slideshowOptionArray"
+                                value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+                    </select>
+
+                    <!--<label>slideshowheight</label>
+                    <input type="text" formControlName="slideshowheight"
+                           name="slideshowheight"
+                           class="form-control" #slideshowheight
+                    />-->
+
+
+                    <!--<label>Hero Banner (interior)</label>
+                    <select formControlName="heroBannerOption"
+                            name="heroBannerOption"
+                            class="form-control" #heroBannerOption>
+
+                        <option *ngFor="let option of heroBannerOptionArray"
+                                value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+
+                    </select>-->
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <h5>Mainnav</h5>
+
+                <!--<div class="form-group-wrapper">
+                    <label>Full Mob Nav </label>
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="fullMob"
+                           formControlName="fullMob"
+                           #fullMob
+                    />
+                </div>-->
+
+                <div class="form-group-wrapper">
+                    <label>mainnavstyle</label>
+                    <select formControlName="mainnavstyle"
+                            name="mainnavstyle"
+                            class="form-control" #mainnavstyle>
+
+                        <option *ngFor="let option of mainnavstyleArray"
+                                value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+                    </select>
+
+                    <!-- <label>trigger </label>
+                    <input type="text" formControlName="trigger"
+                            name="trigger"
+                            class="form-control" #trigger
+                     />-->
+
+                    <!--<label>primary </label>
+                    <input type="text" formControlName="primary"
+                           name="primary"
+                           class="form-control" #primary
+                    />
+
+                    <label>secondary </label>
+                    <input type="text" formControlName="secondary"
+                           name="secondary"
+                           class="form-control" #secondary
+                    />
+
+                    <label>mainnavfloat </label>
+                    <select formControlName="mainnavfloat"
+                            name="mainnavfloat"
+                            class="form-control" #mainnavfloat>
+
+                        <option *ngFor="let option of mainnavfloatArray"
+                                value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+                    </select>
+
+                    <label>mainnavmargintop </label>
+                    <input type="text" formControlName="mainnavmargintop"
+                           name="mainnavmargintop"
+                           class="form-control" #mainnavmargintop
+                    />
+
+                    <label>mainnavheight </label>
+                    <input type="text" formControlName="mainnavheight"
+                           name="mainnavheight"
+                           class="form-control" #mainnavheight
+                    />
+
+                    <label>mainnavitemmargin </label>
+                    <input type="text" formControlName="mainnavitemmargin"
+                           name="mainnavitemmargin"
+                           class="form-control" #mainnavitemmargin
+                    />
+
+                    <label>dropdownlinkheight </label>
+                    <input type="text" formControlName="dropdownlinkheight"
+                           name="dropdownlinkheight"
+                           class="form-control" #dropdownlinkheight
+                    />
+
+                    <label>dropdownoffset</label>
+                    <input type="text" formControlName="dropdownoffset"
+                           name="dropdownoffset"
+                           class="form-control" #dropdownoffset
+                    />
+-->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <h5>Subnav</h5>
+                <div class="form-group-wrapper">
+                    <label>subnavorientation</label>
+                    <select formControlName="subnavorientation"
+                            name="subnavorientation"
+                            class="form-control" #subnavorientation>
+
+                        <option *ngFor="let placement of subnavOrientationOptionsArray"
+                                value="{{placement.value}}">{{placement.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+
+                    </select>
+                </div>
+                <!-- <h5>Logo</h5>
+                -<div class="form-group-wrapper">
+
+                     <label>logomobilecenter</label>
+                     <select formControlName="logomobilecenter"
+                             name="logomobilecenter"
+                             class="form-control" #logomobilecenter>
+
+                         <option *ngFor="let option of logomobilecenterArray"
+                                 value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                         </option>
+                     </select>
+
+                     <label>logowidth</label>
+                     <input type="text" formControlName="logowidth"
+                            name="logowidth"
+                            class="form-control" #logowidth
+                     />
+
+                     <label>logoheight</label>
+                     <input type="text" formControlName="logoheight"
+                            name="logoheight"
+                            class="form-control" #logoheight
+                     />
+
+                 </div>-->
+                <!--<h5>Social Media</h5>
+                <div class="form-group-wrapper">
+                    <label>icondimensions</label>
+                    <input type="text" formControlName="icondimensions"
+                           name="icondimensions"
+                           class="form-control" #icondimensions
+                    />
+
+                    <label>iconfontsize</label>
+                    <input type="text" formControlName="iconfontsize"
+                           name="iconfontsize"
+                           class="form-control" #iconfontsize
+                    />
+
+                </div>-->
+
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+
+                <!--<h5>Containers</h5>
+                <div class="form-group-wrapper">
+
+                    <label>bdcontainerwidth</label>
+                    <input type="text" formControlName="bdcontainerwidth"
+                           name="bdcontainerwidth"
+                           class="form-control" #bdcontainerwidth
+                    />
+
+                    <label>bdcontentwidth</label>
+                    <input type="text" formControlName="bdcontentwidth"
+                           name="bdcontentwidth"
+                           class="form-control" #bdcontentwidth
+                    />
+
+                    <label>homepagebdcontainerwidth</label>
+                    <input type="text" formControlName="homepagebdcontainerwidth"
+                           name="homepagebdcontainerwidth"
+                           class="form-control" #homepagebdcontainerwidth
+                    />
+
+                    <label>homepagecontentwidth</label>
+                    <input type="text" formControlName="homepagecontentwidth"
+                           name="homepagecontentwidth"
+                           class="form-control" #homepagecontentwidth
+                    />
+
+                    <label>homepagecontentfloat</label>
+                    <select formControlName="homepagecontentfloat"
+                            name="homepagecontentfloat"
+                            class="form-control" #homepagecontentfloat>
+
+                        <option *ngFor="let option of homepagecontentfloatArray"
+                                value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+                    </select>
+
+                    <label>sidebarwidth</label>
+                    <input type="text" formControlName="sidebarwidth"
+                           name="sidebarwidth"
+                           class="form-control" #sidebarwidth
+                    />
+
+                </div>-->
+
+
+                <!--  <div class="form-group-wrapper">
+                      <label>Font Size (px)</label>
+                      <input type="text"
+                             formControlName="contentfontsize"
+                             name="contentfontsize"
+                             class="form-control" #contentfontsize
+                      />
+
+                      <label>contentlineheight (px)</label>
+                      <input type="text"
+                             formControlName="contentlineheight"
+                             name="contentlineheight"
+                             class="form-control" #contentlineheight
+                      />
+                  </div>-->
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <!--  <h5>Subnav</h5>
+
+              <!--  <div class="form-group-wrapper">
+
+
+                      <label>subnavlinkheight</label>
+                      <input type="text" formControlName="subnavlinkheight"
+                             name="subnavlinkheight"
+                             class="form-control" #subnavlinkheight
+                      /><label>subnavlinkheight</label>
+                      <input type="text" formControlName="subnavlinkheight"
+                             name="subnavlinkheight"
+                             class="form-control" #subnavlinkheight
+                      />
+
+
+                      <label>subnavlinkfontsize</label>
+                      <input type="text" formControlName="subnavlinkfontsize"
+                             name="subnavlinkfontsize"
+                             class="form-control" #subnavlinkfontsize
+                      />
+
+                      <label>subnavtoppadding</label>
+                      <input type="text" formControlName="subnavtoppadding"
+                             name="subnavtoppadding"
+                             class="form-control" #subnavtoppadding
+                      />
+
+                      <label>subnavbottompadding</label>
+                      <input type="text" formControlName="subnavbottompadding"
+                             name="subnavbottompadding"
+                             class="form-control" #subnavbottompadding
+                      />
+
+                      <label>subnavh2topicfontsize</label>
+                      <input type="text" formControlName="subnavh2topicfontsize"
+                             name="subnavh2topicfontsize"
+                             class="form-control" #subnavh2topicfontsize
+                      />
+
+                      <label>subnavh2topicheight</label>
+                      <input type="text" formControlName="subnavh2topicheight"
+                             name="subnavh2topicheight"
+                             class="form-control" #subnavh2topicheight
+                      />
+                  </div>-->
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <!--<h5>Links</h5>
+
+                <div class="form-group-wrapper">
+                    <label>linksheight</label>
+                    <input type="text" formControlName="linksheight"
+                           name="linksheight"
+                           class="form-control" #linksheight
+                    />
+
+                    <label>linkslineheight</label>
+                    <input type="text" formControlName="linkslineheight"
+                           name="linkslineheight"
+                           class="form-control" #linkslineheight
+                    />
+
+                    <label>linksfontsize</label>
+                    <input type="text" formControlName="linksfontsize"
+                           name="linksfontsize"
+                           class="form-control" #linksfontsize
+                    />
+
+                    <label>bttfontsize</label>
+                    <input type="text" formControlName="bttfontsize"
+                           name="bttfontsize"
+                           class="form-control" #bttfontsize
+                    />
+
+                </div>-->
+
+                <!--<h5>Sitemap</h5>
+                <div class="form-group-wrapper">
+                    <label>ullineheight</label>
+                    <input type="text" formControlName="ullineheight"
+                           name="ullineheight"
+                           class="form-control" #ullineheight
+                    />
+
+                    <label>ulfontsize</label>
+                    <input type="text" formControlName="ulfontsize"
+                           name="ulfontsize"
+                           class="form-control" #ulfontsize
+                    />
+                    <label>ulullineheight</label>
+                    <input type="text" formControlName="ulullineheight"
+                           name="ulullineheight"
+                           class="form-control" #ulullineheight
+                    />
+
+                    <label>ululfontsize</label>
+                    <input type="text" formControlName="ululfontsize"
+                           name="ululfontsize"
+                           class="form-control" #ululfontsize
+                    />
+
+
+                </div>-->
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <!-- <h5>Footer Area</h5>
+                <div class="form-group-wrapper">
+
+                     <label>ftphonefontsize</label>
+                     <input type="text" formControlName="ftphonefontsize"
+                            name="ftphonefontsize"
+                            class="form-control" #ftphonefontsize
+                     />
+
+                     <label>ftphonelineheight</label>
+                     <input type="text" formControlName="ftphonelineheight"
+                            name="ftphonelineheight"
+                            class="form-control" #ftphonelineheight
+                     />
+
+                     <label>ftaddressfontsize</label>
+                     <input type="text" formControlName="ftaddressfontsize"
+                            name="ftaddressfontsize"
+                            class="form-control" #ftaddressfontsize
+                     />
+
+                     <label>ftaddresslineheight</label>
+                     <input type="text" formControlName="ftaddresslineheight"
+                            name="ftaddresslineheight"
+                            class="form-control" #ftaddresslineheight
+                     />
+
+                     <label>ftmapmarkerstyle</label>
+                     <select formControlName="ftmapmarkerstyle"
+                             name="ftmapmarkerstyle"
+                             class="form-control" #ftmapmarkerstyle>
+
+                         <option *ngFor="let option of ftmapmarkerstyleArray"
+                                 value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                         </option>
+                     </select>
+
+                     <label>ftmapmarkerfontsize</label>
+                     <input type="text" formControlName="ftmapmarkerfontsize"
+                            name="ftmapmarkerfontsize"
+                            class="form-control" #ftmapmarkerfontsize
+                     />
+
+
+                 </div>-->
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+
+                <!--<h5>Sesame Icons</h5>
+                <div class="form-group-wrapper">
+                    <label>sesameiconmono</label>
+
+                    <select formControlName="sesameiconmono"
+                            name="sesameiconmono"
+                            class="form-control" #sesameiconmono>
+
+                        <option *ngFor="let option of sesameiconmonoArray"
+                                value="{{option.value}}">{{option.value | replaceDashSpace | capitalizeEachWord}}
+                        </option>
+                    </select>
+
+                    <label>sesameiconW</label>
+                    <input type="text" formControlName="sesameiconW"
+                           name="sesameiconW"
+                           class="form-control" #sesameiconW
+                    />
+
+                    <label>sesameiconH</label>
+                    <input type="text" formControlName="sesameiconH"
+                           name="sesameiconH"
+                           class="form-control" #sesameiconH
+                    />
+
+                    <label>sesameiconmarginright</label>
+                    <input type="text" formControlName="sesameiconmarginright"
+                           name="sesameiconmarginright"
+                           class="form-control" #sesameiconmarginright
+                    />
+                </div>
+-->
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+                <!--<h5>Horiz Rule</h5>
+                <div class="form-group-wrapper">
+
+
+                    <label>hrcolor</label>
+                    <input type="text" formControlName="hrcolor"
+                           name="hrcolor"
+                           class="form-control" #hrcolor
+                    />
+
+                    <label>hrheight</label>
+                    <input type="text" formControlName="hrheight"
+                           name="hrheight"
+                           class="form-control" #hrheight
+                    />
+
+                    <label>hrwidth</label>
+                    <input type="text" formControlName="hrwidth"
+                           name="hrwidth"
+                           class="form-control" #hrwidth
+                    />
+
+                </div>-->
+            </div>
+            <!-- FONTS -->
+            <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn form-group">
+                <!--<h5>Fonts</h5>
+                <div class="form-group-wrapper">
+                    <label>Font1</label>
+                    <input type="text"
+                           formControlName="font1"
+                           name="font1"
+                           class="form-control" #font1
+                    />
+                    <label>Preload</label>
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="preloadFont1"
+                           formControlName="preloadFont1"
+                           #preloadFont1
+                    />
+
+                    <label>Font1 link</label>
+                    <textarea formControlName="fontLink1" name="fontLink1" class="form-control"
+                              #fontLink1></textarea>
+                </div>
+
+                <div class="form-group-wrapper">
+                    <label>Font2</label>
+                    <input type="text"
+                           formControlName="font2"
+                           name="font2"
+                           class="form-control" #font2
+                    />
+
+                    &lt;!&ndash;  [(ngModel)]="isChecked" &ndash;&gt;
+                    <label>Preload</label>
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="preloadFont2"
+                           formControlName="preloadFont2"
+                           #preloadFont2
+                    />
+
+                    <label>Font2 link</label>
+                    <textarea formControlName="fontLink2" name="fontLink2" class="form-control"
+                              #fontLink2></textarea>
+                </div>
+
+                <div class="form-group-wrapper">
+                    <label>Font3</label>
+                    <input type="text"
+                           formControlName="font3"
+                           name="font3"
+                           class="form-control" #font3
+                    />
+
+                    <label>Preload</label>
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="preloadFont3"
+                           formControlName="preloadFont3"
+                           #preloadFont3
+                    />
+
+                    <label>Font3 link</label>
+                    <textarea formControlName="fontLink3" name="fontLink3" class="form-control"
+                              #fontLink3></textarea>
+                </div>
+
+                <div class="form-group-wrapper">
+                    <label>Font4</label>
+                    <input type="text"
+                           formControlName="font4"
+                           name="font4"
+                           class="form-control" #font4
+                    />
+
+                    <label>Preload</label>
+                    <input type="checkbox"
+                           class="form-check-input"
+                           name="preloadFont4"
+                           formControlName="preloadFont4"
+                           #preloadFont4
+                    />
+
+                    <textarea formControlName="fontLink4" name="fontLink4" class="form-control"
+                              #fontLink4></textarea>
+                </div>-->
+            </div>
+
+        </div>
+
+    </form>
+
+    <!--<div class="row">
+
+        <div class="col-lg-3 col-md-3 col-sm-12 wow fadeIn form-group">
+            <h5>Basics</h5>
+            <ul class="unstyled stylesPanel">
+                &lt;!&ndash;<li><span>Account Name:</span> {{accountName.value}}</li>
+                <li><span>Builder Name:</span> {{builderName.value}}</li>&ndash;&gt;
+                <li><span>color0:</span> {{color0.value}}</li>
+                <li><span>color1:</span> {{color1.value}}</li>
+                <li><span>contentfontsize:</span> {{contentfontsize.value}}px</li>
+                <li><span>contentfontsize:</span> {{contentfontsize.value}}px</li>
+                <li><span>contentlineheight:</span> {{contentlineheight.value}}px</li>
+                <li><span>homepagebdcontainerwidth:</span> {{homepagebdcontainerwidth.value}}px</li>
+                <li><span>homepagecontentfloat:</span> {{homepagecontentfloat.value}}px</li>
+                <li><span>homepagecontentwidth:</span> {{homepagecontentwidth.value}}px</li>
+                <li><span>bdcontainerwidth (Interior):</span> {{bdcontainerwidth.value}}px</li>
+                <li><span>bdcontentwidth (Interior):</span> {{bdcontentwidth.value}}px</li>
+                <li><span>subnavorientation:</span> {{subnavorientation.value}}</li>
+                <li><span>slideshowstyle:</span> {{slideshowstyle.value}}</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+            <h5>MainNav</h5>
+            <ul class="unstyled stylesPanel">
+                <li><span>mainnavstyle:</span> {{mainnavstyle.value}}</li>
+                &lt;!&ndash;                <li><span>trigger:</span> {{trigger.value}}</li>&ndash;&gt;
+                <li><span>primary:</span> {{primary.value}}</li>
+                <li><span>secondary:</span> {{secondary.value}}</li>
+                <li><span>mainnavfloat:</span> {{mainnavfloat.value}}</li>
+                <li><span>mainnavmargintop:</span> {{mainnavmargintop.value}}</li>
+                <li><span>mainnavheight:</span> {{mainnavheight.value}}</li>
+                <li><span>mainnavitemmargin:</span> {{mainnavitemmargin.value}}</li>
+                <li><span>dropdownlinkheight:</span> {{dropdownlinkheight.value}}</li>
+                <li><span>dropdownoffset:</span> {{dropdownoffset.value}}</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+            <h5>Masthead</h5>
+            <ul class="unstyled stylesPanel">
+                <li><span>logomobilecenter:</span> {{logomobilecenter.value}}</li>
+                <li><span>logowidth:</span> {{logowidth.value}}</li>
+                <li><span>logoheight:</span> {{logoheight.value}}</li>
+                <li><span>icondimensions:</span> {{icondimensions.value}}</li>
+                <li><span>iconfontsize:</span> {{iconfontsize.value}}</li>
+                <li><span>slideshowstyle:</span> {{slideshowstyle.value}}</li>
+                <li><span>slideshowheight:</span> {{slideshowheight.value}}</li>
+                <li><span>contentfontsize:</span> {{contentfontsize.value}}</li>
+
+
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+            <h5>Subnav</h5>
+            <ul class="unstyled stylesPanel">
+                <li><span>subnavorientation:</span> {{subnavorientation.checked}}</li>
+                <li><span>subnavlinkheight:</span> {{subnavlinkheight.value}}</li>
+                <li><span>subnavlinkfontsize:</span> {{subnavlinkfontsize.value}}</li>
+                <li><span>subnavtoppadding:</span> {{subnavtoppadding.value}}</li>
+                <li><span>subnavbottompadding:</span> {{subnavbottompadding.value}}</li>
+                <li><span>subnavh2topicfontsize:</span> {{subnavh2topicfontsize.value}}</li>
+                <li><span>subnavh2topicheight:</span> {{subnavh2topicheight.value}}</li>
+                <li><span>linksheight:</span> {{linksheight.value}}</li>
+                <li><span>linkslineheight:</span> {{linkslineheight.value}}</li>
+                <li><span>sidebarwidth:</span> {{sidebarwidth.value}}</li>
+                <li><span>linksfontsize:</span> {{linksfontsize.value}}</li>
+                <h5>Sitemap</h5>
+                <li><span>ululfontsize:</span> {{ululfontsize.value}}</li>
+                <li><span>ulullineheight:</span> {{ulullineheight.value}}</li>
+                <li><span>ululfontsize:</span> {{ululfontsize.value}}</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-12 wow fadeIn form-group">
+
+            <ul class="unstyled stylesPanel">
+                <h5>Footer Area</h5>
+                <li><span>sesameiconmono:</span> {{sesameiconmono.value}}</li>
+                <li><span>sesameiconW:</span> {{sesameiconW.value}}</li>
+                <li><span>sesameiconmarginright:</span> {{sesameiconmarginright.value}}</li>
+                <li><span>hrcolor:</span> {{hrcolor.value}}</li>
+                <li><span>hrheight:</span> {{hrheight.value}}</li>
+                <li><span>hrwidth:</span> {{hrwidth.value}}</li>
+                <li><span>ftaddresslineheight:</span> {{ftaddresslineheight.value}}</li>
+                <li><span>ftaddressfontsize:</span> {{ftaddressfontsize.value}}</li>
+                <li><span>ftphonelineheight:</span> {{ftphonelineheight.value}}</li>
+                <li><span>ftphonefontsize:</span> {{ftphonefontsize.value}}</li>
+                <li><span>ftmapmarkerstyle:</span> {{ftmapmarkerstyle.value}}</li>
+                <li><span>ftmapmarkerfontsize:</span> {{ftmapmarkerfontsize.value}}</li>
+
+            </ul>
+        </div>
+    </div>-->
+
+    <!--<div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn form-group">
+
+            <ul class="unstyled stylesPanel">
+                <li><span>Font 1:</span> {{font1.value}}<br/>
+                    <span>Preload: </span>{{preloadFont1.checked}}</li>
+                <li><span>Font 1 Link:</span> {{fontLink1.value}}</li>
+                <li>&nbsp;</li>
+            </ul>
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn form-group">
+            <ul class="unstyled stylesPanel">
+                <li><span>Font 2:</span> {{font2.value}}<br/>
+                    <span>Preload: </span>{{preloadFont2.checked}}</li>
+                <li><span>Font 2 Link:</span> {{fontLink2.value}}</li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn form-group">
+            <ul class="unstyled stylesPanel">
+                <li><span>Font 3:</span> {{font3.value}}<br/>
+                    <span>Preload: </span>{{preloadFont3.checked}}</li>
+                <li><span>Font 3 Link:</span> {{fontLink3.value}}</li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn form-group">
+            <ul class="unstyled stylesPanel">
+                <li><span>Font 4:</span> {{font4.value}}<br/>
+                    <span>Preload: </span>{{preloadFont4.checked}}</li>
+                <li><span>Font 4 Link:</span> {{fontLink4.value}}</li>
+            </ul>
+        </div>
+        <hr />
+    </div>-->
+</div>

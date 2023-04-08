@@ -1,0 +1,110 @@
+<!-- contact-info  spinner icon -->
+<style>
+
+    #contact-info {
+        width: auto;
+        height: 23px;
+        text-align: center;
+        border-right: 1px solid #fff;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #contact-info a {
+        font-size: 16px;
+        color: #0d416f;
+        /*width:26px;*/
+        width: 30px;
+        height: 23px;
+        border-left: 1px solid #fff;
+        display: inline-block;
+        vertical-align: top;
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        -ms-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+
+    #contact-info a .icon {
+        display: inline-block;
+        animation-fill-mode: both;
+        animation-duration: 0.8s;
+        -webkit-transform-origin: center bottom;
+        -moz-transform-origin: center bottom;
+        -ms-transform-origin: center bottom;
+        -o-transform-origin: center bottom;
+        transform-origin: center bottom;
+    }
+
+    #contact-info a .icon:before {
+        display: inline-block;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: all 0.6s ease-in-out;
+        -moz-transition: all 0.6s ease-in-out;
+        -o-transition: all 0.6s ease-in-out;
+        -ms-transition: all 0.6s ease-in-out;
+        transition: all 0.6s ease-in-out;
+        -webkit-perspective: 800px;
+        -moz-perspective: 800px;
+        -ms-perspective: 800px;
+        -o-perspective: 800px;
+        perspective: 800px;
+    }
+
+    #contact-info a:hover {
+        color: #a0645c;
+    }
+
+    #contact-info a:hover .icon {
+        animation-name: pulse_custom;
+    }
+
+    #contact-info a:hover .icon:before {
+        -webkit-transform: translateX(0) rotateY(-360deg);
+        -moz-transform: translateX(0) rotateY(-360);
+        -ms-transform: translateX(0) rotateY(-360);
+        -o-transform: translateX(0) rotateY(-360);
+        transform: translateX(0) rotateY(-360);
+
+    }
+
+    @media only screen and (min-width: 48em) {
+
+        #contact-info {
+
+            position: relative;
+            z-index: 2;
+            /*float: none;*/
+        }
+
+        #contact-info {
+            width: auto;
+            margin: 20px auto 20px;
+        }
+
+        #contact-info a {
+            width: 26px;
+        }
+    }
+
+
+
+</style>
+
+<div id="contact-info" class="container">
+    <a class="addy" aria-label="office location" href="/office-location"><span
+            class="icon fas fa-map-marker-alt pulse" aria-hidden="true"></span>
+    </a>
+
+    <a class="callUs" aria-label="phone number" href="#">
+        <span class="icon fas fa-mobile" aria-hidden="true"></span>
+    </a>
+
+    <a class="emailUs" aria-label="email us" href="mailto:smile@orthodonticsondanforth.com"><span
+            class="icon fas fa-envelope" aria-hidden="true"></span></a><!-- email -->
+</div>

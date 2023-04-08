@@ -1,0 +1,164 @@
+<div class="before-after-container" *ngIf="BAInterface">
+
+    <h2>{{title}}</h2>
+
+    <div class="show-hide">
+
+        <button mat-raised-button class="instructions-button"
+                (click)="showHide(showBAInst = !showBAInst);">Instructions
+        </button>
+
+        <div [ngClass]="{'hide': !showBAInst }">
+
+            <p class="text-success">Place before and after images in the '/assets/images/{{imageDirectory}}'
+                directory.</p>
+
+            <p>Complete the form and "Grab your HTML."
+                <br/><span class="sesame-blue">Blue placeholder text</span> indicates a required
+                field.<br/>
+                If you are using the .jpg extension for your images just add the number of slides you
+                are using. </p>
+        </div>
+    </div>
+
+    <!-- add item -->
+    <button type="button" mat-raised-button (click)="addImage()">
+        <mat-icon class="mat-18 sesame-blue">add</mat-icon> Add
+    </button>
+
+    <h4>Selected Images</h4>
+    <mat-accordion multi="false">
+
+        <div class="col-lg-6 col-md-6 col-sm-12" id="office-tour-list" cdkDropList (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let image of BAInterface.images; let i = index; let even = even; let odd = odd" cdkDrag>
+                <mat-expansion-panel hideToggle>
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+
+                            <!-- add delete buttons-->
+                            <div class="add-button">
+                      <span class=" text-info"
+                            (click)="addImage(); $event.stopPropagation()">
+                            <mat-icon>add</mat-icon>
+                     </span>
+                            </div>
+
+                            <div class="delete-button">
+                     <span class=" text-danger"
+                           (click)="removeImage(i); $event.stopPropagation()">
+                        <mat-icon>delete</mat-icon>
+                    </span>
+                            </div>
+
+                            <div class="clear"></div>
+                            <span class="sesame-blue" *ngIf="image.path">{{ image.path }}</span> &nbsp;&nbsp;
+                            <span class="sesame-green" *ngIf="!image.path">Select Image</span> &nbsp;&nbsp;
+                            <span class="sesame-green">{{image.imageAlt}}</span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <br/>
+
+                    <div class="float-start" style="width: 48%; margin-right: 2%;">
+                        <br/>
+
+                        <image-selector caption="Slider Image" [image]="image" directory="{{imageDirectory}}"></image-selector>
+
+                    </div>
+
+                    <br/>
+                    <div>
+                        <img class="float-end preview-image"
+                             ngDefaultControl
+                             src="../{{siteContext.account}}/assets/{{imageDirectory}}/{{image.path}}"
+                             alt=""
+                             *ngIf="image.path"
+                        />
+
+                    </div>
+
+                    <mat-form-field>
+                        <mat-label>Add a caption <span class="label-instructions">(optional - before and after description)</span>
+                        </mat-label>
+                        <input matInput
+                               type="text"
+                               [(ngModel)]="image.imageAlt"
+                               name="imageAlt"
+                               class="float-end"
+                               placeholder="Add a caption">
+                    </mat-form-field>
+
+                    <div class="clear"></div>
+
+                </mat-expansion-panel>
+            </div>
+        </div>
+
+        <div>
+            <button mat-raised-button
+                    class="save-button"
+                    (click)="saveBeforeAfterImages(BAInterface)"
+                    type="button">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+
+        </div>
+    </mat-accordion><!-- end droplist -->
+
+</div>
+
+<br/>
+
+<p class="copy sesame-blue" (click)="copyThisHTMLToClipboard('#copyBeforeAfter');"
+   data-target="#copyBeforeAfter">
+    <mat-icon style="cursor: pointer;">file_copy</mat-icon>
+    Grab your HTML
+</p>
+
+<code id="copyBeforeAfter" *ngIf="BAInterface">
+
+    &lt;p&gt;Incredible results and inspiring journeys; see some of our patients&#39; before and after photos next time
+    you visit our practice.&lt;/p&gt;<br/><br/>
+
+    &lt;div class="mediaslider"&gt;<br/>
+
+      <span>&lt;div class="cycle-slideshow" <br/>
+      <span>data-cycle-timeout="9000"<br></span>
+      <span>data-cycle-loader="wait"<br></span>
+      <span>data-cycle-auto-height="calc"<br></span>
+      <span>data-cycle-center-horz="true"<br></span>
+      <span>data-cycle-center-vert="true"<br></span>
+      <span>data-cycle-caption="#caption"<br></span>
+      <span>data-cycle-caption-template="{{lCurly}}{{lCurly}}cycleTitle{{rCurly}}{{rCurly}}"</span>
+          &gt; </span>
+
+    <br/>
+
+    <span>&lt;button aria-label="previous slide" class="slidecontrol cycle-prev"&gt;&lt;span class="fa fa-chevron-left"  aria-hidden="true" role="img"&gt;{{nbsp}}&nbsp;&lt;/span&gt;&lt;/button&gt;</span><br/><br/>
+    <span>&lt;button aria-label="next slide" class="slidecontrol cycle-next"&gt;&lt;span class="fa fa-chevron-right"  aria-hidden="true" role="img"&gt;{{nbsp}}&nbsp;&lt;/span&gt;&lt;/button&gt;</span><br/><br/>
+
+    <div *ngFor="let markup of BAInterface.images; let i = index; let last = last">
+
+        <div class="bg-items"><span><span>&lt;img src="/assets/images/{{imageDirectory}}/{{markup.path}}"
+                    <span>&nbsp;alt=""</span>
+                     data-cycle-title="{{markup.imageAlt}}"
+                     width="<span *ngIf="markup.width">{{markup.width}}"</span>
+                     height="{{markup.height}}" decoding="async"&gt; </span></span>
+        </div>
+        <br/>
+
+    </div>
+
+    <br/>
+    <span>&lt;/div&gt;</span>&lt;!&ndash;&ndash; end before-after-cycle &ndash;&ndash;&gt;<br>
+
+    &lt;div id="caption"&gt;{{nbsp}}&lt;/div&gt;
+
+    <br/> <span>&lt;/div&gt;</span>&lt;!&ndash;&ndash; end mediaslider &ndash;&ndash;&gt;
+    <br>
+</code><!-- end copy code -->
+
+
+

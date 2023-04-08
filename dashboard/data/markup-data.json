@@ -1,0 +1,18 @@
+{
+  "account": "Add account name",
+  "sm_version": "14.4.0",
+  "navOptions": "standard",
+  "tagline": "Piles of Smiles",
+  "gacode": "UA-XXXXXXXXX",
+  "formData": [
+    {
+      "name": "Content",
+      "spotlight_layout_style": "",
+      "slideshow_layout_style": "",
+      "content_layout_style": "content-top-oriented-subnav",
+      "testimonial_rotator_layout_style": "testimonials",
+      "spotlight_flip_layout_style": "",
+      "assn_logo_layout_style": "association-logos"
+    }
+  ]
+}

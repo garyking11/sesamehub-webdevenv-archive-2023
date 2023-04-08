@@ -1,0 +1,1 @@
+export { ToolbarComponent } from './dev-tools.component';

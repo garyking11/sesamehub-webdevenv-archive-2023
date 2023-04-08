@@ -1,0 +1,210 @@
+<div class="admin-container container">
+
+    <h1>Admin</h1>
+
+    <div class="row wow fadeIn">
+
+        <dev-admin-nav></dev-admin-nav>
+<!--        <dev-user></dev-user>-->
+
+        <div class="clear"></div>
+
+        <div class="col-lg-7 col-md-7 col-sm-12">
+
+            <form [formGroup]="adminForm" novalidate (ngSubmit)="onSetFormData(adminForm)"
+                  class="rounded-top-bottom">
+
+                <div>
+                    <button mat-raised-button
+                            class="float-start"
+                            style="margin-right: 5px;"
+                            type="submit"><mat-icon class=" sesame-blue">save</mat-icon> Save
+                    </button>
+                    <!-- add item -->
+                    <button type="button" mat-raised-button (click)="addItem()">
+                        <mat-icon class="mat-18 sesame-blue">add</mat-icon> Add
+                    </button>
+
+                    <br/> <br/>
+
+                    <div class="clear"></div>
+                </div>
+                <mat-accordion multi="false">
+
+                    <div cdkDropList (cdkDropListDropped)="drop($event)">
+                        <div formArrayName="items">
+
+                            <div *ngFor="let item of adminForm.controls['items'].controls; let i = index; let even=even; let odd=odd;"
+                                 class="item5-10" [ngClass]="{ odd: odd, even: even }"
+                                 cdkDrag>
+
+                                <div [formGroupName]="i"  *ngIf="i<10">
+
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <div *ngIf="item.controls.version.value as value; ">
+                                                    <span class="sesame-blue">{{item.controls.date.value | date}}</span>
+<!--                                                    <span class="sesame-blue">{{item.controls.version.value | replaceDashSpace | titlecase}}</span>-->
+                                                    &nbsp;<span
+                                                        class="title-sub-text">{{item.controls.release.value.substring(0, 32)}}</span>
+                                                </div>
+
+
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+
+                                        <!-- item-info-bar -->
+                                        <div class="item-info-bar">
+                                            <div class="delete-add-wrap">
+
+                                                <div class="delete-button">
+
+                                                    <!-- add/delete buttons -->
+                                                    <div class="float-start"
+                                                         style="width: 49%;
+                                                            text-align: center;">
+                                                        <!--  add method -->
+                                                        <span class=" text-info"
+                                                              (click)="addItem()">
+                                                    <mat-icon>add</mat-icon>
+                                                </span>
+                                                    </div>
+
+                                                    <!-- delete method -->
+                                                    <div class="float-end"
+                                                         style="width: 49%; text-align: center;">
+                                                <span class="text-danger"
+                                                      *ngIf="adminForm.controls.items.controls.length > 0"
+                                                      (click)="confirmDeleteMessage(i, $event)"
+                                                      value="delete Component"><mat-icon>delete</mat-icon>
+                                                </span>
+                                                    </div>
+
+                                                    <!-- confirmation or cancel -->
+                                                    <div *ngIf="deleteConfirmationArray[i]" class="delete-confirm">
+                                                        <!-- delete -->
+                                                        <span class="float-start sesame-danger "
+                                                              style="width: 49%; "
+                                                              (click)="confirmDelete(i, adminForm, 'deleteItem')">
+                                                Delete
+                                                </span>
+                                                        <!-- confirm delete -->
+                                                        <span type="button"
+                                                              class="float-end sesame-green-background"
+                                                              style="width: 49%;"
+                                                              (click)="confirmDelete(i, null, 'cancelDeleteItem')">
+                                                    Cancel
+                                                </span>
+
+                                                    </div><!-- delete buttons -->
+                                                </div><!-- end buttons -->
+
+                                                <div class="clear"></div>
+
+                                            </div>
+                                        </div><!-- end item-info bar -->
+
+                                        <mat-form-field appearance="fill"
+                                                        class="float-start"
+                                                        style="width: 18%; margin-left: 2%;">
+                                            <input matInput
+                                                   formControlName="name"
+                                                   name="name"
+                                                   placeholder="Name" #name>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="fill"
+                                                        class="float-start"
+                                                        style="width: 18%; margin-left: 2%;">
+                                            <input matInput
+                                                   formControlName="version"
+                                                   name="version"
+                                                   placeholder="Version"
+                                                   #version>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="fill"
+                                                        class="float-start"
+                                                        style="width: 32%; margin-left: 2%;">
+                                            <input matInput
+                                                   type="text"
+                                                   formControlName="release"
+                                                   name="release"
+                                                   placeholder="Release" #release>
+                                        </mat-form-field>
+
+
+                                        <mat-form-field appearance="fill"
+                                                        class="float-start"
+                                                        style="width: 22%; margin-left: 2%;">
+
+                                            <input matInput type="text"
+                                                   formControlName="date"
+                                                   name="date"
+                                                   placeholder="Release Date"
+                                                   #date>
+                                        </mat-form-field>
+                                        <!--<div class="form-group pull-left" style="width: 23%; margin-left: 2%;">
+                                            <label>Angular -V</label>
+                                            <input class="form-control" type="text" formControlName="angular_version"
+                                                   name="angular_version" placeholder="Angular Version" #angular_version>
+                                        </div>-->
+
+                                        <div class="clear"></div>
+
+                                        <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+
+                                        <div class="form-group">
+                                            <label>Comments</label>
+                                            <textarea class="form-control" type="text" formControlName="comments"
+                                                      style="width: 100%;"
+                                                      name="comments" placeholder="Comments" #comments></textarea>
+                                        </div>
+
+                                        <!--</div>-->
+
+                                        <div class="clear"></div>
+                                    </mat-expansion-panel>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </mat-accordion>
+
+            </form>
+
+        </div><!-- end cols -->
+
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <h3>Instructions</h3>
+            <p><span class="sesame-blue">Blue placeholder text</span> indicates a required field.</p>
+
+            <h3>Changelog (last 3)</h3>
+
+            <div class="content-data"
+                 *ngFor="let formDataValue of adminForm.controls['items'].value  | keys; let i = index; let first = first;">
+                <div *ngIf="i<3">
+                    <div *ngIf="formDataValue.value.version"><span><span
+                            *ngIf="first">CURRENT</span> Version: </span>{{formDataValue.value.version}}</div>
+                    <div *ngIf="formDataValue.value.name"><span>Name: </span> {{formDataValue.value.name}}</div>
+                    <div *ngIf="formDataValue.value.name"><span>Name: </span> {{formDataValue.value.release}}</div>
+                    <div *ngIf="formDataValue.value.date"><span>Git Release Date: </span> {{formDataValue.value.date}}
+                    </div>
+                    <div *ngIf="formDataValue.value.angular_version">
+                        <span>Angular -V:  </span>{{formDataValue.value.angular_version}}</div>
+                    <div *ngIf="formDataValue.value.comments"><span>Comments:  </span>{{formDataValue.value.comments}}
+                    </div>
+
+                    <hr/>
+
+                </div>
+
+            </div>
+
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+
+</div><!-- end container -->

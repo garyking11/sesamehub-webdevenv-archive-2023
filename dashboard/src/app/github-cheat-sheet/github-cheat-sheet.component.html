@@ -1,0 +1,346 @@
+<div class="container">
+
+    <div class="row">
+
+        <h1>Github Cheat Sheet</h1>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 wow fadeIn">
+
+            <h4><a href="https://git-scm.com/doc" target="_blank">Github Documentation</a></h4>
+
+            <h4><a href="https://orga.cat/posts/most-useful-git-commands" target="_blank">Useful Github Commands</a>
+            </h4>
+
+            <h2>Initial Setup</h2>
+
+            <h3>Initialize a repo</h3>
+
+            <p>Create an empty git repo or reinitialize an existing one</p>
+
+            <code>$ git init</code>
+
+            <h3>Fork a repo</h3>
+
+            <p>Click the "Fork" button at the top-right of any repository's GitHub page.</p>
+
+            <h3>Clone a repo</h3>
+
+            <p>Clone the codepainter repo into a new directory called codepainter:</p>
+
+            <code>$ git clone https://github.com/jedhunsaker/codepainter.git codepainter</code>
+
+            <h3>Setup Remotes</h3>
+
+            <p>First, let's see a list of the repositories (remotes) whose branches you track:</p>
+
+            <code>$ git remote -v</code>
+
+            <p>Oh, it looks like we haven't setup upstream. Now is the time:</p>
+
+            <code>$ git remote add upstream https://github.com/username/codepainter.git<br/>
+                $ git fetch upstream</code>git
+
+
+            <h2>Every-day Workflow</h2>
+            <h3>Promote (copy) New Branch to Master</h3>
+            <div>git branch -m master old-master<br/>
+                git branch -m seotweaks master<br/>
+                git push -f origin master<br/>
+                This will remove commits in origin master, please check your origin master before running git push -f
+                origin master.<br/>
+                "git push origin old-master" Will copy old-master to new branch
+            </div>
+
+            <h3>Branching</h3>
+
+            <p>When working on a fork, you could be switching between different branches quite commonly. As such, you
+                generally want to stay off the master branch and work on your own feature branches so that master is
+                always
+                clean and you can base new branches off of it.</p>
+
+            <code>$ git checkout -b &lt;new_branch_name&gt;</code>
+
+            <p>If upstream has a special develop branch or something, you can checkout that branch separately, but setup
+                tracking so you can sync it up from time to time. Like the master branch, don't work directly on this
+                one.
+                Try to keep it clean.</p>
+
+            <code>$ git checkout -b &lt;new_branch_name&gt; --track upstream/&lt;remote_branch_to_track&gt;</code>
+
+            <p>Maybe you made some progress on a branch at work, but now you want to continue work at home. In that
+                case,
+                you're dealing with your own fork's branch, so you'll checkout from origin.</p>
+
+            <code>$ git checkout -b &lt;new_branch_name&gt; --track origin/&lt;remote_branch_to_track&gt;</code>
+
+            <p>Use the -B option flag to force it.</p>
+
+            <h3>Switching Branches</h3>
+
+            <p>First, you'll want to know what branches are available in your working directory:</p>
+
+            <code>$ git branch<br/>
+                develop<br/>
+                feature_x<br/>
+                master</code>
+
+            <p>Now, you can easily switch between branches with git checkout:</p>
+
+            <code>$ git checkout master<br/>
+                $ git checkout develop<br/>
+                $ git checkout feature_x<br/>
+                $ git config --global alias.co 'checkout'<br/>
+                $ git co master</code>
+
+            <h3>Status</h3>
+
+            <p>Not sure if you're working on a clean branch? Want to see what files have changed? Git status will show
+                you a
+                report.</p>
+
+            <code>$ git status</code>
+
+            <h3>Staging Changes</h3>
+
+            <p>Now that you've added or modified some files, you need to stage those commits into "the staging area."
+                Think
+                of git commits like an array of airlock hatches on a space ship. On this space ship, you can only open
+                the
+                door to one airlock at a time. When you open the hatch, you can put stuff in or take stuff out at will.
+                Not
+                until you've closed the door have you committed those changes (git commit) and not until you hit the red
+                button do all those hatches open up into space (git push).</p>
+
+            <p>You can stage inidividual files or all files at once.</p>
+
+            <code>$ git add foo.js<br/>
+                $ git add .</code>
+
+            <h3>Unstaging Changes</h3>
+
+            <p>Maybe you accidentally staged some files that you don't want to commit.</p>
+
+            <code>$ git reset HEAD foo.js<br/>
+                $ git reset HEAD .<br/>
+                $ git config --global alias.unstage 'reset HEAD'<br/>
+                $ git unstage .</code>
+
+            <h3>Commits</h3>
+
+            <p>Commit often. You can always squash down your commits before a push.</p>
+
+            <code>$ git commit -m "Fixed IE issues"</code>
+
+            <p>Want to automatically stage files that have been modified and deleted, but new files you haven't told git
+                about will be unaffected? Pass the -a or --all option flag:</p>
+
+            <code>$ git commit -am "Fixed IE issues"</code>
+
+            <h3>Undoing Commits</h3>
+
+            <p>The following command will undo your most recent commit and put those changes back into staging, so you
+                don't
+                lose any work:</p>
+
+            <code> $ git reset --soft HEAD~1</code>
+
+            <p>The next one will completely delete the commit and throw away any changes. Be absolutely sure this is
+                what
+                you want:</p>
+
+            <code>$ git reset --hard HEAD~1</code>
+
+            <h3>Squashing Commits</h3>
+
+            <p>Maybe you have 4 commits, but you haven't pushed anything yet and you want to put everything into one
+                commit
+                so your boss doesn't have to read a bunch of garbage during code review.</p>
+
+            <code>$ git rebase -i HEAD~4</code>
+
+            <p>An interactive text file is displayed. You'll see the word "pick" to the left of each commit. Leave the
+                one
+                at the top alone and replace all the others with "s" for squash, save and close the file. This will
+                display
+                another interactive window where you can update your commit messages into one new commit message. I like
+                to
+                use "f" instead of "s", because I usually work in such a way that I name my first commit appropriately
+                from
+                the get-go. "f" just skips the 2nd interactive file and uses the first commit message.</p>
+
+            <h3>Pushing</h3>
+
+            <p>Push a local branch for the first time:</p>
+
+            <code>$ git push --set-upstream origin &lt;branch&gt;<br/>
+                $ git push</code>
+
+            <p>Push a local branch to a different remote branch:</p>
+
+            <code>$ git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;</code>
+
+            <p>Use the -f option flag to force it.</p>
+
+            <h3>Undo Last Push</h3>
+
+            <p>Some would say this is bad practice. Once you push something you shouldn't overwrite those changes.
+                Instead,
+                you're supposed to create a new commit that reverts the changes in the last one. So, technically, you
+                shouldn't do this, but... you can?</p>
+
+            <code>$ git reset --hard HEAD~1 && git push -f origin master</code>
+
+            <h3>Fetching</h3>
+
+            <p>Fetch changes from upstream:</p>
+
+            <code>$ git fetch upstream</code>
+
+            <p>Fetch changes from both origin and upstream in the same shot:</p>
+
+            <code>$ git fetch --multiple origin upstream</code>
+
+            <h3>Merging</h3>
+
+            <p>To be honest, I haven't used this command in quite some time. In my experience, it has created merge
+                bubbles
+                that have overwritten mine or others' code. For a better workflow, refer to rebasing, below.</p>
+
+            <p>Nonetheless, here's how you merge-in changes from origin's feature_x branch:</p>
+
+            <code>$ git fetch origin<br/>
+                $ git merge origin/feature_x</code>
+
+            <h3>Pulling</h3>
+
+            <code>Pulling is just doing a fetch followed by a merge. If you know your branch is clean (e.g., master
+                branch),
+                go ahead and get the latest changes. There will be no merge conflicts as long as your branch is
+                clean.</code>
+
+            <code>$ git pull origin/feature_x</code>
+
+            <h3>Rebasing</h3>
+
+            <p>Rebasing is a way of rewriting history. In place of merge, what this does is stacks your commits on top
+                of
+                commits that are already pushed up. In this case, you want to stack your commits on top of
+                origin/feature_x:</p>
+
+            <code>$ git fetch origin<br/>
+                $ git rebase origin/feature_x</code>
+
+            <p>If you already have a local branch set to track feature_x then just do:</p>
+
+            <code>$ git rebase feature_x</code>
+
+            <p>Would you like to fetch, merge and then stack your changes on top, all in one shot? You can! If you have
+                tracking setup on the current branch, just do:</p>
+
+            <code>$ git pull --rebase</code>
+
+            <p>Another great use of rebasing is just rewriting commit messages. To get an interactive text editor for
+                the
+                most recent commit, do:</p>
+
+            <code>$ git rebase -i HEAD~1</code>
+
+            <p>Now, you can replace "pick" with "r" and just change the commit message.</p>
+
+            <h3>Manually Set Tracking</h3>
+
+            <p>Perhaps you forgot to setup tracking when you pulled down a remote branch. No worries:</p>
+
+            <code>$ git config branch.&lt;local_branch&gt;.remote origin<br/>
+                $ git config branch.&lt;local_branch&gt;.merge refs/heads/&lt;remote_branch&gt;</code>
+
+            <h3>Deleting Branches</h3>
+
+            <p>Delete a local branch:</p>
+
+            <code>$ git branch -d &lt;local_branch&gt;</code>
+
+            <p>Use the -D option flag to force it.</p>
+
+            <p>Delete a remote branch on origin:</p>
+
+            <code>$ git push origin : &lt;remote_branch&gt;</code>
+
+            <h3>Stashing</h3>
+
+            <p>Sometimes you need to stash your changes so you can be on a clean branch or maybe because you want to go
+                back
+                and try something before you make a commit with these changes. Here's how you do a stash:</p>
+
+            <code>$ git stash</code>
+
+            <p>Now, if you want to unstash those changes and bring them back into your working directory:</p>
+
+            <code>$ git stash pop</code>
+
+            <p>Or maybe you want to unstash your changes without popping them off the stack. In other words, you might
+                want
+                to apply these stashed changes multiple times. To do this:</p>
+
+            <code>$ git stash apply</code>
+
+            <p>For a list of stashes:</p>
+
+            <code>$ git stash list</code>
+
+            <h3>Working with Tags</h3>
+
+            <p>Create tags using Github.com dashboard</p>
+
+            <ul>
+                <li>On GitHub, navigate to the main page of the repository.</li>
+                <li>Under your repository name, click Releases.</li>
+                <li>At the top of the Releases page, click Tags.</li>
+                <li>Type a version number for your release. Versions are based on Git tags. We recommend naming tags
+                    that fit within semantic versioning.
+                </li>
+                <li>Select a branch that contains the project you want to release. Usually, you'll want to release
+                    against your master branch, unless you're releasing beta software.
+                </li>
+                <li>Type a title and description that describes your release.</li>
+                <li>If you'd like to include binary files along with your release, such as compiled programs, drag and
+                    drop or select files manually in the binaries box.
+                </li>
+                <li>If the release is unstable, select This is a pre-release to notify users that it's not ready for
+                    production.
+                </li>
+                <li>If you're ready to publicize your release, click Publish release. Otherwise, click Save draft to
+                    work on it later.
+                </li>
+
+            </ul>
+
+
+            <p>You can also push just one tag with your current branch commit:</p>
+
+            <code>git push origin : v1.0.0</code>
+
+            <code>git tag 2.0.0
+                <br/>git push origin &lt;tag_name&gt;</code>
+            Alternately:
+            <code>git push --tags</code>
+
+
+            <p>You can list the tags with: <code>$ git tag -l </code></p>
+
+            <code>You can list the tags with $ git tag -l and then checkout a specific tag:<br/>
+
+                $ git checkout tags/&lt;tag_name&gt;<br/>
+
+                Even better, checkout and create a branch (otherwise you will be on a branch named after the revision
+                number of tag):<br/>
+
+                $ git checkout tags/&lt;tag_name&gt; -b &lt;branch_name&gt;<br/>
+            </code>
+        </div>
+
+        <br/>
+
+    </div>
+
+</div>

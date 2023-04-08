@@ -1,0 +1,22 @@
+<div class="container">
+
+    <h1>Page Not Found</h1>
+
+    <div class="row wow fadeIn">
+
+        <div *ngIf="isLoading"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+
+            <ul class="unstyled">
+
+                <li><a class="cursor-pointer" [routerLink]="['/home']"
+                       [routerLinkActive]="['active']">Home</a></li>
+
+                <li><a class="cursor-pointer" [routerLink]="['/login']"
+                       [routerLinkActive]="['active']">Login</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,171 @@
+<div class="builder-container container">
+
+    <h1>Builder</h1>
+
+    <div class="row">
+
+        <div class="col-lg-8 col-md-8 col-sm-12 wow fadeIn" data-wow-duration=".5s">
+
+            <form [formGroup]="builderForm" novalidate (ngSubmit)="setBuilderData(builderForm)">
+
+                <add-save-buttons (addSaveButton)="addItem($event)"></add-save-buttons>
+
+                <div class="ba-ot-standard-wrap">
+
+                    <!--  height width -->
+                    <mat-form-field class=" float-start" style="width: 38%; margin-left: 2%;">
+
+                        <input matInput type="text"
+                               formControlName="builder"
+                               Placeholder="Builder"
+                               name="builder" #builder>
+                    </mat-form-field>
+
+                    <div class="clear"></div>
+
+                    <mat-accordion multi="false">
+
+                        <div id="office-tour-list" cdkDropList (cdkDropListDropped)="drop($event)">
+
+                            <div formArrayName="items">
+
+                                <div *ngFor="let item of builderForm.controls['items'].controls;
+                                 let i = index; let even=even; let odd=odd;"
+                                     [ngClass]="{ odd: odd, even: even }"
+                                     cdkDrag>
+
+                                    <div [formGroupName]="i"
+                                         [ngClass]="{ odd: odd, even: even }">
+
+                                        <mat-expansion-panel hideToggle>
+
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title >
+                                                    <!-- add delete buttons -->
+                                                    <div class="add-delete-wrap "
+                                                         (click)="$event.stopPropagation();">
+
+                                                        <div class="delete-button">
+
+                                                            <!-- add/delete buttons -->
+                                                            <div class="float-start"
+                                                                 style="width: 49%;
+                                                                     text-align: center;">
+                                                                <!--  add method -->
+                                                                <span class=" text-info"
+                                                                      (click)="addItem(i)">
+                                                            <mat-icon>add</mat-icon>
+                                                            </span>
+                                                            </div>
+
+                                                            <!-- delete method -->
+                                                            <div class="float-end"
+                                                                 style="width: 49%; text-align: center;">
+                                                                <span class="text-danger"
+                                                                      *ngIf="builderForm.controls.items.controls.length > 0"
+                                                                      (click)="confirmDeleteMessage(i)"
+                                                                      value="delete Component"><mat-icon>delete</mat-icon>
+                                                                </span>
+                                                            </div>
+
+                                                            <!-- confirmation or cancel -->
+                                                            <div *ngIf="deleteConfirmationArray[i]"
+                                                                 class="delete-confirm">
+                                                                <!-- delete -->
+                                                                <span class="float-start sesame-danger "
+                                                                      style="width: 49%; "
+                                                                      (click)="confirmDelete(i, builderForm, 'deleteItem')">
+                                                                    Delete
+                                                                    </span>
+                                                                <!-- confirm delete -->
+                                                                <span type="button"
+                                                                      class="float-end sesame-green-background"
+                                                                      style="width: 49%;"
+                                                                      (click)="confirmDelete(i, null, 'cancelDeleteItem')">
+                                                                    Cancel
+                                                                    </span>
+
+                                                            </div><!-- delete buttons -->
+                                                        </div><!-- end buttons -->
+
+                                                        <div class="clear"></div>
+
+
+                                                    </div><!-- end add-delete-wrap -->
+                                                    <div *ngIf="item.controls.account.value as value; ">
+
+                                                        <span class="sesame-blue">{{item.controls.account.value | replaceDashSpace | titlecase}}</span>
+
+                                                        &nbsp;<span
+                                                            class="title-sub-text">{{item.controls.date.value | date}}</span>
+                                                        &nbsp;<span
+                                                            class="sesame-green">{{item.controls.snippetTitle.value }}</span>
+                                                    </div>
+
+
+
+                                                </mat-panel-title>
+
+                                            </mat-expansion-panel-header>
+
+                                            <br/>
+
+                                            <div class="clear"></div>
+
+                                            <mat-form-field float-end
+                                                            style="width: 38%; margin-left: 2%;"
+                                                            color="primary">
+
+                                                <mat-label>Account</mat-label>
+                                                <input matInput
+                                                       type="text"
+                                                       formControlName="account"
+                                                       name="account"
+                                                       placeholder="Account"
+                                                       #account>
+                                            </mat-form-field>
+
+                                            <br/>
+
+                                            <mat-form-field float-end
+                                                            style="width: 38%; margin-left: 2%;"
+                                                            color="primary">
+                                                <mat-label>Snippet Title</mat-label>
+                                                <input matInput
+                                                       type="text"
+                                                       formControlName="snippetTitle"
+                                                       name="snippetTitle"
+                                                       #snippetTitle>
+                                            </mat-form-field>
+
+                                            <div class="snippet-wrap">
+                                                <label>Snippet</label>
+                                                <textarea name="snippet"
+                                                          formControlName="snippet"
+                                                          name="snippet"
+                                                          placeholder="Snippet"
+                                                          #snippet>
+
+                                                </textarea>
+
+                                            </div><!-- end item-info bar -->
+
+                                        </mat-expansion-panel>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </mat-accordion>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+

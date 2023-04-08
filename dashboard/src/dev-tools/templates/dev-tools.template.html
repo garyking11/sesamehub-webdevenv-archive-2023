@@ -1,0 +1,14 @@
+<div id="site-manager">
+    <div [ngClass]="{'hide': sitename != 'dashboard'}">
+        <div class="masthead">
+            <!-- Site Context -->
+            <site-metadata></site-metadata>
+        </div>
+
+        <div class="content container" style="z-index: 1; ">
+            <!-- Main route output -->
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

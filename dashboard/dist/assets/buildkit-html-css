@@ -1,0 +1,114 @@
+/* slidehow log center */
+img.slideshow-logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    z-index: 400;
+  }
+
+  /* drop shadow */
+    box-shadow: 0px 0px 20px rgba( 0, 0, 0, .3);
+  -webkit-filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, .3));
+
+
+
+
+  /*********/
+  <!--Video HTML-->
+
+<div class="home-slideshow-section">
+        <video playsinline autoplay muted loop poster="/assets/video/poster.jpg" id="bgvid" >
+        </video>
+</div>
+
+<!--CSS-->
+/* HP Video */
+.home-slideshow-section {
+  position: relative;
+  padding: 0;
+  height: auto;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+}
+.home-slideshow-section video {
+  margin: 0 auto;
+  z-index: 10;
+  width: 100%;
+  display: block;
+}
+
+
+<!--local.js-->
+// HP Video appender
+        var mainVideo = $('#bgvid');
+        if ($(window).width() < 768) {
+            mainVideo.append("<source type='video/mp4' src='assets/video/welcome-small.mp4' />");
+        } else {
+            mainVideo.append("<source type='video/mp4' src='assets/video/welcome.mp4' />");
+        }
+
+
+    $('#hd ul li .patient-login').html('<div class="icon"><i class="fas fa-lock"></i></div>patient login');
+
+
+    $('#hd ul li.patient-login').html('<img src="assets/images/lock-icon.png"  alt="Patient Login"/> Patient Login');
+
+
+ /*********/
+
+<!-- parallax -->
+    setTimeout(function(){ 
+        if ($(window).width() > 1006) {
+            $('.para1').parallax("50%", -0.45);
+        }
+        if ($(window).width() > 1006) {
+            $('.para2').parallax("50%", -0.45);
+        }
+    }, 1000);
+
+
+// Parallax Layers for homepage SS/Video (Disabled in IE/Edge)
+if(navigator.userAgent.match(/Trident\/7\./) 
+window.navigator.userAgent.indexOf("Edge") > -1) {} else {
+    function paraSS() { 
+        window.addEventListener('scroll', function(event) {
+            var depth, i, layer, layers, len, movement, topDistance, translateY;
+            topDistance = this.pageYOffset;
+            layers = document.querySelectorAll("[data-type='parallax']");
+            for (i = 0, len = layers.length; i < len; i++) {
+                layer = layers[i];
+                depth = layer.getAttribute('data-depth');
+                movement = -(topDistance * depth);
+                if ($(window).width() < 1000) {
+                    movement = 0;
+                }
+                translateY = 'translateY(' + movement + 'px)';
+                layer.style['-webkit-transform'] = translateY;
+                layer.style['-moz-transform'] = translateY;
+                layer.style['-ms-transform'] = translateY;
+                layer.style['-o-transform'] = translateY;
+                layer.style.transform = translateY;
+            }
+        });
+    }
+    paraSS();
+}
+
+ /*********/
+
+div class="cycle-slideshow parallax-layer" id="home-slideshow-section"  
+            data-depth="-0.4" data-type="parallax"
+            data-cycle-fx="fade"
+            data-cycle-pause-on-hover="false"
+            data-cycle-speed="1200"
+            data-cycle-timeout="7000" >
+
+
+             <div class="cycle-slideshow parallax-layer" id="home-slideshow-section"
+        data-depth="-0.4" data-type="parallax"></div?

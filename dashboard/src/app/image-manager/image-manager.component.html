@@ -1,0 +1,176 @@
+<div id="image-manager" class="image-manager-container">
+
+    <h1>Stock Image Manager</h1>
+
+    <!-- Instructions -->
+    <div class="show-hide">
+        <button type="button" mat-raised-button (click)="showHide(showImageManagerInst = !showImageManagerInst);">
+            Instructions
+        </button>
+        <br/>
+        <div [ngClass]="{'hide': !showImageManagerInst }">
+            <br/>
+            <p>
+                Select desired ratio (1x1, 3x4 etc)<br/>
+                Select desired category (adult, braces etc)<br/>
+                Select library page<br/>
+                Select image to associate with library page<br/><br/>
+                Repeat ...
+            </p>
+
+            <p>Your selected image will be copied into the local buildkit.
+                (account-name/assets/uploads/images/)</p>
+
+        </div><!-- end showAssnInst -->
+    </div><!-- end show-hide -->
+
+    <div class="wow fadeIn">
+
+        <div class="row">
+<p class="text-warning" style="margin-top: 20px;">This page will add images to assets/uploads/images/, This directory is typically used for <br>
+team member photos, location images and internal pages.</p>
+            <!-- show available ratios/categories/local images in /srwd/www/assets/images/stock-images -->
+            <div class="col-lg-2 col-md-2 col-sm-12">
+
+                <h2>Ratio</h2>
+
+                <div class="wow fadeIn">
+                    <button type="button" mat-raised-button (click)="getRatioData(ratio = r)"
+                            style="margin-right: 5px;"
+                            *ngFor="let r of image_ratios; let i = index;">
+                        {{r}}
+                    </button>
+                </div>
+
+                <br/>
+
+                <!-- select desired image category -->
+                <div *ngIf="image_categories" class="wow fadeIn">
+                    <h2>Category</h2>
+                    <div>{{noImagesMessage}}</div>
+                    <!-- prints category only for selection -->
+                    <div (click)="selectImageCategory(category = cat)"
+                         *ngFor="let cat of image_categories; let i = index;"
+                         class="image-category available-category">{{ cat | capitalizeEachWord }}
+                    </div>
+                </div>
+
+                <br/>
+                <!-- get local files -->
+                <div class="wow local-image-container">
+                    <h2 *ngIf="local_images?.length > 0">Local Images</h2>
+
+                    <div *ngFor="let local_file of local_images; let i = index; let even=even; let odd=odd;"
+                         class="wow fadeIn">
+
+                        <mat-card>
+                            <mat-card-content>
+                                <div class="item-info-bar" style="height: 16px;">
+                                    <mat-icon class="float-end text-warning" style="padding: 0;"
+                                              *ngIf="local_images.length > 0"
+                                              (click)="confirmDeleteMessage(i, local_images[i])">close
+                                    </mat-icon>
+                                    <div class="float-end" *ngIf="deleteConfirmationArray[i]">
+
+                                        <a class="margin-right5  text-danger delete-image"
+                                           (click)="confirmDelete(i, local_images[i], 'deleteItem')">
+                                            Confirm</a>
+
+                                        &nbsp;<a class="margin-right5   text-warning delete-image"
+                                                 (click)="confirmDelete(i, null, 'cancelDeleteItem')">
+                                        Cancel</a>
+                                    </div>
+
+                                </div>
+                                <br/>
+                                <div class="local-image-thumb-container">
+                                    <!-- image -->
+                                    <img class="local-image-thumbs" #removedImage
+                                         src="../{{sitecontext.account}}/assets/uploads/images/{{local_file}}?{{localimg}}"
+                                         style="display: inline-block;" alt=""/>
+                                    <!-- name of page -->
+                                    <div style="clear: both; min-height: 24px; padding: 3px;">{{local_file}}</div>
+
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- show library pages -->
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <h2>Library Page</h2>
+
+                <div class="form-group border-d8d8d8 rounded-top-bottom" style="padding:10px;">
+
+                    <h4 for="search">Search pages</h4>
+                    <div class="sesame-green">bone grafts (no dashes)</div>
+                    <input id="search"
+                           class="form-control"
+                           type="text"
+                           [(ngModel)]="searchPages"
+                           placeholder="Search By Page Name"
+                           #search_pages/>
+                </div>
+
+                <!-- list library pages -->
+                <div class=" library-page-item"
+                     *ngFor="let lp of library_pages | searchlibrarypages: searchPages;
+                     let i = index;"
+                     (click)="newFileName = lp.lib_page">
+
+                    <!-- set status of selected library page  -->
+                    <div (click)="setSelectedPageActive(lp)"
+                         [class.selected-page]="lp === pageSelected">
+                        {{lp.lib_page | replaceCharactersExceptDash | replaceTrailingDash | replaceSpaceDash |
+                        toLowercase
+                        }}
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- start available image thumbs -->
+            <div class="col-lg-7 col-md-7 col-sm-12">
+
+                <h2>Status</h2>
+                <!-- show ratio/categories status in this status container -->
+                <div class="wow fadeIn status-container">
+                    <span *ngIf="ratioSelected"><span
+                            [ngClass]="['status-item', 'bg-info']">{{ratioSelected}}</span></span>
+                    <span *ngIf="imageCategory"><span
+                            [ngClass]="['status-item', 'bg-info']">{{imageCategory}}</span></span>
+                    <span *ngIf="pageTitleError == false"><span
+                            [ngClass]="['status-item', 'bg-warning']">{{pageTitleSelectedMsg}}</span></span>
+                    <span *ngIf="selectImageStatus == true"><span
+                            [ngClass]="['status-item', 'bg-warning']">{{selectImageStatusMsg}}</span></span>
+                    <span *ngIf="imageRatioStatus == false"><span
+                            [ngClass]="['status-item', 'bg-warning']">{{imageRatioStatusMsg}}</span></span>
+                    <span *ngIf="imageCategoriesStatus == false"><span
+                            [ngClass]="['status-item', 'bg-warning']">{{imageCategoriesStatusMsg}}</span></span>
+                </div><!-- end status-container -->
+
+                <!-- Show available images -->
+                <div class="wow fadeIn" *ngIf="available_image_thumbs && category">
+                    <h2>Available Images</h2>
+                    <div class="available-images-container">
+                        <div class="image-maxwidth-111" *ngFor="let f of available_image_thumbs; let i = index;">
+                            <div class="avail-thumb image-maxwidth-111">
+                                <img
+                                        class="image-maxwidth-111 available-image"
+                                        src="{{f}}"
+                                        style="display: inline-block;"
+                                        alt="{{f}}"
+                                        (click)="renameAndCopyToLocalDir(sitecontext.account, currentFileName = f , newFile = newFileName, ind = i); "/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

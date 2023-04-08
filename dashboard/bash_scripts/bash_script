@@ -1,0 +1,39 @@
+#!/bin/bash
+
+clear
+whoami
+echo $(whoami);
+echo "################"
+
+echo "PHP location and version"
+which php
+php --version
+
+echo "################"
+
+currentuser=$(whoami)
+ls -la
+
+echo "################"
+echo "Operating System: "
+case "$OSTYPE" in
+  solaris*) echo "SOLARIS" ;;
+    darwin*)  echo "OSX" ;; 
+      linux*)   echo "LINUX" ;;
+        bsd*)     echo "BSD" ;;
+	  msys*)    echo "WINDOWS" ;;
+	    *)        echo "unknown: $OSTYPE" ;;
+	    esac
+
+echo "################"
+
+ng --version
+
+echo "################"
+
+echo $(whoami);
+if [ "$(whoami)" != 'root' ]; then
+echo "You do not have permission to run $0 as non-root user."
+exit 1;
+fi
+

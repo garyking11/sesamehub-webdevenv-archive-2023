@@ -1,0 +1,15 @@
+<div class="select-image-directory">
+    <mat-form-field>
+        <mat-label>{{caption}} <span
+                class="label-instructions">/assets/{{directory}}/</span>
+        </mat-label>
+        <mat-select [(ngModel)]="image.path"
+                    (selectionChange)="updateSize()"
+                    name="image">
+            <mat-option
+                    *ngFor="let file of images"
+                    [value]="file.path">{{file.path}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

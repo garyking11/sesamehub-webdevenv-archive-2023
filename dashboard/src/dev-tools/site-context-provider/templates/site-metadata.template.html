@@ -1,0 +1,132 @@
+<div class="masthead">
+    <div class="site-context-container container">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-3 col-lg-3 ">
+
+                <h1 class="sm-logo">
+                    <a class="" style="background-color: inherit; font-size: .9em;" [routerLink]="['/sections']"
+                   [routerLinkActive]="['active']">SM Dashboard</a>
+                </h1>
+
+                <div style="text-transform: lowercase; font-size: 1.5em;">{{heading}}</div>
+                <div style="font-size: 1.250em;">{{builder.value}}</div>
+
+            </div>
+
+            <!-- create-seed component -->
+            <div class="col-sm-12 col-md-3 col-lg-3">
+
+                <div>
+                    <dev-create-seed></dev-create-seed>
+                    <div>{{getLocalDirectoriesError}}</div>
+                </div>
+            </div>
+
+            <!-- select account form -->
+            <div class="col-sm-12 col-md-3 col-lg-3">
+
+                <form [formGroup]="selectSiteMetadataForm"
+                      (ngSubmit)="onSetSiteData(selectSiteMetadataForm);" >
+
+                    <!-- -->
+                    <button mat-raised-button
+                            [disabled]="!builder.value || !account.value"
+                            type="submit">
+                        <span>Select Account</span>
+                    </button>
+
+                    <br /><br />
+
+                    <mat-form-field color="accent">
+                        <mat-label>Select Account Name</mat-label>
+                        <mat-select id="account"
+                                    required
+                                    #account
+                                    formControlName="account"
+                                    placeholder="Account"
+                                    name="account">
+                            <mat-option *ngFor="let dir of localDirectories"
+                                        value="{{dir}}">{{dir}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="bgdanger" *ngIf="selectSiteMetadataForm.get('account').touched
+                    && !account.value">Account is a required field</div>
+                    <div>
+                        <mat-form-field>
+                            <input matInput
+                                 ngModel
+                                   #builder
+                                   required
+                                   type="text"
+                                   name="builder"
+                                   formControlName="builder"
+                                   placeholder="Builder Name">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="bgdanger" *ngIf="selectSiteMetadataForm.get('builder').touched
+                    && !builder.value">Name is a required field</div>
+
+                </form>
+
+            </div>
+
+            <div class="col-sm-12 col-md-3 col-lg-3">
+
+                <nav class="navbar navbar-expand-lg">
+
+                        <div id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Pages
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" *ngFor="let item of mainMenuArray"
+                                               [routerLink]="[item.routerLink]">{{item.display}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Resources
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" [routerLink]="['/css']"
+                                               [routerLinkActive]="['active']">Variables</a></li>
+                                        <li><a class="dropdown-item" [routerLink]="['/css-mixins']"
+                                               [routerLinkActive]="['active']">Mixins</a></li>
+                                        <!--<li><a class="dropdown-item" [routerLink]="['/build-info']"
+                                               [routerLinkActive]="['active']">Support (beta)</a></li>-->
+                                        <li><a class="dropdown-item"
+                                               href="https://confluence.internetbrands.com/display/PD/Web+Team+Home"
+                                               target="_blank">WebDev WIKI</a></li>
+                                        <li><a class="dropdown-item"
+                                               href="https://confluence.internetbrands.com/pages/viewpage.action?pageId=162453771"
+                                               target="_blank">SM WIKI</a></li>
+
+                                       <!-- <li><a class="dropdown-item" [routerLink]="['/form-builder']"
+                                               [routerLinkActive]="['active']">Form Builder</a></li>-->
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

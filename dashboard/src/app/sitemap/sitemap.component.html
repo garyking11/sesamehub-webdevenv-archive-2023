@@ -1,0 +1,140 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class=" wow fadeIn" data-wow-duration=".5s">
+
+            <h1>Sitemap XML Generator</h1>
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+                <div [ngClass]="{'bg-danger':sitemapDataStatus == false, 'bg-info': sitemapDataStatus == true}"
+                     class="info-box-padding-rounded">
+                    {{sitemapDataMessage}}
+                </div>
+
+                <!-- Instructions -->
+                <div class="show-hide">
+                    <button (click)="showHide(showSitemapInst = !showSitemapInst);">Instructions</button>
+
+                    <div [ngClass]="{'hide': !showSitemapInst }">
+
+                        <div class="content-data">
+                            <h3>Instructions</h3>
+
+                            <p>
+                                Add url including the http:// or https:// <span
+                                    class="text-warning">Required</span><br/>
+                                Adjust data if needed.<br/>
+                                Grab the XML at the bottom of the page.<br/>
+                                Paste it into sitemap.xml in the /assets/includes directory.<br/>
+                            </p>
+
+                            <p>Complete the form and "Grab your HTML." </p>
+                        </div><!-- end content-data -->
+                    </div><!-- end showAssnInst -->
+                </div><!-- end show-hide -->
+
+                <form id="sitemapForm" [formGroup]="sitemapForm" novalidate
+                      (ngSubmit)="onGetCurrentDomainUrls(sitemapForm.value.loc);"
+                      class="rounded-top-bottom">
+
+                    <!-- buttons -->
+                    <div>
+                        <button type="submit" class="button50inline btn btn-primary text-left"
+                                [ngClass]="{'disabled': !sitemapForm.valid}" [disabled]="!sitemapForm.valid">
+                            Get URLs
+                        </button>
+                    </div>
+
+                    <div [ngClass]="{
+                    'bg-info' : default,
+                    'bg-success' : !contentAvailable,
+                    'bg-danger'  : contentAvailable && !default}">
+                        {{redirectDataMessage}}
+                    </div>
+
+                    <div [ngClass]="{'hide' : !isLoading, 'show': isLoading }">
+                        <i style="font-size: 1.5em; padding: 5px;" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                        Searching ... Please wait ...
+                    </div>
+
+                    <div class="form-group rounded-top-bottom item5-10">
+                        <label>Enter Domain Name
+                            <span class="label-instructions">(http://boblawortho.com or http://bob-law.sesamehub.com)</span></label>
+                        <input type="text"
+                               class="form-control"
+                               formControlName="loc"
+                               placeholder="Domain Name"
+                               #loc>
+                        <div [hidden]="sitemapForm.controls.loc.valid
+                           || (sitemapForm.controls.loc.pristine && !sitemapForm.submitted)"
+                             class="bg-danger small">
+                            Domain Name is required<br/>
+                            http:// or https:// is required
+                        </div>
+
+                    </div>
+
+                </form><!-- End form -->
+            </div><!-- end col -->
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+
+            </div><!-- end col -->
+
+        </div><!-- end row -->
+        <div class="row">
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+                <h4><i style="cursor: pointer;" class="fa fa-clipboard copy" (click)="onCopyHTMLToClipboard('copy');"
+                       data-target="#copy"></i> Grab your HTML</h4>
+
+                <code id="copy">
+
+                    &lt;?xml version="1.0" encoding="UTF-8" ?&gt;<br/>
+                    &lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br/>
+                    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"&gt;<br/><br/>
+
+                    <div class="content-data">
+
+                        <div *ngFor="let item of sitemapData">
+
+                            &lt;url&gt;<br/>
+
+                            &lt;loc&gt;{{loc.value}}{{item}}&lt;/loc&gt;<br/>
+                            &lt;lastmod&gt;{{dateToday}}&lt;/lastmod&gt;<br/>
+
+                            <div [ngClass]="{'hide':  item != '/home' }">&lt;priority&gt;1.0&lt;/priority&gt;<br/></div>
+                            <div [ngClass]="{'hide':  item != '/index.php'}">&lt;priority&gt;1.0&lt;/priority&gt;<br/>
+                            </div>
+                            <div [ngClass]="{'hide':  item == '/index.php' || item == '/home'}">&lt;priority&gt;0.5&lt;/priority&gt;<br/>
+                            </div>
+                            <div>
+
+                            </div>
+
+                            &lt;changefreq&gt;daily&lt;/changefreq&gt;<br/>
+
+                            &lt;/url&gt;<br/>
+
+                        </div><!--end ngFor -->
+
+                        &lt;/urlset&gt;<br/>
+
+                    </div>
+                </code>
+            </div><!-- end col -->
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+
+            </div><!-- End col -->
+        </div><!-- end row -->
+
+    </div>
+
+</div>

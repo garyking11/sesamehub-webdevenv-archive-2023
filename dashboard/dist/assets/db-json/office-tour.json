@@ -1,0 +1,16 @@
+{
+  "standardHeight": 123,
+  "standardWidth": 456,
+  "images": [
+    {
+      "image": "the-first-image.png",
+      "imageAlt": "I am Office Tour imageAlt 1",
+      "altCaption": "Alt Caption One"
+    },
+    {
+      "image": "the-second-image.jpg",
+      "imageAlt": "I am Office Tour imageAlt 2",
+      "altCaption": "Alt Caption Two"
+    }
+  ]
+}

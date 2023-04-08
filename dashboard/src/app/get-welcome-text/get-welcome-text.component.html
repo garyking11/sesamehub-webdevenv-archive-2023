@@ -1,0 +1,45 @@
+<div id="dev-welcome-text" class="container">
+
+    <div class="col span6 offset3">
+
+        <div id="get-welcome-text" class="row" [ngClass]="{'hide': sitename == 'dashboard'}">
+
+            <div class="col span6 offset3 ">
+
+                <div class="form-group">
+
+                    <form>
+
+                        <button class="btn btn-small button button-medium site-button-color box-round box-shadow"
+                                (click)="getWelcomeTextData(sitename)">HUB Welcome Text
+                        </button>
+                        <button id="getStockWelcomeData"
+                                class="btn btn-small button button-medium site-button-color box-round box-shadow"
+                                (click)="getStockWelcomeData()">STOCK Welcome text
+                        </button>
+                        <button class="btn btn-small button button-medium site-button-color box-round box-shadow"
+                                (click)="welcomeTextPost(response, sitename)">Apply
+                        </button>
+                        <div class="form-group" style="background-color: #0099cc; line-height:2em; text-align: center">
+                            <label style="color: #fff; ">{{ sitename }}</label>
+                            <textarea id="hub_welcome_text" name="hub_welcome_text"
+                                      class="form-control"
+                                      [(ngModel)]="response" #hub_welcome_text></textarea>
+
+                            <div class="invalid-selection" style="color: #fff;" *ngIf="response === undefined || response === ''">
+                                <span style="color: #fff;">*required ... Select Welcome Text Option</span>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

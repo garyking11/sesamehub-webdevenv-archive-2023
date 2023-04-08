@@ -1,0 +1,211 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+
+            <h1>301 Redirects</h1>
+            <h2>Instructions</h2>
+            <div>
+                <ul>
+                    <p>Add previous url including the http:// or https://<span class="text-warning"> Required</span></p>
+                    <p>Grab the and PHP on the right of the page.</p>
+                    <p>Paste it into the 301.php file in you /assets/includes directory.</p>
+                    <p>&nbsp;</p>
+                    <p class="text-danger">NOTE: Some websites do not allow us to access their link via this tool. You
+                        will need to
+                        manually create the 301.php file.</p>
+                    <p class="text-danger">Known bug: Remove trailing comma from php array.</p>
+                </ul>
+            </div>
+
+
+            <!-- Request previous and local urls -->
+            <form id="redirectDomainForm" novalidate [formGroup]="redirectDomainForm"
+                  (ngSubmit)="onGetPreviousDomainUrls(redirectDomainForm.value);"
+                  class="sesame-light-gray rounded-top-bottom">
+
+                <!-- buttons -->
+                <div>
+                    <button type="submit" class="button50inline btn btn-primary"
+                            [disabled]="!redirectDomainForm.valid">
+                        Get Urls
+                    </button>
+
+                </div>
+
+                <div class="form-group rounded-top-bottom item5-10">
+
+                    <div class="bg-info info-box-padding-rounded">
+                        Note: <br/>Not all websites allow this form access. You may need to create your own 301.php
+                        redirect file.
+                    </div>
+
+                    <!-- messaging -->
+                    <div [ngClass]="{
+                    'bg-info' : default,
+                    'bg-success' : !contentAvailable,
+                    'bg-danger'  : contentAvailable && !default}">
+                        {{redirectDataMessage}}
+                    </div>
+
+                    <div [ngClass]="{'hide' : !isLoading, 'show': isLoading }">
+                        <i style="font-size: 1.5em; padding: 5px;" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                        Searching ... Please wait ...
+                    </div>
+
+                    <label>Previous Domain Name
+                        <span class="label-instructions">http://boblaw.com (http:// required!)</span> </label>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Previous Domain Name"
+                           #previousdomainname
+                           formControlName="previousdomainname"
+                           name="previousdomainname">
+                </div>
+
+                <div *ngIf="!redirectDomainForm.controls['previousdomainname'].valid
+            && ( redirectDomainForm.controls['previousdomainname'].pristine
+                && !redirectDomainForm.submitted)"
+                     class="bg-danger small">
+                    Domain Name is required<br/>
+                    'http://' or 'https://' is required
+                </div>
+
+            </form>
+            <!-- End request for previous and local urls -->
+
+            <!-- Start previous url form -->
+
+            <form id="prevUrlForm" novalidate [formGroup]="prevUrlForm"
+                  (ngSubmit)="onSetRedirectData(prevUrlForm.value);"
+                  class="sesame-light-gray rounded-top-bottom">
+
+                <!--<div>
+                    <button type="submit" class="button50inline btn btn-primary"
+                            [disabled]="!prevUrlForm.valid || !contentAvailable ">
+                        Set Redirects
+                    </button>
+                </div>-->
+
+                <div formArrayName="prevItems">
+
+                    <div *ngFor="let previtem of prevUrlForm.controls['prevItems'].controls; let i = index; let even=even; let odd=odd;"
+
+                         class="rounded-top-bottom item5-10"
+                         [ngClass]="{ odd: odd, even: even }">
+
+                        <div [formGroupName]="i">
+
+                            <div class="form-group">
+                                <label>Previous Site URL
+                                    <span class="label-instructions">(http://yourdomainname.com)</span>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       formControlName="url"
+                                       #url
+                                       placeholder="URL">
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>Current URL Redirect To</label>
+                                <select formControlName="redirectto" #redirectto>
+                                    <option value="" selected>No Redirect</option>
+                                    <option *ngFor="let item of currentUrls;
+                                let i = index; let even=even; let odd=odd;"
+                                            class="rounded-top-bottom item5-10"
+                                            [value]="item"
+                                            [ngClass]="{ odd: odd, even: even }">{{item | replaceHash}}
+                                    </option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </div><!-- end col -->
+
+        <div class="col-lg-6 col-md-6 col-sm-12 ">
+
+            <h3>Example Redirects (301.php)</h3>
+
+            <code>
+                &lt;&#36;php &#36;redirect = array("/plans/" => "/refer-a-patient",<br/>
+                "/patient-engagement/dental-ortho-sesame/" => "/office-visits",<br/>
+                "/index.php" => "/home"<br/>
+                )<br/>
+
+                if(array_key_exists(&#36;_SERVER['REQUEST_URI'], &#36;redirect))&#123; Header( "HTTP/1.1 301 Moved
+                Permanently" ); Header( "Location: ".$redirect[$_SERVER['REQUEST_URI']]); exit; &#125;<br/>
+                ?&gt;<br/>
+            </code>
+
+            <h3>Redirects</h3>
+
+            <div class="content-data"
+                 *ngFor="let redirect of prevUrlForm.controls['prevItems'].value | keys; let i = index;">
+
+                <div [hidden]="!redirect.value.redirectto">
+
+                    <div><strong class="sesame-green">Previous URL:</strong>
+                        {{redirect.value.url | addSpaceBeforeCapital |
+                        capitalize}}
+                    </div>
+
+                    <div><strong class="sesame-blue">Redirects to:</strong>
+                        {{redirect.value.redirectto | addSpaceBeforeCapital |
+                        capitalize}}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h4><i style="cursor: pointer;" class="fa fa-clipboard copy" (click)="onCopyHTMLToClipboard('copy');"
+                   data-target="#copy"></i> Grab your HTML</h4>
+
+            <code id="copy">
+
+                &lt;?php
+                $redirect = array( <br/><br/>
+
+                <div *ngFor="let markup of prevUrlForm.controls['prevItems'].value | keys; let i = index; let last = last">
+                    <!-- <span [hidden]="last == false">,</span> -->
+                    <span [hidden]="!markup.value.redirectto">
+                            "{{markup.value.url}}" =></span>
+
+                    <span [hidden]="!markup.value.redirectto">
+                        "{{markup.value.redirectto | replaceHash}}",<br/></span>
+
+                </div>
+
+                ); <!-- end array -->
+
+                <br/><br/>
+
+                if(array_key_exists($_SERVER['REQUEST_URI'], $redirect))&#123;
+                Header( "HTTP/1.1 301 Moved Permanently" );
+                Header( "Location: ".$redirect[$_SERVER['REQUEST_URI']]);
+                exit;
+                &#125;
+                <br/><br/>
+                ?&gt;
+
+            </code>
+
+        </div><!-- end col -->
+
+    </div><!-- end row -->
+
+</div>
+

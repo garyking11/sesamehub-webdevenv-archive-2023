@@ -1,0 +1,22 @@
+<form [formGroup]="quickLinksForm" (change)="onGetQuickLink();" class="form-fields-100">
+
+    <h2><i class="fa fa-link" aria-hidden="true"></i> Sesame Content PagesRoutes</h2>
+    <select
+            id=""
+            class="form-control "
+            formControlName="quicklink"
+            name="quicklink"
+            >
+
+        <option value="">
+            Select Sesame Demo Site
+        </option>
+
+        <option *ngFor="let qlink of quickLinks"
+                value="{{qlink.url}}">{{qlink.display}}
+        </option>
+
+    </select>
+
+</form>
+

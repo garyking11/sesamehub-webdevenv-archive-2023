@@ -1,0 +1,229 @@
+<div class="user-container container">
+
+    <h1>Manage Users</h1>
+
+    <div class="row  fadeIn">
+
+        <dev-admin-nav></dev-admin-nav>
+
+        <div class="clear"></div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+
+            <!-- start add user form -->
+
+            <div>
+
+                <form [formGroup]="userForm" novalidate (ngSubmit)="onSetFormData(userForm)"
+                      class="">
+
+                    <div>
+                        <button mat-raised-button
+                                class="float-start"
+                                style="margin-right: 5px;"
+                                type="submit">
+                            <mat-icon class=" sesame-blue">save</mat-icon>
+                            Save
+                        </button>
+                        <!-- add item -->
+                        <button type="button" mat-raised-button (click)="addItem()">
+                            <mat-icon class="mat-18 sesame-blue">add</mat-icon>
+                            Add
+                        </button>
+
+                        <br/> <br/>
+
+                        <div class="clear"></div>
+                    </div>
+
+                    <mat-accordion multi="false">
+
+                        <div cdkDropList (cdkDropListDropped)="drop($event)">
+
+                            <div formArrayName="items">
+
+                                <div *ngFor="let item of userForm.controls['items'].controls; let i = index; let even=even; let odd=odd;"
+                                     class="" [ngClass]="{ odd: odd, even: even }"
+                                     cdkDrag>
+
+                                    <div [formGroupName]="i">
+
+                                        <mat-expansion-panel>
+
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    <div *ngIf="userForm.controls['items'].controls[i].controls.username.value; ">
+                                                        <span class="sesame-blue">{{userForm.controls['items'].controls[i].controls.username.value }}</span>
+                                                        &nbsp;<span
+                                                            class="sesame-green">{{item.controls.role.value | replaceDashSpace}}</span>
+                                                    </div>
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+
+                                            <br />
+
+                                            <!-- item-info-bar -->
+                                            <div class="item-info-bar">
+                                                <div class="delete-add-wrap">
+
+                                                    <div class="delete-button">
+
+                                                        <!-- add/delete buttons -->
+                                                        <div class="float-start"
+                                                             style="width: 49%;
+                                                            text-align: center;">
+                                                            <!--  add method -->
+                                                            <span class=" text-info"
+                                                                  (click)="addItem()">
+                                                    <mat-icon>add</mat-icon>
+                                                </span>
+                                                        </div>
+
+                                                        <!-- delete method -->
+                                                        <div class="float-end"
+                                                             style="width: 49%; text-align: center;">
+                                                <span class="text-danger"
+                                                      *ngIf="userForm.controls.items.controls.length > 0"
+                                                      (click)="confirmDeleteMessage(i, $event)"
+                                                      value="delete Component"><mat-icon>delete</mat-icon>
+                                                </span>
+                                                        </div>
+
+                                                        <!-- confirmation or cancel -->
+                                                        <div *ngIf="deleteConfirmationArray[i]" class="delete-confirm">
+                                                            <!-- delete -->
+                                                            <span class="float-start sesame-danger "
+                                                                  style="width: 49%; "
+                                                                  (click)="confirmDelete(i, adminForm, 'deleteItem')">
+                                                Delete
+                                                </span>
+                                                            <!-- confirm delete -->
+                                                            <span type="button"
+                                                                  class="float-end sesame-green-background"
+                                                                  style="width: 49%;"
+                                                                  (click)="confirmDelete(i, null, 'cancelDeleteItem')">
+                                                    Cancel
+                                                </span>
+
+                                                        </div><!-- delete buttons -->
+                                                    </div><!-- end buttons -->
+
+                                                    <div class="clear"></div>
+
+                                                </div>
+                                            </div><!-- end item-info bar -->
+
+                                            <div>
+                                                <mat-form-field class="float-start"
+                                                                style="width: 48%;
+                                                                margin-right: 1%;">
+                                                    <input matInput
+                                                           type="text"
+                                                           formControlName="username"
+                                                           name="username"
+                                                           placeholder="Username"
+                                                           #username>
+                                                </mat-form-field>
+
+                                                <mat-form-field class="float-end"
+                                                                style="width: 48%; margin-left: 1%;">
+                                                    <mat-select formControlName="role"
+                                                                name="role"
+                                                                placeholder="Role"
+                                                                #role>
+
+                                                        <mat-option *ngFor="let item of roles;" value="{{item.role}}">
+                                                            {{item.display}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div>
+                                                <mat-form-field
+                                                                class="float-start"
+                                                                placeholder="password"
+                                                                style="width: 48%; margin-right: 1%;">
+                                                    <input matInput
+                                                           type="password"
+                                                           formControlName="password"
+                                                           name="password"
+                                                           placeholder="Password" #password>
+                                                </mat-form-field>
+
+                                                <mat-form-field
+                                                                placeholder="Confirm Password"
+                                                                class="float-end"
+                                                                style="width: 48%; margin-left: 1%;">
+                                                    <input matInput
+                                                           type="password"
+                                                           formControlName="confirm_password"
+                                                           name="confirm_password"
+                                                           placeholder="Confirm Password"
+                                                           #confirm_password>
+                                                </mat-form-field>
+
+                                            </div>
+
+                                            <div class="clear"></div>
+
+
+                                            <hr/>
+
+
+
+                                            <div class="form-group">
+                                                <mat-label>User Information</mat-label>
+                                                <textarea type="text"
+                                                          class="form-control"
+                                                          formControlName="information"
+                                                          name="information" placeholder="Information"
+                                                          #information></textarea>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </mat-accordion>
+
+                    <!--</div>-->
+                    <!--&lt;!&ndash; end ngFor &ndash;&gt;-->
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+
+            <div
+                    *ngFor="let item of userForm.controls['items'].value
+                             let i = index; let first = first;">
+
+                <span class="text-info bold">USER: {{item.username}}</span><br/>
+                ROLE: {{item.role}}&nbsp;&#124;&nbsp;OS: {{os}}&nbsp;&#124;&nbsp;GULP:&nbsp;{{gulpVersion}}
+
+                <!-- {{item.password}} -->
+                <p class="border-d8d8d8" style="padding: 10px;">
+                    {{item.information}}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+

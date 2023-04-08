@@ -1,0 +1,20 @@
+<?php
+$excluded_urls = array(
+    'http://www.sesamecommunications.com/24-7',
+    'https://www.facebook.com/SesameCommunications',
+    'javascript:void(0)',
+    '/javascript:void(0)',
+    '/javascript:;',
+    '/meet-dr-sam-sesame',
+    '/sitemap',
+    '/login',
+    '/scrollpoints',
+    '/',
+    '#hd',
+    '/#hd',
+    '#',
+    '/meet-dr-sesame',
+    '/meet-dr-sam-sesame',
+    '/meet-dr-samantha-sesame'
+);
+?>

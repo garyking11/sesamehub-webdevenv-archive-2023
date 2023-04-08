@@ -1,0 +1,174 @@
+<div class="office-tour-container" *ngIf="OTInterface">
+
+    <h2>{{title}}</h2>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 wow fadeIn" data-wow-duration=".5s">
+
+        <div class="show-hide">
+
+            <button mat-raised-button
+                    (click)="showHide(officeTourInst = !officeTourInst);">Instructions
+            </button>
+
+            <div [ngClass]="{'hide': !officeTourInst }">
+
+                <p class="text-success">Place office-tour images in the '/assets/{{imageDirectory}}'
+                    directory.</p>
+
+                <p>Complete the form and "Grab your HTML."
+                    <br/><span class="sesame-blue">Blue placeholder text</span> indicates a required
+                    field.<br/>
+                    If you are using the .jpg extension for your images just add the number of slides you
+                    are using. </p>
+
+            </div>
+
+        </div>
+        <!-- add item -->
+        <button type="button" mat-raised-button (click)="addImage()">
+            <mat-icon class="mat-18 sesame-blue">add</mat-icon>
+            Add
+        </button>
+
+        <h3>Selected Images</h3>
+
+        <mat-accordion multi="false">
+
+            <div id="office-tour-list" cdkDropList (cdkDropListDropped)="drop($event)">
+
+                <div *ngFor="let image of OTInterface.images;   let i = index; let even = even; let odd = odd" cdkDrag>
+                    <mat-expansion-panel hideToggle>
+
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+
+                                <!-- add delete buttons-->
+                                <div class="add-button">
+                      <span class=" text-info"
+                            (click)="addImage(); $event.stopPropagation()">
+                            <mat-icon>add</mat-icon>
+                     </span>
+                                </div>
+
+                                <div class="delete-button">
+                     <span class=" text-danger"
+                           (click)="removeImage(i); $event.stopPropagation()">
+                        <mat-icon>delete</mat-icon>
+                        </span>
+                                </div>
+
+                                <div class="clear"></div>
+                                <span class="sesame-blue" *ngIf="image.path">{{ image.path }}</span> &nbsp;&nbsp;
+                                <span class="sesame-green" *ngIf="!image.path">Select Image</span> &nbsp;&nbsp;
+                                <span class="sesame-green">{{image.imageAlt}}</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <br/>
+
+                        <div class="float-start" style="width: 48%; margin-right: 2%;">
+                            <br/>
+                            <image-selector caption="Slider Image" [image]="image" directory="{{imageDirectory}}"></image-selector>
+                        </div>
+
+                        <br/>
+                        <div>
+                            <img class="float-end preview-image"
+                                 ngDefaultControl
+                                 src="../{{siteContext.account}}/assets/{{imageDirectory}}/{{image.path}}"
+                                 alt=""
+                                 *ngIf="image.path"
+                            />
+
+                        </div>
+
+                        <mat-form-field>
+                            <mat-label>Add a caption <span class="label-instructions">(optional - before and after description)</span>
+                            </mat-label>
+                            <input matInput
+                                   type="text"
+                                   [(ngModel)]="image.imageAlt"
+                                   name="imageAlt"
+                                   class="float-end"
+                                   placeholder="Add a caption">
+                        </mat-form-field>
+
+                        <div class="clear"></div>
+
+                    </mat-expansion-panel>
+                </div>
+
+            </div>
+
+            <div>
+                <button mat-raised-button
+                        class="save-button"
+                        (click)="saveOfficeTourImages(OTInterface)"
+                        type="button">
+                    <mat-icon>save</mat-icon>
+                    Save
+                </button>
+
+            </div>
+        </mat-accordion>
+
+    </div>
+
+</div>
+<!-- start copy -->
+<br/>
+<!-- Start HTML code area -->
+<p class="copy sesame-blue" (click)="copyThisHTMLToClipboard('#copyOfficeTour');"
+   data-target="#copyOfficeTour">
+    <mat-icon style="cursor: pointer;">file_copy</mat-icon>
+    Grab your HTML
+</p>
+
+<code id="copyOfficeTour" *ngIf="OTInterface">
+
+    &lt;p&gt;We understand your need to receive treatment in a practice where you feel comfortable, safe, and welcome.
+    Please feel free to schedule an appointment, or stop by for a complete tour of our practice. You will get to meet
+    our team, walk through
+    our office and treatment areas, and learn more about the treatments we provide.&lt;/p&gt;<br/><br/>
+
+    &lt;div class="mediaslider"&gt;<br/>
+
+    <span>&lt;div class="cycle-slideshow" <br/>
+        <span>data-cycle-timeout="9000"<br></span>
+        <span>data-cycle-loader="wait"<br></span>
+        <span>data-cycle-auto-height="calc"<br></span>
+        <span>data-cycle-center-horz="true"<br></span>
+        <span>data-cycle-center-vert="true"<br></span>
+        <span>data-cycle-caption="#caption"<br></span>
+        <span>data-cycle-caption-template="{{lCurly}}{{lCurly}}cycleTitle{{rCurly}}{{rCurly}}"</span>
+        &gt; </span>
+
+    <br>
+
+    <span>&lt;button aria-label="previous slide" class="slidecontrol cycle-prev"&gt;&lt;span class="fa fa-chevron-left"  aria-hidden="true" role="img"&gt;&nbsp;{{nbsp}}&lt;/span&gt;&lt;/button&gt;</span><br/><br/>
+    <span>&lt;button aria-label="next slide" class="slidecontrol cycle-next"&gt;&lt;span class="fa fa-chevron-right"  aria-hidden="true" role="img"&gt;&nbsp;{{nbsp}}&lt;/span&gt;&lt;/button&gt;</span><br/><br/>
+
+    <div *ngFor="let markup of OTInterface.images; let i = index; let last = last">
+
+        <div class="bg-items"><span><span>&lt;img src="/assets/{{imageDirectory}}/{{markup.path}}"
+            <span *ngIf="markup.imageAlt">&nbsp;alt=""</span>
+            data-cycle-title="{{markup.imageAlt}}"
+              alt=""
+              width="{{ markup.width }}"</span>
+              height="{{ markup.height }}" decoding="async"&gt; </span>
+        </div>
+
+        <br/>
+
+    </div><!-- end *ngFor -->
+
+
+    <br/>
+    <span>&lt;/div&gt;</span>&lt;!&ndash;&ndash; end office tour slideshow &ndash;&ndash;&gt;
+
+    &lt;div id="caption"&gt;{{nbsp}}&lt;/div&gt;
+
+    <br/> <span>&lt;/div&gt;</span>&lt;!&ndash;&ndash; end mediaslider &ndash;&ndash;&gt;
+    <br>
+
+</code> <!-- end copy code -->

@@ -1,0 +1,292 @@
+<div class="patient-forms-container container">
+
+    <h2>Patient Forms</h2>
+
+    <div class="row">
+
+        <div class="col-lg-8 col-md-8 col-sm-12 wow fadeIn" data-wow-duration=".5s">
+
+            <!-- start form -->
+            <form [formGroup]="patientFormsForm" novalidate
+
+                  (ngSubmit)="onSetPatientFormData(patientFormsForm)">
+                <!-- BUTTONS -->
+
+                <div>
+
+
+                    <button type="button" mat-raised-button class="instructions-button"
+                            (click)="showHide(showPatientFormsInst = !showPatientFormsInst);">
+                        Instructions
+                    </button>
+
+                    <div [ngClass]="{'hide': !showPatientFormsInst }">
+                        <p>Complete the form and "Grab your HTML." Form name is required.
+                            <span class="sesame-blue">Blue placeholder text</span> indicates a required field.
+                        </p>
+                        <p>File extension is required in URL (.pdf, .doc, .html, .htm, .docx, .txt, .php, .img,
+                            .html, .xlt, .xsl,
+                            xml,
+                            .xls).
+                        </p>
+                    </div>
+                </div>
+
+                <add-save-buttons (addSaveButton)="addItem($event)"></add-save-buttons>
+
+                <!-- office category -->
+                <div>
+                    <mat-form-field class="form-group" style="max-width: 275px">
+                        <!-- choose office type -->
+                        <mat-label>Office Category</mat-label>
+                        <mat-select formControlName="officeCategory" name="officeCategory" #officeCategory>
+
+                            <mat-option *ngIf="officeCategory === null"
+                                        selected="selected">Select Office Category
+                            </mat-option>
+
+                            <mat-option
+                                    *ngFor="let category of formCategory"
+                                    value="{{category.value}}"> {{category.display}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <mat-accordion multi="false">
+
+                    <div cdkDropList (cdkDropListDropped)="drop($event)">
+
+                        <div *ngFor="let item of patientFormsForm.controls['items'].controls; let i = index; let first = first;
+                    let even=even; let odd=odd;" class="rounded-top-bottom" [ngClass]="{ odd: odd, even: even }"
+                             cdkDrag>
+
+                            <!-- patient forms array -->
+                            <div formArrayName="items">
+
+                                <div>
+
+                                    <div [formGroupName]="i">
+
+                                        <mat-expansion-panel hideToggle>
+
+                                            <mat-expansion-panel-header [ngClass]="{ odd: odd, even: even }">
+                                                <mat-panel-title>
+                                                    <!-- add delete buttons -->
+                                                    <div class="add-delete-wrap "
+                                                         (click)="$event.stopPropagation();">
+
+                                                        <div class="delete-button">
+
+                                                            <!-- add/delete buttons -->
+                                                            <div class="float-start"
+                                                                 style="width: 49%;
+                                                                     text-align: center;">
+                                                                <!--  add method -->
+                                                                <span class=" text-info"
+                                                                      (click)="addItem(i)">
+                                                            <mat-icon>add</mat-icon>
+                                                            </span>
+                                                            </div>
+
+                                                            <!-- delete method -->
+                                                            <div class="float-end"
+                                                                 style="width: 49%; text-align: center;">
+                                                                <span class="text-danger"
+                                                                      *ngIf="patientFormsForm.controls.items.controls.length > 0"
+                                                                      (click)="removeItem(i)"
+                                                                      value="delete Component"><mat-icon>delete</mat-icon>
+                                                                </span>
+                                                            </div>
+
+                                                            <!-- confirmation or cancel -->
+                                                            <!--<div *ngIf="deleteConfirmationArray[i]"
+                                                                 class="delete-confirm">
+                                                                &lt;!&ndash; delete &ndash;&gt;
+                                                                <span class="float-start sesame-danger "
+                                                                      style="width: 49%; "
+                                                                      (click)="confirmDelete(i, patientFormsForm, 'deleteItem')">
+                                                                    Delete
+                                                                    </span>
+                                                                &lt;!&ndash; confirm delete &ndash;&gt;
+                                                                <span type="button"
+                                                                      class="float-end sesame-green-background"
+                                                                      style="width: 49%;"
+                                                                      (click)="confirmDelete(i, null, 'cancelDeleteItem')">
+                                                                    Cancel
+                                                                    </span>
+
+                                                            </div>--><!-- delete buttons -->
+                                                        </div><!-- end buttons -->
+
+                                                        <div class="clear"></div>
+
+
+                                                    </div><!-- end add-delete-wrap -->
+                                                    <div *ngIf="item.controls.name.value as value; else noname">
+                                                        <span class="sesame-blue">{{item.controls.name.value | replaceDashSpace | titlecase}}</span>
+                                                        &nbsp;<span
+                                                            class="title-sub-text">{{item.controls.url.value.substring(0, 32)}}
+                                                        ...</span>
+                                                    </div>
+                                                    <ng-template #noname>
+                                                        <span  class="sesame-green" *ngIf="!item.controls.name.value">Enter patient form name or select from standard forms</span>{{ item.controls.name.value}}
+                                                    </ng-template>
+
+                                                </mat-panel-title>
+                                            </mat-expansion-panel-header>
+
+                                            <br/>
+
+                                            <p class="sesame-green ">Place non-standard forms in
+                                                account-name/www/assets/uploads/docs/</p>
+
+                                            <!-- Form name -->
+                                            <div class="form-group float-start">
+
+                                                <!-- SELECT FORM TYPE -->
+                                                <div>
+
+                                                    <p class="sesame-green" style="display: block;">Select a pre-defined
+                                                        form or select 'Create New' to add new.</p>
+
+                                                    <mat-form-field appearance="fill">
+
+                                                        <mat-select style="max-width: 375px"
+                                                                    (selectionChange)="updateUrl(patientFormText.value, i);"
+                                                                    formControlName="patientFormText"
+                                                                    name="patientFormText"
+                                                                    #patientFormText>
+
+                                                            <mat-option *ngIf="patientFormText == null"
+                                                                        selected="selected">Select Predefined
+                                                            </mat-option>
+
+                                                            <mat-option *ngFor="let type of patientFormType"
+                                                                        value="{{type.value}}"> {{type.display | replaceDashSpace | titlecase}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+
+                                            </div><!-- end pull-left -->
+
+                                            <!-- URL -->
+                                            <div class="form-group clear form-detail">
+                                                <mat-form-field style="max-width: 375px">
+                                                    <!--                                                [value]="patientFormText.value == 'create new'? '' : patientFormText.value"-->
+                                                    <mat-label>Form Name</mat-label>
+                                                    <input matInput
+
+                                                           type="text"
+                                                           formControlName="name"
+                                                           placeholder="Form Name"
+                                                           #name>
+                                                </mat-form-field>
+
+
+                                                <div>
+                                                    <mat-form-field style="max-width: 475px">
+                                                        <mat-label>Form URL</mat-label>
+                                                        <input matInput
+                                                               type="text"
+                                                               formControlName="url"
+                                                               placeholder="URL"
+                                                               #url/>
+
+                                                    </mat-form-field>
+                                                </div>
+
+                                            </div><!-- float end -->
+
+                                        </mat-expansion-panel>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div><!-- end items -->
+                    </div>
+                </mat-accordion>
+            </form>
+
+        </div><!-- end cols -->
+
+    </div><!-- end row -->
+
+    <!-- start code area -->
+    <br/>
+
+    <!-- Start HTML code area -->
+    <p class="copy sesame-blue" (click)="onCopyHTMLToClipboard();" data-target="#copy">
+        <mat-icon style="cursor: pointer;">file_copy</mat-icon>
+        Grab your HTML
+    </p>
+
+    <code id="copy">
+        <span [hidden]="officeCategory.value !== 'pediatric'"> &lt;p&gt;Help us get to know your child!&lt;/p&gt;</span>
+        <br/>
+        <span>&lt;p&gt;Please take a minute to print and fill out the patient information form before your first
+                    appointment. If you have any questions along the way, feel free to contact our practice.&lt;/p&gt;</span><br/>
+
+        <span><br/>&lt;ul&gt;<br/></span>
+
+        <div *ngFor="let markup of patientFormsForm.controls['items'].value | keys; let i = index; let first = first; let last = last">
+            <div class="bg-items">
+                <!-- if new form present -->
+                <div *ngIf="markup.value.name || markup.value.patientFormText">
+
+                    <span class="indent28">&lt;li&gt;</span>
+
+                    <!-- hide predefined USE NAME name value -->
+                    <span [hidden]="markup.value.patientFormText">
+
+                            <span class="indent44"
+                                  *ngIf="markup.value.name">
+                                <br/>&lt;a href="/assets/uploads/docs/{{markup.value.url.trim()}}{{markup.value.ext.trim()}}
+                                " target="_blank"&gt;{{markup.value.name.trim() | replaceDashSpace | replaceUnderscoreSpace | titlecase }}
+                            </span>
+
+                            &lt;/a&gt;
+
+                        <!-- extension code -->
+                                        <span *ngIf="markup.value.ext == '.pdf'">&lt;span class="fas fa-file-pdf" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                                        <span *ngIf="markup.value.ext == '.doc'">&lt;span class="fas fa-file-word" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                                        <span *ngIf="markup.value.ext == '.docx'">&lt;span class="fas fa-file-word" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                                        <span *ngIf="markup.value.ext == ''">&lt;span class="fas fa-link" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                            </span><!--  hide name USE PATIENT FORM TEXT patientFormText --><span
+                        [hidden]="!markup.value.name"><br/>&lt;a href="{{markup.value.url.trim()}}
+                    " target="_blank"&gt;{{markup.value.name.trim() | replaceDashSpace | replaceUnderscoreSpace | titlecase }}
+
+                    <span *ngIf="!markup.value.patientFormText">{{markup.value.url.trim()}}
+                        " target="_blank"&gt;{{markup.value.url.trim()</span>
+                    <!-- extension code -->
+                                    <span *ngIf="markup.value.ext == '.pdf'">&lt;span class="fas fa-file-pdf" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                                    <span *ngIf="markup.value.ext == '.doc'">&lt;span class="fas fa-file-word" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                                    <span *ngIf="markup.value.ext == '.docx'">&lt;span class="fas fa-file-word" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+                                    <span *ngIf="markup.value.ext == '' || markup.value.ext == 'none'">&lt;span class="fas fa-link" aria-hidden="true" role="img"&gt;{{nbsp}}&lt;/span&gt;</span>
+
+                            &lt;/a&gt;</span>
+
+                    <br/>
+                    <span class="indent28">&lt;/li&gt;<br/></span><!-- end line -->
+
+                </div>
+
+            </div><!-- end bg-items -->
+
+        </div><!-- end ngFor -->
+
+        <span>&lt;/ul&gt;<br/><br/></span>
+
+
+        <p class="indent32">&lt;p&gt;If you're unable to open PDF files, you can &lt;a
+            href="http://adobe.com/reader"&gt;get Adobe Reader®&lt;/a&gt; for free.
+            &lt;/p&gt;
+    </code>
+</div>
+
+
